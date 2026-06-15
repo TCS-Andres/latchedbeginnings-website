@@ -1,26 +1,122 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/*
+  Latched Beginnings design system
+  Brand: warm, nurturing, editorial. Gelasio serif display + Montserrat body.
+  Palette: coral on soft blush, charcoal text, antique-gold accent.
+  Hard rule: no em dashes in any copy.
+*/
+
+@theme {
+  /* Brand color scale */
+  --color-coral: #e8967a;        /* primary brand coral */
+  --color-coral-soft: #e8918b;   /* secondary warm coral */
+  --color-coral-deep: #d2745a;   /* hover / pressed CTA */
+  --color-blush: #fdf0ec;        /* page background tint */
+  --color-blush-200: #fbe3db;    /* soft bands / cards */
+  --color-blush-300: #f6d3c7;    /* deeper band */
+  --color-cream: #fffaf7;        /* warm off-white surface */
+  --color-charcoal: #2d2d2d;     /* primary text */
+  --color-ink: #1f1f1f;          /* darkest headings */
+  --color-stone: #6f6a67;        /* muted body text */
+  --color-gold: #c9a86a;         /* antique gold accent */
+
+  /* Semantic tokens */
+  --color-background: #ffffff;
+  --color-foreground: #2d2d2d;
+  --color-surface: #ffffff;
+  --color-primary: #e8967a;
+  --color-primary-foreground: #ffffff;
+
+  /* Typography */
+  --font-display: var(--font-gelasio), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  /* Radii */
+  --radius-pill: 9999px;
+  --radius-card: 1.5rem;
+  --radius-image: 1.75rem;
+
+  /* Shadows */
+  --shadow-soft: 0 18px 40px -24px rgba(45, 45, 45, 0.35);
+  --shadow-card: 0 12px 32px -20px rgba(210, 116, 90, 0.45);
+
+  /* Eased transitions */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2d2d2d;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-coral);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-coral-deep);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Eyebrow label: coral italic serif, as seen in the brand mockup */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-coral);
+    font-size: 1.125rem;
+    line-height: 1.2;
+  }
+}
+
+/* Scroll-reveal: elements fade and rise into view, refined and subtle */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s var(--ease-brand),
+      transform 0.7s var(--ease-brand);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Blog prose tuning to match brand voice */
+.prose :where(h2, h3) {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+}
+.prose :where(a) {
+  color: var(--color-coral-deep);
+  text-underline-offset: 3px;
+}
+.prose :where(strong) {
+  color: var(--color-ink);
 }

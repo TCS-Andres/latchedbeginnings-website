@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Latched Beginnings
 
-## Getting Started
+Marketing website for **Latched Beginnings**, the Austin, TX dental + lactation
+practice of Dr. Kacie Culotta, DDS. Rebuilt as a fast, secure, statically
+rendered site (Next.js 16 + Tailwind v4 + TypeScript), deployable to Vercel.
 
-First, run the development server:
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build (also type-checks)
+npm run start    # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project map
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/                     routes (Server Components, static)
+    page.tsx               homepage
+    services/[slug]/       data-driven service pages
+    blog/[slug]/           35 migrated articles
+    about, contact, resources, providers, ... interior pages
+    sitemap.ts, robots.ts, not-found.tsx
+  components/              ui/ layout/ home/ blog/ brand/ seo/
+  lib/site.ts              site-wide data (nav, contact, CTAs)  <-- edit me
+  lib/content/             services + testimonials data
+  content/blog.json        migrated blog content
+scripts/migrate-blog.mjs   regenerate blog.json from the WP export
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See `CLAUDE.md` for the design system, component kit, and writing rules.
+See `IMAGE-MANIFEST.md` for every photo slot and where real images go.
 
-## Learn More
+## Before launch (client to confirm / provide)
 
-To learn more about Next.js, take a look at the following resources:
+Tracked in code as `TODO`. Most live in `src/lib/site.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Booking URL** (`site.bookingUrl`): real ClientSecure scheduling link. Currently points to `/contact`.
+2. **Contact email**, **office hours**, **ZIP / map coordinates** (`site.*`).
+3. **Real testimonials**: replace placeholders in `src/lib/content/testimonials.ts` with genuine Google reviews (the old site only had demo content).
+4. **Photography**: drop files per `IMAGE-MANIFEST.md` (logo + Dr. Kacie's photo already in place).
+5. **Lead magnets**: add `oral-tie-symptoms-checklist.pdf` and `patient-referral-form.pdf` to `public/downloads/`; embed the real pacifier webinar video.
+6. **Legal pages** (privacy, terms, HIPAA): generated from standard templates and must be reviewed by an attorney / compliance professional.
+7. **Facebook URL** and confirm the Instagram handle.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy (Vercel)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Static output, zero server config. Connect the repo to Vercel (framework
+auto-detected as Next.js) or run `vercel`. Point the `latchedbeginnings.com`
+domain at the deployment and confirm `site.url` matches.
