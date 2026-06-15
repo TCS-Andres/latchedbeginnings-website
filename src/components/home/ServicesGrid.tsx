@@ -15,7 +15,7 @@ const photoSlots: Record<string, string> = {
 
 export function ServicesGrid() {
   return (
-    <Section tone="white" spacing="tight">
+    <Section tone="white">
       <Container size="wide">
         <div className="text-center">
           <p className="eyebrow mb-3">What We Do</p>

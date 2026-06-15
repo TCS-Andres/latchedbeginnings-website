@@ -59,7 +59,6 @@ export function ValueProps() {
               alt="A mother smiling with her baby"
               slot="Mom holding baby, smiling"
               aspect="aspect-[3/4]"
-              className="mt-10"
               sizes="(max-width: 1024px) 45vw, 25vw"
             />
             <Photo

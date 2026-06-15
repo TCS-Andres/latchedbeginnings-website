@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 
 export function ReferralBand() {
   return (
-    <Section tone="white" spacing="tight">
+    <Section tone="white">
       <Container size="wide">
         <Reveal>
           <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-blush-200 p-6 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
