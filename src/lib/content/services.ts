@@ -1,30 +1,60 @@
 /**
- * Service catalog. Powers the homepage "What We Do" cards, the /services
- * overview, and each dedicated service page. Copy follows the brand voice:
- * warm, evidence-based, never fear-based. No em dashes.
+ * Service catalog. Mirrors the structure of the live latchedbeginnings.com
+ * service pages: image hero, "Scope Our Services" (4 cards), alternating
+ * ping-pong content sections, FAQ, then the shared Stories of Change, Simple
+ * Steps to Thrive, and checklist sections (rendered by the page template).
+ *
+ * Copy is the real site copy, lightly optimized for SEO and AI search: each
+ * page leads with a clear, declarative answer and weaves in the Austin location
+ * and Dr. Culotta's dual certification. Brand voice, no em dashes.
  */
+
+export type ScopeCard = { title: string; body: string };
+
+export type ServiceSection = {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  /** Optional sub-points (used for the CO2 laser benefits) */
+  bullets?: { title: string; body: string }[];
+  image: string;
+  imageSlot: string;
+  imageShape?: "rounded" | "arch" | "soft";
+};
 
 export type Service = {
   slug: string;
   title: string;
   shortTitle: string;
   navTitle: string;
-  /** One-line card summary */
+  /** One-line card summary used on the homepage + services overview */
   excerpt: string;
-  /** Hero eyebrow on the dedicated page */
-  eyebrow: string;
-  /** Hero intro paragraph on the dedicated page */
-  intro: string;
+  /** Photo slot label for the overview/homepage cards */
   photoSlot: string;
-  /** Bullet highlights for the page */
-  highlights: { title: string; body: string }[];
-  /** Frequently asked questions for the page + FAQ schema */
+  hero: {
+    eyebrow: string;
+    /** Emotional H1 (matches the live site) */
+    title: string;
+    subhead: string;
+    /** SEO-forward declarative intro */
+    intro: string;
+    image: string;
+    imageSlot: string;
+  };
+  scope: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    cards: ScopeCard[];
+  };
+  sections: ServiceSection[];
   faqs: { question: string; answer: string }[];
-  /** SEO */
   metaTitle: string;
   metaDescription: string;
   primaryKeyword: string;
 };
+
+const SERVICE_IMG = "/images/photos";
 
 export const services: Service[] = [
   {
@@ -33,23 +63,88 @@ export const services: Service[] = [
     shortTitle: "CO2 Laser Releases",
     navTitle: "CO2 Laser Tongue-Tie Release",
     excerpt:
-      "We use the gold-standard LightScalpel CO2 laser for gentle, precise releases with less discomfort and faster healing for your little one.",
-    eyebrow: "The Gold Standard",
-    intro:
-      "At Latched Beginnings, we use the LightScalpel CO2 laser for tongue-tie, lip-tie, and buccal-tie releases. This advanced technology is designed for your baby's comfort and healing. Unlike traditional methods, the CO2 laser offers minimal discomfort, less bleeding, and a precise release that preserves healthy tissue.",
-    photoSlot: "Baby during a gentle laser release, close and reassuring",
-    highlights: [
+      "Gentle, precise releases with the gold-standard LightScalpel CO2 laser for less discomfort and faster healing for your little one.",
+    photoSlot: "Newborn during gentle laser care",
+    hero: {
+      eyebrow: "CO2 Laser Releases",
+      title: "Precision Care for Tongue-Tied Infants",
+      subhead: "Gentle, Effective Tongue-Tie Releases for Your Little One",
+      intro:
+        "A laser tongue-tie release in Austin should be gentle, precise, and rooted in real feeding expertise. At Latched Beginnings, Dr. Kacie Culotta releases tongue-tie, lip-tie, and buccal-tie restrictions with the gold-standard LightScalpel CO2 laser for a smoother path to improved feeding, better airway health, and a thriving baby. As the only Austin dentist who is also a certified lactation counselor, she cares for the structure and the function of feeding in one visit.",
+      image: `${SERVICE_IMG}/service-co2-laser-tongue-tie-release.jpg`,
+      imageSlot: "Newborn being gently cradled during care",
+    },
+    scope: {
+      eyebrow: "Service Offer",
+      title: "Scope Our Services",
+      intro:
+        "We know how important it is to give your baby the best start, and our care reflects that commitment.",
+      cards: [
+        {
+          title: "Why Families Trust Us",
+          body: "Families across Austin choose us because we lead with listening, take our time, and never recommend a release that is not in your baby's best interest.",
+        },
+        {
+          title: "Expertise You Can Trust",
+          body: "Dr. Kacie Culotta is both a laser-certified dentist and a lactation counselor with specialized training in oral ties, a combination unique in Austin.",
+        },
+        {
+          title: "State-of-the-Art Technology",
+          body: "Our LightScalpel CO2 laser delivers precise, gentle, and effective releases with minimal discomfort and bleeding.",
+        },
+        {
+          title: "Functional Approach",
+          body: "From feeding struggles to airway health, we provide a comprehensive evaluation and a care plan tailored to your baby's needs.",
+        },
+      ],
+    },
+    sections: [
       {
-        title: "Gentle and effective care",
-        body: "The CO2 laser is designed for your child's comfort and healing, with precise tissue release that protects the surrounding area.",
+        eyebrow: "Why the LightScalpel CO2 Laser Stands Out",
+        heading: "The Gold Standard in Tongue-Tie Treatment",
+        body: "The LightScalpel CO2 laser offers unmatched precision and comfort for tongue-tie releases. Unlike traditional scissors or diode methods, this advanced tool lets us achieve optimal results with minimal trauma to your baby.",
+        bullets: [
+          {
+            title: "Less Discomfort",
+            body: "The laser minimizes bleeding, swelling, and post-operative pain, helping your baby recover quickly and comfortably.",
+          },
+          {
+            title: "Faster Healing",
+            body: "By reducing tissue trauma, the laser promotes a smoother recovery process.",
+          },
+          {
+            title: "Precision Matters",
+            body: "The LightScalpel allows for highly accurate releases, improving feeding, tongue mobility, and overall airway health.",
+          },
+          {
+            title: "Safe and Sterile",
+            body: "The laser's sterilization properties lower the risk of infection, ensuring a safe procedure for your baby.",
+          },
+        ],
+        image: `${SERVICE_IMG}/laser.jpg`,
+        imageSlot: "Close-up of a calm, alert baby",
+        imageShape: "arch",
       },
       {
-        title: "Quick recovery",
-        body: "Procedures are gentle and recovery is smoother, so your little one can get back to thriving sooner.",
+        eyebrow: "Gentle and Precise Tongue-Tie Releases",
+        heading: "Advanced Care with the LightScalpel CO2 Laser",
+        body: "Using the LightScalpel CO2 laser, we release your baby's tongue-tie with minimal discomfort and maximum precision. This advanced technology improves feeding and oral function while minimizing the impact on the surrounding tissue, so your little one is often calm and ready to feed soon after.",
+        image: `${SERVICE_IMG}/value-2.jpg`,
+        imageSlot: "Parent cradling a newborn",
       },
       {
-        title: "Safe and clean",
-        body: "The laser promotes a sterile environment, reducing the risk of infection and supporting a safer experience for your baby.",
+        eyebrow: "Post-Procedure Guidance and Care",
+        heading: "Supporting Your Baby's Healing Process",
+        body: "After the procedure, you receive a customized post-op care plan with oral exercises, feeding tips, and scheduled follow-up support, so your baby heals well and adjusts to their new range of motion. You are never left to figure it out alone.",
+        image: `${SERVICE_IMG}/service-post-op-care.jpg`,
+        imageSlot: "Mother feeding a content baby",
+      },
+      {
+        eyebrow: "Collaborative Feeding Support",
+        heading: "Helping You and Your Baby Thrive Together",
+        body: "Our combination of oral-tie expertise and lactation counseling means we address feeding comprehensively. From latch improvement to bottle transitions, we support your feeding journey every step of the way and collaborate with your lactation consultant, pediatrician, or bodyworker.",
+        image: `${SERVICE_IMG}/value-1.jpg`,
+        imageSlot: "Mother smiling with her baby",
       },
     ],
     faqs: [
@@ -79,6 +174,7 @@ export const services: Service[] = [
       "Gentle CO2 laser tongue-tie, lip-tie, and buccal-tie releases for infants in Austin, TX with Dr. Kacie Culotta, DDS. The gold-standard LightScalpel laser for comfort and faster healing.",
     primaryKeyword: "laser tongue tie release Austin",
   },
+
   {
     slug: "consultations",
     title: "1-on-1 In-Office Consultations",
@@ -86,22 +182,70 @@ export const services: Service[] = [
     navTitle: "1-on-1 Consultations",
     excerpt:
       "Comprehensive in-person evaluations of your baby's feeding, oral anatomy, and overall health, with a personalized care plan you can trust.",
-    eyebrow: "Where Care Begins",
-    intro:
-      "Every journey at Latched Beginnings starts with a thorough, unhurried consultation. Dr. Culotta evaluates your baby's feeding habits, oral anatomy, and tongue mobility, then talks through what she sees and builds a personalized care plan with you. Her dual training as a dentist and lactation counselor means she can address both the structure and the function of feeding in a single visit.",
-    photoSlot: "Dr. Culotta evaluating a baby with a parent nearby",
-    highlights: [
+    photoSlot: "Hands evaluating a baby during a consultation",
+    hero: {
+      eyebrow: "1-on-1 Consultations",
+      title: "Personalized Care for You and Your Baby",
+      subhead:
+        "One-on-One Consultations for Functional Feeding and Wellness Solutions",
+      intro:
+        "An infant feeding consultation in Austin should never feel rushed. At Latched Beginnings, your visit is a thorough, unhurried evaluation with Dr. Kacie Culotta, the only Austin dentist who is also a certified lactation counselor. We combine hands-on expertise with genuine support for feeding challenges, oral ties, and infant wellness, and we build a personalized plan that helps your family thrive. Not every baby needs a release, and we will always tell you the truth.",
+      image: `${SERVICE_IMG}/service-consultations.jpg`,
+      imageSlot: "Hands gently supporting a baby during a consultation",
+    },
+    scope: {
+      eyebrow: "Service Offer",
+      title: "Scope Our Services",
+      intro:
+        "Every consultation is built around your baby, your concerns, and what you are hoping for.",
+      cards: [
+        {
+          title: "Why Choose an In-Person Consultation?",
+          body: "Our in-person consultations provide the clarity and support you need to overcome challenges and move forward with confidence.",
+        },
+        {
+          title: "Hands-On Expertise",
+          body: "Work directly with Dr. Culotta, a laser-certified dentist and lactation counselor, for a comprehensive, whole-baby evaluation.",
+        },
+        {
+          title: "Customized Solutions",
+          body: "Every consultation is tailored to your family's specific needs, from feeding issues to oral ties and airway health.",
+        },
+        {
+          title: "Collaborative Support",
+          body: "We partner with you to create a personalized care plan that ensures progress and peace of mind.",
+        },
+      ],
+    },
+    sections: [
       {
-        title: "We listen first",
-        body: "We take the time to understand your story, your concerns, and what you are hoping for, before anything else.",
+        eyebrow: "Comprehensive Infant Assessments",
+        heading: "Understanding Your Baby's Unique Needs",
+        body: "During your consultation, Dr. Culotta conducts a detailed evaluation of your baby's feeding habits, oral anatomy, tongue mobility, and overall health. We work to uncover the root cause of feeding challenges and create a targeted care plan that addresses your baby's specific needs.",
+        image: `${SERVICE_IMG}/value-2.jpg`,
+        imageSlot: "Parent cradling a newborn",
+        imageShape: "arch",
       },
       {
-        title: "Whole-baby evaluation",
-        body: "We assess feeding, oral anatomy, tongue mobility, and comfort to understand the full picture, not just one symptom.",
+        eyebrow: "Expert Guidance on Feeding Solutions",
+        heading: "From Latching Struggles to Bottle Feeding Success",
+        body: "Whether you are breastfeeding, bottle feeding, or both, we are here to help. Dr. Culotta's lactation counseling credentials allow us to offer practical, personalized strategies that support your baby's feeding journey and ease the worry that comes with it.",
+        image: `${SERVICE_IMG}/service-post-op-care.jpg`,
+        imageSlot: "Mother feeding a content baby",
       },
       {
-        title: "A plan made for your baby",
-        body: "You leave with clear answers and a personalized plan. Not every baby needs a release, and we will always tell you the truth.",
+        eyebrow: "Tailored Oral Tie Evaluations",
+        heading: "Identifying and Addressing Oral Restrictions",
+        body: "If you suspect your baby may have a tongue-tie, lip-tie, or buccal-tie, we provide a thorough, conservative evaluation and an honest discussion of potential next steps. Our approach aligns with American Academy of Pediatrics guidance, so you are informed and supported throughout the process.",
+        image: `${SERVICE_IMG}/laser.jpg`,
+        imageSlot: "Close-up of a calm, alert baby",
+      },
+      {
+        eyebrow: "Post-Consultation Support and Follow-Up",
+        heading: "Ongoing Care for Long-Term Success",
+        body: "Our care does not end when you leave. We provide follow-up instructions, exercises, and continued support to ensure long-term progress, and our team stays reachable to answer your questions and guide you every step of the way.",
+        image: `${SERVICE_IMG}/story.jpg`,
+        imageSlot: "Family holding their baby together",
       },
     ],
     faqs: [
@@ -131,29 +275,77 @@ export const services: Service[] = [
       "Book a 1-on-1 infant feeding and tongue-tie consultation in Austin, TX with Dr. Kacie Culotta, DDS. A thorough, compassionate evaluation and a personalized care plan for your baby.",
     primaryKeyword: "tongue tie consultation Austin",
   },
+
   {
     slug: "post-op-care",
     title: "Post-Operative Care",
     shortTitle: "Post-Op Care",
     navTitle: "Post-Op Care",
     excerpt:
-      "Thoughtful support before and after the procedure. We are here to guide you every step of the way toward healing and lasting results.",
-    eyebrow: "Healing Together",
-    intro:
-      "A release is only part of the story. Latched Beginnings provides robust post-operative support so your baby heals well and feeds with ease. You will receive a customized care plan, step-by-step guidance on oral exercises, feeding and lactation support during recovery, and scheduled follow-ups, plus ongoing access to our team for any questions.",
-    photoSlot: "Calm mother nursing a baby at home after recovery",
-    highlights: [
+      "Thoughtful support before and after the procedure. We guide you every step of the way toward healing and lasting results.",
+    photoSlot: "Mother nursing a content baby",
+    hero: {
+      eyebrow: "Post-Op Care",
+      title: "Healing with Confidence",
+      subhead: "Comprehensive Post-Op Care for You and Your Baby",
+      intro:
+        "Frenectomy aftercare in Austin matters as much as the release itself. Your journey does not end after the procedure. At Latched Beginnings, we support you every step of the way with tailored post-operative care designed for optimal healing and long-term success. From feeding guidance to gentle oral exercises, Dr. Kacie Culotta gives you the tools, knowledge, and follow-up to help you and your baby thrive.",
+      image: `${SERVICE_IMG}/service-post-op-care.jpg`,
+      imageSlot: "Mother nursing a content baby at home",
+    },
+    scope: {
+      eyebrow: "Service Offer",
+      title: "Scope Our Services",
+      intro:
+        "Recovery is a journey, and we walk it with you from the first day home.",
+      cards: [
+        {
+          title: "Expert Guidance Every Step of the Way",
+          body: "Dr. Kacie Culotta provides personalized post-op care plans tailored to your baby's unique needs.",
+        },
+        {
+          title: "Functional Healing Approach",
+          body: "We combine oral exercises, lactation support, and airway health to support whole-body wellness.",
+        },
+        {
+          title: "Faster Recovery, Better Outcomes",
+          body: "Our specialized care supports comfortable healing, reduces discomfort, and helps results last.",
+        },
+        {
+          title: "Ongoing Support for Long-Term Success",
+          body: "You are not alone. Our team is here to help you navigate the post-op period with confidence.",
+        },
+      ],
+    },
+    sections: [
       {
-        title: "Customized care plans",
-        body: "Every plan is tailored to your baby's unique needs, with clear oral exercises to promote proper healing.",
+        eyebrow: "A Personalized Care Plan",
+        heading: "A Plan Tailored to Your Baby's Needs",
+        body: "Every baby is unique. After the procedure, we provide a personalized plan tailored to your baby's specific needs, including feeding adjustments and healing exercises, to support the best possible outcomes.",
+        image: `${SERVICE_IMG}/value-1.jpg`,
+        imageSlot: "Mother smiling with her baby",
+        imageShape: "arch",
       },
       {
-        title: "Feeding and lactation support",
-        body: "We support feeding adjustments and latch through recovery so progress sticks.",
+        eyebrow: "Gentle Healing Exercises",
+        heading: "Promoting Healing Through Gentle Movements",
+        body: "Oral exercises play a key role in proper healing and tongue function. We teach you step-by-step how to perform these gentle exercises at home, promoting a smooth recovery and improved feeding for your baby.",
+        image: `${SERVICE_IMG}/service-consultations.jpg`,
+        imageSlot: "Hands gently supporting a baby",
       },
       {
-        title: "Follow-up and ongoing access",
-        body: "Scheduled follow-ups monitor progress, and our team stays reachable for questions and reassurance.",
+        eyebrow: "Feeding and Latch Support",
+        heading: "Strengthening the Bond Between You and Your Baby",
+        body: "Navigating feeding changes after a release can feel overwhelming. With Dr. Culotta's dual expertise in dentistry and lactation counseling, you receive the guidance you need to help your baby achieve a strong, effective latch.",
+        image: `${SERVICE_IMG}/referrals.jpg`,
+        imageSlot: "Mother and baby cheek to cheek",
+      },
+      {
+        eyebrow: "Follow-Up Care",
+        heading: "Supporting Your Baby's Journey Every Step of the Way",
+        body: "Healing is a journey, and we are with you throughout. Our follow-up appointments monitor your baby's progress, address any concerns, and adjust the care plan to ensure a smooth recovery and lasting benefits.",
+        image: `${SERVICE_IMG}/story.jpg`,
+        imageSlot: "Family holding their baby together",
       },
     ],
     faqs: [

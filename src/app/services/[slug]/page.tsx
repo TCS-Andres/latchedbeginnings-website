@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Check } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Photo } from "@/components/ui/Photo";
-import { Reveal } from "@/components/ui/Reveal";
-import { Button } from "@/components/ui/Button";
 import { Faq } from "@/components/ui/Faq";
-import { PageHero } from "@/components/layout/PageHero";
+import { ServiceHero } from "@/components/sections/ServiceHero";
+import { ScopeCards } from "@/components/sections/ScopeCards";
+import { PingPong } from "@/components/sections/PingPong";
+import { ChecklistCta } from "@/components/sections/ChecklistCta";
+import { Testimonials } from "@/components/home/Testimonials";
+import { Steps } from "@/components/home/Steps";
 import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/seo/JsonLd";
 import { services, getService } from "@/lib/content/services";
 import { site } from "@/lib/site";
@@ -45,74 +46,39 @@ export default async function ServicePage({
   const service = getService(slug);
   if (!service) notFound();
 
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: service.shortTitle, href: `/services/${service.slug}` },
+  ];
+
   return (
     <>
       <BreadcrumbJsonLd
-        items={[
-          { name: "Home", url: "/" },
-          { name: "Services", url: "/services" },
-          { name: service.shortTitle, url: `/services/${service.slug}` },
-        ]}
+        items={crumbs.map((c) => ({ name: c.name, url: c.href }))}
       />
       <FaqJsonLd items={service.faqs} />
 
-      <PageHero
-        eyebrow={service.eyebrow}
-        title={service.title}
-        intro={service.intro}
-        crumbs={[
-          { name: "Home", href: "/" },
-          { name: "Services", href: "/services" },
-          { name: service.shortTitle, href: `/services/${service.slug}` },
-        ]}
-        cta={{ label: site.bookingLabel, href: site.bookingUrl }}
+      <ServiceHero service={service} crumbs={crumbs} />
+
+      <ScopeCards
+        eyebrow={service.scope.eyebrow}
+        title={service.scope.title}
+        intro={service.scope.intro}
+        cards={service.scope.cards}
       />
 
-      {/* Highlights with photo */}
-      <Section tone="white">
-        <Container size="wide">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <Photo
-                src={`/images/photos/service-${service.slug}.jpg`}
-                alt={service.shortTitle}
-                slot={service.photoSlot}
-                aspect="aspect-[4/5]"
-                shape="arch"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </Reveal>
-            <div>
-              <p className="eyebrow mb-3">What sets this apart</p>
-              <h2 className="text-3xl leading-[1.12] sm:text-4xl">
-                Care designed around your baby
-              </h2>
-              <ul className="mt-8 space-y-6">
-                {service.highlights.map((h, i) => (
-                  <Reveal as="li" key={h.title} delay={i * 80}>
-                    <div className="flex gap-4">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blush text-coral-deep">
-                        <Check className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <div>
-                        <h3 className="font-display text-lg text-ink">
-                          {h.title}
-                        </h3>
-                        <p className="mt-1 text-base leading-relaxed text-stone">
-                          {h.body}
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      {service.sections.map((section, i) => (
+        <PingPong
+          key={section.heading}
+          section={section}
+          reverse={i % 2 === 1}
+          tone={i % 2 === 0 ? "white" : "blush"}
+        />
+      ))}
 
-      {/* FAQ */}
-      <Section tone="blush">
+      {/* FAQ (SEO enhancement, with FAQ schema) */}
+      <Section tone="white">
         <Container size="wide">
           <div className="mb-10 text-center">
             <p className="eyebrow mb-3">Questions, Answered</p>
@@ -121,13 +87,12 @@ export default async function ServicePage({
             </h2>
           </div>
           <Faq items={service.faqs} />
-          <div className="mt-10 flex justify-center">
-            <Button href={site.bookingUrl} size="lg">
-              {site.bookingLabel}
-            </Button>
-          </div>
         </Container>
       </Section>
+
+      <Testimonials />
+      <Steps />
+      <ChecklistCta />
     </>
   );
 }
