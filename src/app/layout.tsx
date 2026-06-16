@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { Preloader } from "@/components/layout/Preloader";
 import { site } from "@/lib/site";
 
 const gelasio = Gelasio({
@@ -68,8 +69,9 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-white">
         <noscript>
-          <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
+          <style>{`[data-reveal]{opacity:1 !important;transform:none !important}.preloader{display:none !important}`}</style>
         </noscript>
+        <Preloader />
         <Header />
         <main className="flex-1">{children}</main>
         <CtaBanner />

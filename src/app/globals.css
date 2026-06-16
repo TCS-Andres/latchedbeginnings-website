@@ -171,3 +171,79 @@
 .prose :where(strong) {
   color: var(--color-ink);
 }
+
+/* Branded preloader: soft blush overlay with the logo, shown on first load. */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(60% 52% at 50% 40%, #fdf0ec 0%, #fffaf7 62%, #ffffff 100%);
+  transition:
+    opacity 0.6s var(--ease-brand),
+    visibility 0.6s var(--ease-brand);
+}
+.preloader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.85rem;
+}
+.preloader__logo {
+  width: 200px;
+  height: auto;
+  animation: pl-in 0.85s var(--ease-brand) both;
+}
+.preloader__track {
+  position: relative;
+  width: 140px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: rgba(232, 150, 122, 0.22);
+}
+.preloader__track::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  border-radius: inherit;
+  background: var(--color-coral);
+  animation: pl-bar 1.15s var(--ease-brand) infinite;
+}
+
+@keyframes pl-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pl-bar {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(360%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__logo {
+    animation: none;
+  }
+  .preloader__track::after {
+    animation-duration: 2.2s;
+  }
+}
