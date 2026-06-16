@@ -8,7 +8,7 @@ import { Steps } from "@/components/home/Steps";
 import { ResourceCtas } from "@/components/home/ResourceCtas";
 import { FounderBio } from "@/components/home/FounderBio";
 import { ReferralBand } from "@/components/home/ReferralBand";
-import { Credentials } from "@/components/home/Credentials";
+import { PartnerLogos } from "@/components/home/PartnerLogos";
 import { InstagramFeed } from "@/components/home/InstagramFeed";
 import { LocalBusinessJsonLd } from "@/components/seo/JsonLd";
 
@@ -26,7 +26,7 @@ export default function HomePage() {
       <ResourceCtas />
       <FounderBio />
       <ReferralBand />
-      <Credentials />
+      <PartnerLogos />
       <InstagramFeed />
     </>
   );
