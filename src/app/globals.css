@@ -10,13 +10,13 @@
 
 @theme {
   /* Brand color scale */
-  --color-coral: #e8967a;        /* primary brand coral */
-  --color-coral-soft: #e8918b;   /* secondary warm coral */
-  --color-coral-deep: #d2745a;   /* hover / pressed CTA */
-  --color-blush: #fdf0ec;        /* page background tint */
-  --color-blush-200: #fbe3db;    /* soft bands / cards */
-  --color-blush-300: #f6d3c7;    /* deeper band */
-  --color-cream: #fffaf7;        /* warm off-white surface */
+  --color-coral: #e0949b;        /* primary brand coral */
+  --color-coral-soft: #e7a6ac;   /* secondary warm coral */
+  --color-coral-deep: #c46e78;   /* hover / pressed CTA */
+  --color-blush: #fdeff1;        /* page background tint */
+  --color-blush-200: #fadfe3;    /* soft bands / cards */
+  --color-blush-300: #f2cdd2;    /* deeper band */
+  --color-cream: #fff8f9;        /* warm off-white surface */
   --color-charcoal: #2d2d2d;     /* primary text */
   --color-ink: #1f1f1f;          /* darkest headings */
   --color-stone: #6f6a67;        /* muted body text */
@@ -26,7 +26,7 @@
   --color-background: #ffffff;
   --color-foreground: #2d2d2d;
   --color-surface: #ffffff;
-  --color-primary: #e8967a;
+  --color-primary: #e0949b;
   --color-primary-foreground: #ffffff;
 
   /* Typography */
@@ -40,7 +40,7 @@
 
   /* Shadows */
   --shadow-soft: 0 18px 40px -24px rgba(45, 45, 45, 0.35);
-  --shadow-card: 0 12px 32px -20px rgba(210, 116, 90, 0.45);
+  --shadow-card: 0 12px 32px -20px rgba(196, 110, 120, 0.45);
 
   /* Eased transitions */
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
@@ -98,30 +98,30 @@
   */
   .bg-soft {
     background:
-      radial-gradient(620px 400px at 12% 18%, rgba(232, 150, 122, 0.14), transparent 70%),
-      radial-gradient(560px 380px at 88% 84%, rgba(232, 145, 139, 0.16), transparent 70%),
+      radial-gradient(620px 400px at 12% 18%, rgba(224, 148, 155, 0.14), transparent 70%),
+      radial-gradient(560px 380px at 88% 84%, rgba(231, 166, 172, 0.16), transparent 70%),
       linear-gradient(
         180deg,
-        rgba(253, 240, 236, 0) 0,
-        #fdf0ec 120px,
-        #fbe7e0 50%,
-        #fdf0ec calc(100% - 120px),
-        rgba(253, 240, 236, 0) 100%
+        rgba(253, 239, 241, 0) 0,
+        #fdeff1 120px,
+        #f9dee3 50%,
+        #fdeff1 calc(100% - 120px),
+        rgba(253, 239, 241, 0) 100%
       );
   }
 
   /* Mirror of bg-soft with the blooms swapped, for variety between bands. */
   .bg-soft-alt {
     background:
-      radial-gradient(600px 380px at 85% 16%, rgba(232, 145, 139, 0.15), transparent 70%),
-      radial-gradient(560px 380px at 10% 82%, rgba(232, 150, 122, 0.13), transparent 70%),
+      radial-gradient(600px 380px at 85% 16%, rgba(231, 166, 172, 0.15), transparent 70%),
+      radial-gradient(560px 380px at 10% 82%, rgba(224, 148, 155, 0.13), transparent 70%),
       linear-gradient(
         180deg,
-        rgba(253, 240, 236, 0) 0,
-        #fdf0ec 120px,
-        #fbe7e0 50%,
-        #fdf0ec calc(100% - 120px),
-        rgba(253, 240, 236, 0) 100%
+        rgba(253, 239, 241, 0) 0,
+        #fdeff1 120px,
+        #f9dee3 50%,
+        #fdeff1 calc(100% - 120px),
+        rgba(253, 239, 241, 0) 100%
       );
   }
 
@@ -131,13 +131,13 @@
   */
   .bg-soft-hero {
     background:
-      radial-gradient(680px 460px at 15% 10%, rgba(232, 150, 122, 0.18), transparent 72%),
-      radial-gradient(640px 460px at 88% 30%, rgba(232, 145, 139, 0.2), transparent 72%),
+      radial-gradient(680px 460px at 15% 10%, rgba(224, 148, 155, 0.18), transparent 72%),
+      radial-gradient(640px 460px at 88% 30%, rgba(231, 166, 172, 0.2), transparent 72%),
       linear-gradient(
         180deg,
-        #fdf0ec 0,
-        #fbe7e0 55%,
-        rgba(253, 240, 236, 0) 100%
+        #fdeff1 0,
+        #f9dee3 55%,
+        rgba(253, 239, 241, 0) 100%
       );
   }
 }
@@ -185,7 +185,7 @@
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(58% 52% at 50% 42%, #fdf0ec 0%, #fffaf7 60%, #ffffff 100%);
+    radial-gradient(58% 52% at 50% 42%, #fdeff1 0%, #fff8f9 60%, #ffffff 100%);
   transition:
     opacity 0.55s var(--ease-brand),
     visibility 0.55s var(--ease-brand);
@@ -219,7 +219,7 @@
   height: 3px;
   overflow: hidden;
   border-radius: 9999px;
-  background: rgba(232, 150, 122, 0.22);
+  background: rgba(224, 148, 155, 0.22);
 }
 .preloader__track::after {
   content: "";

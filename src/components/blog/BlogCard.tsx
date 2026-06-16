@@ -5,7 +5,7 @@ import { formatDate, type BlogPost } from "@/lib/blog";
 
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(210,116,90,0.55)]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(196,110,120,0.55)]">
       <Link href={`/blog/${post.slug}`} className="block">
         <Photo
           src={`/images/blog/${post.slug}.jpg`}

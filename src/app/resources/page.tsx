@@ -85,7 +85,7 @@ export default function ResourcesPage() {
               const Icon = resource.icon;
               return (
                 <Reveal as="article" key={resource.href} delay={i * 80}>
-                  <div className="group flex h-full flex-col rounded-[1.75rem] border border-blush-200 bg-white p-8 transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(210,116,90,0.6)]">
+                  <div className="group flex h-full flex-col rounded-[1.75rem] border border-blush-200 bg-white p-8 transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(196,110,120,0.6)]">
                     <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blush text-coral-deep">
                       <Icon className="h-7 w-7" aria-hidden="true" />
                     </span>

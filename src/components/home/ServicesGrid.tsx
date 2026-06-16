@@ -27,7 +27,7 @@ export function ServicesGrid() {
         <div className="mt-14 grid gap-7 md:grid-cols-3">
           {services.map((service, i) => (
             <Reveal as="article" key={service.slug} delay={i * 90}>
-              <div className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(210,116,90,0.6)]">
+              <div className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(196,110,120,0.6)]">
                 <Photo
                   src={`/images/photos/service-${service.slug}.jpg`}
                   alt={service.shortTitle}
