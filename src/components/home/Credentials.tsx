@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
  */
 export function Credentials() {
   return (
-    <section className="border-y border-blush-200 bg-cream py-12">
+    <section className="bg-cream py-12">
       <Container size="wide">
         <Reveal>
           <p className="text-center font-display text-base italic text-stone">

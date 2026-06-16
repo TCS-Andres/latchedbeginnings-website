@@ -13,8 +13,9 @@ type SectionProps = {
 
 const tones = {
   white: "bg-white text-charcoal",
-  blush: "bg-blush text-charcoal",
-  "blush-soft": "bg-blush-200 text-charcoal",
+  // Soft, feathered blush gradient bands (see .bg-soft in globals.css)
+  blush: "bg-soft text-charcoal",
+  "blush-soft": "bg-soft-alt text-charcoal",
   cream: "bg-cream text-charcoal",
   ink: "bg-ink text-white",
 };

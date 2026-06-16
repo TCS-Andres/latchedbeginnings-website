@@ -8,7 +8,7 @@ import { footerNav, site } from "@/lib/site";
 export function Footer() {
   const year = 2026;
   return (
-    <footer className="bg-blush">
+    <footer className="bg-gradient-to-b from-cream to-blush">
       <Container size="wide" className="py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           {/* Brand */}

@@ -26,7 +26,7 @@ export function PageHero({
   align = "center",
 }: PageHeroProps) {
   return (
-    <section className="relative isolate overflow-hidden bg-blush">
+    <section className="relative isolate overflow-hidden bg-soft-hero">
       <HeartMark className="pointer-events-none absolute -right-10 -top-10 h-52 w-52 text-coral/10" />
       <HeartMark className="pointer-events-none absolute -bottom-16 -left-12 h-56 w-56 text-coral/10" />
       <Container size="wide">
