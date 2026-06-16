@@ -6,7 +6,7 @@ Single source of truth for building in this repo. Keep every page and component 
 
 ## What this is
 
-The marketing website for **Latched Beginnings**, the Austin, TX dental + lactation practice of **Dr. Kacie Culotta, DDS** (infant tongue-tie / lip-tie / buccal-tie releases with the LightScalpel CO2 laser, plus lactation counseling and provider coaching). Rebuilt from a compromised WordPress/Elementor site into a fast, secure, statically rendered Next.js app.
+The marketing website for **Latched Beginnings**, the Austin, TX dental + lactation practice of **Dr. Kacie Culotta, DMD** (infant tongue-tie / lip-tie / buccal-tie releases with the LightScalpel CO2 laser, plus lactation counseling and provider coaching). Rebuilt from a compromised WordPress/Elementor site into a fast, secure, statically rendered Next.js app.
 
 Primary goal: drive **consultation bookings**. Secondary: lead-magnet capture and provider referrals.
 

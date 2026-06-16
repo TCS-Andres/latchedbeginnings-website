@@ -35,7 +35,7 @@ export function FounderBio() {
               </p>
             </div>
             <p className="mt-6 font-display text-xl italic text-coral-deep">
-              Dr. Kacie Culotta, DDS
+              Dr. Kacie Culotta, DMD
             </p>
             <p className="text-sm text-stone">Founder of Latched Beginnings</p>
             <div className="mt-8">
@@ -49,7 +49,7 @@ export function FounderBio() {
             <div className="relative mx-auto max-w-md overflow-hidden rounded-[1.75rem] rounded-tr-[8rem] bg-blush-200">
               <Image
                 src="/images/dr-kacie-culotta.png"
-                alt="Dr. Kacie Culotta, DDS, founder of Latched Beginnings"
+                alt="Dr. Kacie Culotta, DMD, founder of Latched Beginnings"
                 width={1706}
                 height={2560}
                 className="h-auto w-full object-cover"

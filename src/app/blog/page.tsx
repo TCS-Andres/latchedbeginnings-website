@@ -10,7 +10,7 @@ import { getAllPosts, getTopics } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Blog: Tongue-Tie & Infant Feeding Education",
   description:
-    "Gentle, evidence-based articles on tongue-tie, lip-tie, infant feeding, aftercare, and oral development from Dr. Kacie Culotta, DDS at Latched Beginnings in Austin, TX.",
+    "Gentle, evidence-based articles on tongue-tie, lip-tie, infant feeding, aftercare, and oral development from Dr. Kacie Culotta, DMD at Latched Beginnings in Austin, TX.",
   alternates: { canonical: "/blog" },
 };
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Gelasio, Montserrat } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -78,6 +79,12 @@ export default function RootLayout({
         <CtaBanner />
         <Footer />
         <ChatAgent />
+        {/* UserWay accessibility widget (same account as the prior site). */}
+        <Script
+          src="https://cdn.userway.org/widget.js"
+          data-account="qOYcsqCcB4"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

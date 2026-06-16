@@ -122,7 +122,7 @@ export default function AboutPage() {
             <Reveal className="mx-auto w-full max-w-md">
               <Image
                 src="/images/dr-kacie-culotta.png"
-                alt="Dr. Kacie Culotta, DDS"
+                alt="Dr. Kacie Culotta, DMD"
                 width={1706}
                 height={2560}
                 className="h-auto w-full rounded-[1.75rem] rounded-tr-[8rem] object-cover"

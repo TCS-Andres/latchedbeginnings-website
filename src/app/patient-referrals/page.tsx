@@ -25,7 +25,7 @@ const reasons = [
   {
     icon: Heart,
     title: "Dual-certified dentist and lactation counselor",
-    body: "Dr. Kacie Culotta, DDS is the only dentist in Austin with both a laser certification for tongue-tie releases and a lactation counselor certification, so feeding and function are assessed together.",
+    body: "Dr. Kacie Culotta, DMD is the only dentist in Austin with both a laser certification for tongue-tie releases and a lactation counselor certification, so feeding and function are assessed together.",
   },
   {
     icon: Stethoscope,

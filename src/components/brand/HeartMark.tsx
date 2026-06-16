@@ -13,20 +13,14 @@ export function HeartMark({ className }: { className?: string }) {
       className={cn("text-coral", className)}
     >
       <path
-        d="M32 55C32 55 6 39.5 6 22.5C6 13.4 13.1 6.5 21.5 6.5C26.4 6.5 30.6 8.9 33 12.6C35.4 8.9 39.6 6.5 44.5 6.5C52.9 6.5 60 13.4 60 22.5C60 39.5 34 55 34 55"
+        d="M32 57C32 57 5 41 5 24.5C5 16.5 11 11.5 18 11.5C24.5 11.5 30 16 32 23C34 16 39.5 11.5 46 11.5C53 11.5 59 16.5 59 24.5C59 41 32 57 32 57Z"
         stroke="currentColor"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle
-        cx="20.5"
-        cy="14"
-        r="6.5"
-        stroke="currentColor"
-        strokeWidth="3"
-      />
-      <circle cx="26.5" cy="30" r="9" stroke="currentColor" strokeWidth="3" />
+      <circle cx="31" cy="9" r="7" stroke="currentColor" strokeWidth="3" />
+      <circle cx="45" cy="35" r="11.5" stroke="currentColor" strokeWidth="3" />
     </svg>
   );
 }

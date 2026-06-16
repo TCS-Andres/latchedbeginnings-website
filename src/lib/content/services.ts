@@ -171,7 +171,7 @@ export const services: Service[] = [
     ],
     metaTitle: "Laser Tongue-Tie Release for Infants in Austin, TX",
     metaDescription:
-      "Gentle CO2 laser tongue-tie, lip-tie, and buccal-tie releases for infants in Austin, TX with Dr. Kacie Culotta, DDS. The gold-standard LightScalpel laser for comfort and faster healing.",
+      "Gentle CO2 laser tongue-tie, lip-tie, and buccal-tie releases for infants in Austin, TX with Dr. Kacie Culotta, DMD. The gold-standard LightScalpel laser for comfort and faster healing.",
     primaryKeyword: "laser tongue tie release Austin",
   },
 
@@ -272,7 +272,7 @@ export const services: Service[] = [
     ],
     metaTitle: "Infant Tongue-Tie Consultations in Austin, TX",
     metaDescription:
-      "Book a 1-on-1 infant feeding and tongue-tie consultation in Austin, TX with Dr. Kacie Culotta, DDS. A thorough, compassionate evaluation and a personalized care plan for your baby.",
+      "Book a 1-on-1 infant feeding and tongue-tie consultation in Austin, TX with Dr. Kacie Culotta, DMD. A thorough, compassionate evaluation and a personalized care plan for your baby.",
     primaryKeyword: "tongue tie consultation Austin",
   },
 

@@ -9,12 +9,12 @@ export const site = {
   legalName: "Latched Beginnings",
   tagline: "Healthy Beginnings That Last a Lifetime",
   description:
-    "Latched Beginnings is a specialized dental and lactation practice in Austin, TX. Dr. Kacie Culotta, DDS offers gentle CO2 laser tongue-tie, lip-tie, and buccal-tie releases paired with lactation counseling and whole-baby feeding support.",
+    "Latched Beginnings is a specialized dental and lactation practice in Austin, TX. Dr. Kacie Culotta, DMD offers gentle CO2 laser tongue-tie, lip-tie, and buccal-tie releases paired with lactation counseling and whole-baby feeding support.",
   url: "https://latchedbeginnings.com",
   locale: "en_US",
 
   // Practitioner
-  founder: "Dr. Kacie Culotta, DDS",
+  founder: "Dr. Kacie Culotta, DMD",
 
   // Contact
   phone: "(512) 814-7480",
@@ -35,12 +35,13 @@ export const site = {
   },
 
   hours: [
-    // TODO: confirm hours of operation
-    { day: "Monday", open: "9:00 AM", close: "4:00 PM" },
-    { day: "Tuesday", open: "9:00 AM", close: "4:00 PM" },
-    { day: "Wednesday", open: "9:00 AM", close: "4:00 PM" },
-    { day: "Thursday", open: "9:00 AM", close: "4:00 PM" },
-    { day: "Friday", open: "By appointment", close: "" },
+    { day: "Monday", open: "8:00 AM", close: "3:00 PM" },
+    { day: "Tuesday", open: "8:00 AM", close: "3:00 PM" },
+    { day: "Wednesday", open: "Closed", close: "" },
+    { day: "Thursday", open: "8:00 AM", close: "3:00 PM" },
+    { day: "Friday", open: "8:00 AM", close: "3:00 PM" },
+    { day: "Saturday", open: "Closed", close: "" },
+    { day: "Sunday", open: "Closed", close: "" },
   ],
 
   serviceArea: [
@@ -67,7 +68,7 @@ export const site = {
 
   // Professional affiliations / credentials (rendered as text badges, no third-party logos).
   credentials: [
-    { abbr: "DDS", label: "Doctor of Dental Surgery" },
+    { abbr: "DMD", label: "Doctor of Dental Medicine" },
     { abbr: "CLC", label: "Certified Lactation Counselor" },
     { abbr: "IATP", label: "Intl. Affiliation of Tongue-Tie Professionals" },
     { abbr: "ADA", label: "American Dental Association" },

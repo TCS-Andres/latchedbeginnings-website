@@ -171,7 +171,7 @@ export default function ProviderCoachingPage() {
                 <HeartMark className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 text-coral/10" />
                 <p className="eyebrow mb-3">Learn From</p>
                 <h3 className="font-display text-2xl text-ink">
-                  Dr. Kacie Culotta, DDS
+                  Dr. Kacie Culotta, DMD
                 </h3>
                 <p className="mt-4 text-base leading-relaxed text-stone">
                   Dr. Kacie is the only dentist in Austin with both a laser

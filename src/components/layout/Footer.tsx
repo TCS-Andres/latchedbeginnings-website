@@ -17,7 +17,7 @@ export function Footer() {
             <p className="mt-5 text-sm leading-relaxed text-stone">
               A specialized dental and lactation practice in Austin, TX. We
               offer gentle tongue-tie, lip-tie, and buccal-tie releases and
-              whole-baby feeding support, led by Dr. Kacie Culotta, DDS.
+              whole-baby feeding support, led by Dr. Kacie Culotta, DMD.
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a

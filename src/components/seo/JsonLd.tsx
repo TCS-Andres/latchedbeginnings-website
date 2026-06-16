@@ -1,5 +1,16 @@
 import { site } from "@/lib/site";
 
+/** Convert a display time like "8:00 AM" to schema.org 24h "08:00". */
+function to24h(time: string): string {
+  const m = time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if (!m) return time;
+  let hour = Number(m[1]);
+  const ap = m[3].toUpperCase();
+  if (ap === "PM" && hour !== 12) hour += 12;
+  if (ap === "AM" && hour === 12) hour = 0;
+  return `${String(hour).padStart(2, "0")}:${m[2]}`;
+}
+
 /** Render a JSON-LD script tag. */
 function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
@@ -54,8 +65,8 @@ export function LocalBusinessJsonLd() {
       .map((h) => ({
         "@type": "OpeningHoursSpecification",
         dayOfWeek: h.day,
-        opens: h.open,
-        closes: h.close,
+        opens: to24h(h.open),
+        closes: to24h(h.close),
       })),
   };
   return <JsonLd data={data} />;
