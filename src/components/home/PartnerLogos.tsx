@@ -1,8 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
-import { InfiniteSlider } from "@/components/ui/infinite-slider";
-import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 
 const logos = [
   { name: "American Dental Association", src: "/images/partners/ada.png" },
@@ -31,36 +29,27 @@ export function PartnerLogos() {
         </Reveal>
 
         <div className="relative mt-10 w-full overflow-hidden">
-          <InfiniteSlider
-            className="flex w-full items-center"
-            duration={40}
-            gap={80}
-          >
-            {logos.map((logo) => (
+          {/* Two identical copies so the -50% marquee loops seamlessly. */}
+          <div className="lb-marquee flex w-max items-center">
+            {[...logos, ...logos].map((logo, i) => (
               <div
-                key={logo.name}
-                className="flex w-44 items-center justify-center"
+                key={`${logo.name}-${i}`}
+                className="mr-16 flex w-40 shrink-0 items-center justify-center sm:mr-24 sm:w-48"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={logo.src}
                   alt={logo.name}
+                  loading="lazy"
                   className="h-12 w-auto max-w-[150px] object-contain opacity-90 sm:h-14"
                 />
               </div>
             ))}
-          </InfiniteSlider>
+          </div>
 
-          <ProgressiveBlur
-            className="pointer-events-none absolute left-0 top-0 h-full w-28 sm:w-40"
-            direction="left"
-            blurIntensity={1}
-          />
-          <ProgressiveBlur
-            className="pointer-events-none absolute right-0 top-0 h-full w-28 sm:w-40"
-            direction="right"
-            blurIntensity={1}
-          />
+          {/* Cheap gradient fade at the edges (no backdrop-filter, so it stays smooth on scroll). */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-cream to-transparent sm:w-40" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-cream to-transparent sm:w-40" />
         </div>
       </Container>
     </Section>

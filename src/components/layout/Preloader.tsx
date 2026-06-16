@@ -21,7 +21,7 @@ export function Preloader() {
     const reduce = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const minVisible = reduce ? 200 : 1200;
+    const minVisible = reduce ? 150 : 800;
     const start = performance.now();
 
     const dismiss = () => {

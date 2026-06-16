@@ -144,6 +144,11 @@
 
 /* Scroll-reveal: elements fade and rise into view, refined and subtle */
 @media (prefers-reduced-motion: no-preference) {
+  /*
+    No persistent will-change here: the browser promotes a compositor layer
+    on the fly for each reveal transition and releases it afterward, which
+    avoids keeping dozens of always-on GPU layers (better scroll performance).
+  */
   [data-reveal] {
     opacity: 0;
     transform: translateY(22px);
@@ -151,11 +156,30 @@
       opacity 0.7s var(--ease-brand),
       transform 0.7s var(--ease-brand);
     transition-delay: var(--reveal-delay, 0ms);
-    will-change: opacity, transform;
   }
   [data-reveal].is-visible {
     opacity: 1;
     transform: none;
+  }
+}
+
+/*
+  Logo marquee: GPU-composited infinite scroll with no JavaScript. The track
+  holds two identical copies of the logos, so translating by -50% loops
+  seamlessly. The browser pauses it automatically when it is off-screen, and
+  reduced-motion stops it entirely.
+*/
+@keyframes lb-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.lb-marquee {
+  animation: lb-marquee 45s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lb-marquee {
+    animation: none;
   }
 }
 

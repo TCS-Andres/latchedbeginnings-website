@@ -15,12 +15,27 @@ export function HeroVideo() {
     if (!video) return;
     video.muted = true;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const played = video.play();
-    if (played && typeof played.catch === "function") {
-      played.catch(() => {
-        /* autoplay can be blocked; the poster stays visible */
-      });
-    }
+
+    const tryPlay = () => {
+      const played = video.play();
+      if (played && typeof played.catch === "function") {
+        played.catch(() => {
+          /* autoplay can be blocked; the poster stays visible */
+        });
+      }
+    };
+
+    // Only play while the hero is on screen, so the video stops decoding once
+    // it is scrolled past (keeps scrolling smooth).
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) tryPlay();
+        else video.pause();
+      },
+      { threshold: 0.05 },
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
   }, []);
 
   return (
