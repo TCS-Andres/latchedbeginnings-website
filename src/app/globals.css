@@ -172,7 +172,12 @@
   color: var(--color-ink);
 }
 
-/* Branded preloader: soft blush overlay with the logo, shown on first load. */
+/*
+  Branded preloader: "Lub-Dub Latch". The coral heart-with-baby mark draws
+  itself on (heart outline, then the baby-head circle settles, then the parent
+  circle closes around it), a faint ECG line whispers beneath, the wordmark
+  fades up, and the mark settles into a real cardiac lub-dub heartbeat loop.
+*/
 .preloader {
   position: fixed;
   inset: 0;
@@ -181,10 +186,10 @@
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(60% 52% at 50% 40%, #fdf0ec 0%, #fffaf7 62%, #ffffff 100%);
+    radial-gradient(58% 52% at 50% 42%, #fdf0ec 0%, #fffaf7 60%, #ffffff 100%);
   transition:
-    opacity 0.6s var(--ease-brand),
-    visibility 0.6s var(--ease-brand);
+    opacity 0.55s var(--ease-brand),
+    visibility 0.55s var(--ease-brand);
 }
 .preloader--hidden {
   opacity: 0;
@@ -195,55 +200,153 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.85rem;
+  gap: 1.6rem;
+  transition: transform 0.55s var(--ease-brand);
 }
-.preloader__logo {
-  width: 200px;
+.preloader--hidden .preloader__inner {
+  transform: scale(1.05);
+}
+.preloader__mark {
+  width: 96px;
   height: auto;
-  animation: pl-in 0.85s var(--ease-brand) both;
-}
-.preloader__track {
-  position: relative;
-  width: 140px;
-  height: 3px;
-  overflow: hidden;
-  border-radius: 9999px;
-  background: rgba(232, 150, 122, 0.22);
-}
-.preloader__track::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 42%;
-  border-radius: inherit;
-  background: var(--color-coral);
-  animation: pl-bar 1.15s var(--ease-brand) infinite;
+  overflow: visible;
 }
 
-@keyframes pl-in {
+/* The group that performs the heartbeat (scales about its own center). */
+.preloader__beat {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pl-beat 1.5s cubic-bezier(0.6, 0, 0.2, 1) 1.35s infinite both;
+}
+
+/* Shared stroke styling for the line-art mark. */
+.preloader__heart,
+.preloader__head,
+.preloader__baby,
+.preloader__ecg {
+  fill: none;
+  stroke: var(--color-coral);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.preloader__heart {
+  stroke-width: 6;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: pl-draw 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) 0.05s forwards;
+}
+.preloader__head,
+.preloader__baby {
+  stroke-width: 6;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+.preloader__head {
+  animation: pl-settle 0.34s cubic-bezier(0.34, 1.4, 0.64, 1) 0.62s both;
+}
+.preloader__baby {
+  animation: pl-settle 0.38s cubic-bezier(0.34, 1.4, 0.64, 1) 0.92s both;
+}
+.preloader__ecg {
+  stroke: var(--color-coral-deep);
+  stroke-width: 2.5;
+  opacity: 0.18;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: pl-draw 0.85s ease-out 1s forwards;
+}
+
+.preloader__word {
+  text-align: center;
+  line-height: 1;
+}
+.preloader__latched {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  color: var(--color-coral);
+  opacity: 0;
+  animation: pl-fadeup 0.5s var(--ease-brand) 1.2s both;
+}
+.preloader__beginnings {
+  margin-top: 0.18rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.18rem;
+  letter-spacing: 0.02em;
+  color: var(--color-charcoal);
+  opacity: 0;
+  animation: pl-fadeup 0.5s var(--ease-brand) 1.32s both;
+}
+
+@keyframes pl-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pl-settle {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  62% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* Real cardiac lub-dub: sharp lub, softer dub, then a long diastolic rest. */
+@keyframes pl-beat {
+  0% {
+    transform: scale(1);
+  }
+  8% {
+    transform: scale(1.055);
+  }
+  13% {
+    transform: scale(1.02);
+  }
+  19% {
+    transform: scale(1.035);
+  }
+  26% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes pl-fadeup {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.94);
+    transform: translateY(6px);
+    letter-spacing: 0.5px;
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-@keyframes pl-bar {
-  0% {
-    transform: translateX(-120%);
-  }
-  100% {
-    transform: translateX(360%);
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
-  .preloader__logo {
+  .preloader__heart,
+  .preloader__ecg {
+    stroke-dashoffset: 0;
     animation: none;
   }
-  .preloader__track::after {
-    animation-duration: 2.2s;
+  .preloader__head,
+  .preloader__baby,
+  .preloader__latched,
+  .preloader__beginnings {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .preloader__beat {
+    animation: none;
   }
 }
