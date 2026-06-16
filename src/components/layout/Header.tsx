@@ -47,24 +47,24 @@ export function Header() {
       )}
     >
       <Container size="wide">
-        <div className="flex h-20 items-center justify-between gap-6">
-          <Logo priority />
+        <div className="flex h-24 items-center justify-between gap-6">
+          <Logo priority imgClassName="h-14 sm:h-16" />
 
           {/* Desktop nav */}
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-1 lg:flex"
+            className="hidden items-center gap-1 xl:flex"
           >
             {mainNav.map((item) =>
               item.children ? (
                 <div key={item.label} className="group relative">
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-charcoal transition-colors hover:text-coral-deep"
+                    className="flex items-center gap-1 whitespace-nowrap rounded-full px-4 py-2 text-base font-medium text-charcoal transition-colors hover:text-coral-deep"
                   >
                     {item.label}
                     <ChevronDown
-                      className="h-3.5 w-3.5 transition-transform group-hover:rotate-180"
+                      className="h-4 w-4 transition-transform group-hover:rotate-180"
                       aria-hidden="true"
                     />
                   </Link>
@@ -87,7 +87,7 @@ export function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="rounded-full px-4 py-2 text-sm font-medium text-charcoal transition-colors hover:text-coral-deep"
+                  className="whitespace-nowrap rounded-full px-4 py-2 text-base font-medium text-charcoal transition-colors hover:text-coral-deep"
                 >
                   {item.label}
                 </Link>
@@ -95,21 +95,23 @@ export function Header() {
             )}
           </nav>
 
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden items-center gap-4 xl:flex">
             <a
               href={site.phoneHref}
-              className="flex items-center gap-2 text-sm font-medium text-charcoal transition-colors hover:text-coral-deep"
+              className="flex items-center gap-2 whitespace-nowrap text-base font-medium text-charcoal transition-colors hover:text-coral-deep"
             >
               <Phone className="h-4 w-4 text-coral" aria-hidden="true" />
               {site.phone}
             </a>
-            <Button href={site.bookingUrl}>{site.bookingLabel}</Button>
+            <Button href={site.bookingUrl} size="lg">
+              {site.bookingLabel}
+            </Button>
           </div>
 
           {/* Mobile toggle */}
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-charcoal lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-charcoal xl:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
@@ -125,7 +127,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen ? (
-        <div className="fixed inset-0 top-20 z-40 overflow-y-auto bg-white lg:hidden">
+        <div className="fixed inset-0 top-24 z-40 overflow-y-auto bg-white xl:hidden">
           <Container className="py-6">
             <nav aria-label="Mobile" className="flex flex-col gap-1">
               {mainNav.map((item) =>

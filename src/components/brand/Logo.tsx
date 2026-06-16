@@ -6,12 +6,15 @@ import { site } from "@/lib/site";
 type LogoProps = {
   variant?: "default" | "white";
   className?: string;
+  /** Override the image height classes (defaults to the footer/standard size). */
+  imgClassName?: string;
   priority?: boolean;
 };
 
 export function Logo({
   variant = "default",
   className,
+  imgClassName,
   priority = false,
 }: LogoProps) {
   const src =
@@ -30,8 +33,8 @@ export function Logo({
         width={1563}
         height={781}
         priority={priority}
-        className="h-11 w-auto sm:h-12"
-        sizes="180px"
+        className={cn("w-auto", imgClassName ?? "h-11 sm:h-12")}
+        sizes="240px"
       />
     </Link>
   );
