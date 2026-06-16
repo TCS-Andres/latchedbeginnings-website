@@ -95,7 +95,7 @@ export default function ProviderCoachingPage() {
 
       <PageHero
         eyebrow="For Providers"
-        title="Grow your expertise in oral-tie care"
+        title="Grow Your Expertise in Oral-Tie Care"
         intro="Latched Beginnings offers personalized coaching and mentorship for dentists, lactation professionals, and allied health providers who want to advance their skills in oral ties, CO2 laser technique, airway health, and functional feeding."
         crumbs={[
           { name: "Home", href: "/" },
@@ -110,7 +110,7 @@ export default function ProviderCoachingPage() {
           <SectionHeading
             align="center"
             eyebrow="The Coaching Experience"
-            title="What coaching includes"
+            title="What Coaching Includes"
             intro="Every coaching relationship is built around the same foundation: rigorous, evidence-based technique paired with the heart-led, whole-baby approach that guides our practice."
           />
           <div className="mt-12 grid gap-7 md:grid-cols-2">
@@ -142,7 +142,7 @@ export default function ProviderCoachingPage() {
             <div>
               <SectionHeading
                 eyebrow="Who It's For"
-                title="Coaching for providers ready to expand their scope"
+                title="Coaching for Providers Ready to Expand Their Scope"
                 intro="If you care for infants and families and want to feel more confident in oral-tie evaluation and treatment, you are exactly who this coaching is for."
               />
               <ul className="mt-8 space-y-4">
@@ -198,7 +198,7 @@ export default function ProviderCoachingPage() {
           <SectionHeading
             align="center"
             eyebrow="Questions"
-            title="Coaching, answered"
+            title="Coaching, Answered"
             intro="A few common questions about how coaching works. If yours is not here, reach out and we will talk it through."
           />
           <div className="mt-12">
@@ -212,7 +212,7 @@ export default function ProviderCoachingPage() {
           <Reveal className="mx-auto max-w-2xl text-center">
             <HeartMark className="mx-auto h-12 w-12 text-coral" />
             <h2 className="mt-6 text-3xl leading-[1.12] sm:text-4xl">
-              Ready to grow your expertise?
+              Ready to Grow Your Expertise?
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-stone sm:text-lg">
               Let&apos;s start with a conversation about your goals and how

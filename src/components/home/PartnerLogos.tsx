@@ -24,7 +24,7 @@ export function PartnerLogos() {
         <Reveal className="text-center">
           <p className="eyebrow mb-3">Recognized &amp; Trusted</p>
           <h2 className="text-2xl leading-tight sm:text-3xl">
-            Our training and affiliations
+            Our Training and Affiliations
           </h2>
         </Reveal>
 

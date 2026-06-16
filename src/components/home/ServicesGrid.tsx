@@ -20,7 +20,7 @@ export function ServicesGrid() {
         <div className="text-center">
           <p className="eyebrow mb-3">What We Do</p>
           <h2 className="mx-auto max-w-2xl text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
-            Gentle, whole-baby care from first visit to full healing
+            Gentle, Whole-Baby Care From First Visit to Full Healing
           </h2>
         </div>
 

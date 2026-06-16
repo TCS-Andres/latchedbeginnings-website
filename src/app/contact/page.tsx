@@ -29,7 +29,7 @@ export default function ContactPage() {
 
       <PageHero
         eyebrow="We&apos;re Here to Help"
-        title="Let&apos;s talk about your baby"
+        title="Let&apos;s Talk About Your Baby"
         intro="Whether you have questions about feeding, a possible tongue-tie, or simply need a reassuring next step, we would love to hear from you. Reach out by phone, email, or schedule a visit whenever you&apos;re ready."
         crumbs={[
           { name: "Home", href: "/" },
@@ -45,7 +45,7 @@ export default function ContactPage() {
               <div className="flex h-full flex-col">
                 <p className="eyebrow mb-3">Reach Out</p>
                 <h2 className="text-3xl leading-[1.12] sm:text-4xl">
-                  Caring guidance, just a message away
+                  Caring Guidance, Just a Message Away
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
                   Every consultation is one-on-one and never rushed. We take the time to
@@ -174,7 +174,7 @@ export default function ContactPage() {
             <SectionHeading
               align="center"
               eyebrow="Greater Austin"
-              title="Proudly serving Greater Austin"
+              title="Proudly Serving Greater Austin"
               intro="Families come to us from across the Austin area because finding the right provider is worth the drive. If you&apos;re nearby, we would be honored to care for your baby."
             />
 

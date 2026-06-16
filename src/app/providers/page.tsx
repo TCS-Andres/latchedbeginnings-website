@@ -45,7 +45,7 @@ export default function ProvidersPage() {
       />
       <PageHero
         eyebrow="For Providers"
-        title="Partner with Latched Beginnings"
+        title="Partner With Latched Beginnings"
         intro="Great infant care happens in collaboration. Whether you are referring a family or sharpening your own clinical skills, we partner with providers across Austin to elevate the care every baby receives, with honesty, evidence, and compassion at the center."
         crumbs={[
           { name: "Home", href: "/" },

@@ -20,7 +20,7 @@ export function CtaBanner() {
               We are here to help your family
             </p>
             <h2 className="mt-3 text-3xl text-white sm:text-4xl md:text-[2.75rem]">
-              Healthy beginnings start with one gentle conversation
+              Healthy Beginnings Start With One Gentle Conversation
             </h2>
             <p className="mt-5 text-base leading-relaxed text-white/90 sm:text-lg">
               Book a 1-on-1 consultation with Dr. Kacie Culotta. We will listen,

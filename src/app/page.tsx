@@ -9,6 +9,7 @@ import { ResourceCtas } from "@/components/home/ResourceCtas";
 import { FounderBio } from "@/components/home/FounderBio";
 import { ReferralBand } from "@/components/home/ReferralBand";
 import { PartnerLogos } from "@/components/home/PartnerLogos";
+import { GoogleReviews } from "@/components/home/GoogleReviews";
 import { InstagramFeed } from "@/components/home/InstagramFeed";
 import { LocalBusinessJsonLd } from "@/components/seo/JsonLd";
 
@@ -27,6 +28,7 @@ export default function HomePage() {
       <FounderBio />
       <ReferralBand />
       <PartnerLogos />
+      <GoogleReviews />
       <InstagramFeed />
     </>
   );

@@ -66,7 +66,7 @@ export default function PatientReferralsPage() {
       />
       <PageHero
         eyebrow="For Birth &amp; Feeding Professionals"
-        title="Refer with confidence"
+        title="Refer With Confidence"
         intro="When you send a family to Latched Beginnings, you are partnering with a team that shares your commitment to the best possible outcome for every baby. We evaluate honestly, treat gently, and keep you in the loop the whole way through."
         crumbs={[
           { name: "Home", href: "/" },
@@ -81,7 +81,7 @@ export default function PatientReferralsPage() {
           <SectionHeading
             align="center"
             eyebrow="A Trusted Partner"
-            title="Why providers refer to us"
+            title="Why Providers Refer to Us"
             intro="IBCLCs, pediatricians, chiropractors, midwives, doulas, and SLPs send families our way because they know exactly what those families will find: careful evaluation, gentle care, and steady communication."
           />
           <div className="mt-12 grid gap-7 md:grid-cols-2">
@@ -112,7 +112,7 @@ export default function PatientReferralsPage() {
           <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
             <SectionHeading
               eyebrow="Simple &amp; Streamlined"
-              title="How to refer"
+              title="How to Refer"
               intro="We have kept the process light so it fits into your day. Three quick steps connect your patient with the care they need."
               className="max-w-none"
             />
@@ -156,7 +156,7 @@ export default function PatientReferralsPage() {
           <Reveal className="text-center">
             <p className="eyebrow mb-3">Collaboration Over Prescription</p>
             <h2 className="text-2xl leading-snug text-ink sm:text-3xl">
-              You stay part of the story
+              You Stay Part of the Story
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
               We believe the best outcomes come from teams that talk to each

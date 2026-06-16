@@ -28,7 +28,7 @@ export default function ServicesPage() {
       />
       <PageHero
         eyebrow="What We Do"
-        title="Whole-baby care, from first visit to full healing"
+        title="Whole-Baby Care, From First Visit to Full Healing"
         intro="Every family who walks through our door is met with patience and expertise. From evaluation to release to recovery, here is how Latched Beginnings supports your baby."
         crumbs={[
           { name: "Home", href: "/" },

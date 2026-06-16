@@ -99,14 +99,14 @@ export default function OralTieSymptomsChecklistPage() {
               <div>
                 <SectionHeading
                   eyebrow="What’s inside"
-                  title="The signs we look for, in plain language"
+                  title="The Signs We Look For, in Plain Language"
                   intro="No heavy jargon and no fear. Just the everyday clues that something might be making feeding harder than it needs to be."
                 />
 
                 <div className="mt-10 space-y-9">
                   <div>
                     <h3 className="font-display text-xl text-ink">
-                      Infant feeding signs
+                      Infant Feeding Signs
                     </h3>
                     <ul className="mt-4 space-y-3">
                       {infantSigns.map((sign) => (
@@ -124,7 +124,7 @@ export default function OralTieSymptomsChecklistPage() {
 
                   <div>
                     <h3 className="font-display text-xl text-ink">
-                      Signs for parents
+                      Signs for Parents
                     </h3>
                     <ul className="mt-4 space-y-3">
                       {parentSigns.map((sign) => (
@@ -142,7 +142,7 @@ export default function OralTieSymptomsChecklistPage() {
 
                   <div>
                     <h3 className="font-display text-xl text-ink">
-                      What to do next
+                      What to Do Next
                     </h3>
                     <ul className="mt-4 space-y-3">
                       {nextSteps.map((step) => (
@@ -180,7 +180,7 @@ export default function OralTieSymptomsChecklistPage() {
           <SectionHeading
             align="center"
             eyebrow="How to use it"
-            title="Three gentle steps from worry to clarity"
+            title="Three Gentle Steps From Worry to Clarity"
             intro="You do not have to have the answers before you reach out. The checklist is simply a starting point for a conversation."
           />
 

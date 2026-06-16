@@ -125,7 +125,7 @@ export default async function BlogPostPage({
         <Section tone="blush" spacing="tight">
           <Container size="wide">
             <h2 className="text-center font-display text-3xl text-ink">
-              Keep reading
+              Keep Reading
             </h2>
             <div className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((p, i) => (

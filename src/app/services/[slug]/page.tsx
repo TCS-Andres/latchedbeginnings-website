@@ -83,7 +83,7 @@ export default async function ServicePage({
           <div className="mb-10 text-center">
             <p className="eyebrow mb-3">Questions, Answered</p>
             <h2 className="text-3xl leading-[1.12] sm:text-4xl">
-              Frequently asked questions
+              Frequently Asked Questions
             </h2>
           </div>
           <Faq items={service.faqs} />

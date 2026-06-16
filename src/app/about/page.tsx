@@ -133,7 +133,7 @@ export default function AboutPage() {
             <Reveal delay={120}>
               <p className="eyebrow mb-3">Hey There, Momma</p>
               <h2 className="text-3xl leading-[1.12] sm:text-4xl">
-                Why I founded Latched Beginnings
+                Why I Founded Latched Beginnings
               </h2>
               <div className="mt-6 space-y-5 text-base leading-relaxed text-stone">
                 <p>
@@ -178,7 +178,7 @@ export default function AboutPage() {
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Credentials</p>
             <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
-              Training you can trust
+              Training You Can Trust
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
               More than ten years of experience, paired with specialized
@@ -210,7 +210,7 @@ export default function AboutPage() {
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Our Values</p>
             <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
-              What we believe
+              What We Believe
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
               These principles guide every consultation, every release, and every
@@ -247,7 +247,7 @@ export default function AboutPage() {
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Our All-Mom Team</p>
             <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
-              Meet the team
+              Meet the Team
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
               Every member of our team is a mom. We bring both professional care

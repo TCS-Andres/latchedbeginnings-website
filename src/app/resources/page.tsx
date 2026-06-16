@@ -62,7 +62,7 @@ export default function ResourcesPage() {
       />
       <PageHero
         eyebrow="For Parents"
-        title="Resources to help you feel confident"
+        title="Resources to Help You Feel Confident"
         intro="Clear, compassionate guidance you can return to anytime. Explore our checklist, watch the pacifier webinar, read the blog, and find the support that meets you where you are."
         crumbs={[
           { name: "Home", href: "/" },
@@ -75,7 +75,7 @@ export default function ResourcesPage() {
         <Container size="wide">
           <SectionHeading
             eyebrow="Explore"
-            title="Tools and education for your journey"
+            title="Tools and Education for Your Journey"
             intro="Every resource here is rooted in the same belief: informed, supported parents make the best decisions for their babies. Take what helps and leave the rest."
             align="center"
           />
