@@ -58,3 +58,13 @@ Primary goal: drive **consultation bookings**. Secondary: lead-magnet capture an
 - Dynamic route params are async: `const { slug } = await props.params`.
 - Every page: export `metadata` with `title` (the " | Latched Beginnings" suffix is appended automatically), `description`, `alternates.canonical`. Add `BreadcrumbJsonLd`; add `FaqJsonLd` where there is an FAQ.
 - Run `npm run build` to verify before shipping.
+
+## AI chat agent (Mabel)
+
+A floating, bilingual (EN/ES) support widget mounted globally in `layout.tsx`. HIPAA-aware by design: it never collects or repeats health info, gives no medical advice, redirects emergencies to 911, and hands off collecting only name, phone, and best time.
+
+- **Config & copy:** `src/lib/agent/config.ts` (persona, model, knobs, all UI strings). **Knowledge base:** `src/lib/agent/masterBrain.ts` (customer-safe only, internal strategy scrubbed). **System prompt:** `src/lib/agent/systemPrompt.ts`. **Render helpers:** `src/lib/agent/format.ts` (`[NEXT]` split, `[ESCALATE]` parse, dash scrub).
+- **Routes:** `src/app/api/chat/route.ts` (streaming, Vercel AI SDK v6 + direct `@ai-sdk/anthropic`, model `claude-sonnet-4-6`, prompt-cached system message). `src/app/api/escalate/route.ts` (handoff; emails via Resend if configured, else logs).
+- **Widget:** `src/components/global/ChatAgent.tsx` (`useChat`, ~2.6s typing delay, typing dots, bubble animations, callback form).
+- **Env:** set `ANTHROPIC_API_KEY` in `.env.local`. Optional `RESEND_API_KEY` + `ESCALATION_FROM` + `ESCALATION_EMAIL` for email handoff. See `.env.example`.
+- **Pre-launch TODO:** sign Anthropic BAA; wire the escalation email transport; confirm the `info@` destination; run the injection/sensitive-info/emergency test probes.
