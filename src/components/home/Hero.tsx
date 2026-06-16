@@ -1,22 +1,15 @@
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Photo } from "@/components/ui/Photo";
+import { HeroVideo } from "@/components/home/HeroVideo";
 import { site } from "@/lib/site";
 
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-ink">
-      {/* Background photo */}
+      {/* Background video */}
       <div className="absolute inset-0 -z-10">
-        <Photo
-          src="/images/photos/hero.jpg"
-          alt="A mother gently holding her baby"
-          slot="Hero, mom holding baby (warm, intimate)"
-          fillParent
-          priority
-          sizes="100vw"
-        />
+        <HeroVideo />
         <div
           className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/55 to-ink/20"
           aria-hidden="true"
