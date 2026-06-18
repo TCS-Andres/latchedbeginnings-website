@@ -45,7 +45,7 @@ export default function ContactPage() {
             <Reveal>
               <div className="flex h-full flex-col">
                 <p className="eyebrow mb-3">Reach Out</p>
-                <h2 className="text-3xl leading-[1.12] sm:text-4xl">
+                <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem]">
                   Caring Guidance, Just a Message Away
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">

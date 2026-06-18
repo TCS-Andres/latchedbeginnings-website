@@ -27,7 +27,7 @@ export function Testimonials() {
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="eyebrow mb-3">Happy Moms &amp; Babies</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl">
               Stories of Change
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-stone">

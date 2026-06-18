@@ -17,9 +17,9 @@ export function ServicesGrid() {
   return (
     <Section tone="white">
       <Container size="wide">
-        <div className="text-center">
+        <div>
           <p className="eyebrow mb-3">What We Do</p>
-          <h2 className="mx-auto max-w-2xl text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+          <h2 className="max-w-2xl text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl">
             Gentle, Whole-Baby Care From First Visit to Full Healing
           </h2>
         </div>

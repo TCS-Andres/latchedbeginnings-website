@@ -22,7 +22,7 @@ export function ScopeCards({
       <Container size="wide">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow mb-3">{eyebrow}</p>
-          <h2 className="text-3xl leading-[1.12] sm:text-4xl">{title}</h2>
+          <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem]">{title}</h2>
           {intro ? (
             <p className="mt-4 text-base leading-relaxed text-stone">{intro}</p>
           ) : null}

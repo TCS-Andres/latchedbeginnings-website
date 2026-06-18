@@ -132,7 +132,7 @@ export default function AboutPage() {
 
             <Reveal delay={120}>
               <p className="eyebrow mb-3">Hey There, Momma</p>
-              <h2 className="text-3xl leading-[1.12] sm:text-4xl">
+              <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem]">
                 Why I Founded Latched Beginnings
               </h2>
               <div className="mt-6 space-y-5 text-base leading-relaxed text-stone">
@@ -177,7 +177,7 @@ export default function AboutPage() {
         <Container size="wide">
           <Reveal className="mb-10 text-center">
             <p className="eyebrow mb-3">Get to Know Dr. Culotta</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl">
+            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem]">
               A Little More About Her
             </h2>
           </Reveal>
@@ -217,7 +217,7 @@ export default function AboutPage() {
         <Container size="wide">
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Credentials</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl">
               Training You Can Trust
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
@@ -249,7 +249,7 @@ export default function AboutPage() {
         <Container size="wide">
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Our Values</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl">
               What We Believe
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
@@ -286,7 +286,7 @@ export default function AboutPage() {
         <Container size="wide">
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Our All-Mom Team</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl">
               Meet the Team
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">

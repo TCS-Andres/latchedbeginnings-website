@@ -9,7 +9,7 @@ export function GoogleReviews() {
       <Container size="wide">
         <div className="text-center">
           <p className="eyebrow mb-3">Loved by Families</p>
-          <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+          <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl">
             What Austin Families Say
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-stone">

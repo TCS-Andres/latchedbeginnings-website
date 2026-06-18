@@ -82,7 +82,7 @@ export default async function ServicePage({
         <Container size="wide">
           <div className="mb-10 text-center">
             <p className="eyebrow mb-3">Questions, Answered</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl">
+            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem]">
               Frequently Asked Questions
             </h2>
           </div>

@@ -29,7 +29,7 @@ export function Steps() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-center lg:gap-16">
           <div>
             <p className="eyebrow mb-3">Your Path to Relief</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl">
               Simple Steps to Thrive
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone">

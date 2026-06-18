@@ -22,7 +22,7 @@ export function StorySection() {
 
           <div>
             <p className="eyebrow mb-3">Our Difference</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem] lg:text-5xl">
               Care That Comes From the Heart
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">

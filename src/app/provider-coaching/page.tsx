@@ -234,7 +234,7 @@ export default function ProviderCoachingPage() {
         <Container size="default">
           <Reveal className="mx-auto max-w-2xl text-center">
             <HeartMark className="mx-auto h-12 w-12 text-coral" />
-            <h2 className="mt-6 text-3xl leading-[1.12] sm:text-4xl">
+            <h2 className="mt-6 text-[2.15rem] leading-[1.12] sm:text-[2.5rem]">
               Ready to Grow Your Expertise?
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-stone sm:text-lg">

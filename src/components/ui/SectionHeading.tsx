@@ -32,7 +32,7 @@ export function SectionHeading({
       {eyebrow ? <p className="eyebrow mb-3">{eyebrow}</p> : null}
       <Heading
         className={cn(
-          "text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]",
+          "text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl",
           titleClassName,
         )}
       >
