@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ShieldCheck, Heart, Stethoscope, Users, Download, Phone } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -73,7 +74,7 @@ export default function PatientReferralsPage() {
           { name: "For Providers", href: "/providers" },
           { name: "Patient Referrals", href: "/patient-referrals" },
         ]}
-        cta={{ label: "Download Referral Form", href: "/downloads/patient-referral-form.pdf" }}
+        cta={{ label: "Download Referral Form", href: "/downloads/client-referral-form.pdf" }}
       />
 
       <Section tone="white">
@@ -110,12 +111,25 @@ export default function PatientReferralsPage() {
       <Section tone="blush">
         <Container size="wide">
           <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr]">
-            <SectionHeading
-              eyebrow="Simple &amp; Streamlined"
-              title="How to Refer"
-              intro="We have kept the process light so it fits into your day. Three quick steps connect your patient with the care they need."
-              className="max-w-none"
-            />
+            <div>
+              <SectionHeading
+                eyebrow="Simple &amp; Streamlined"
+                title="How to Refer"
+                intro="We have kept the process light so it fits into your day. Three quick steps connect your patient with the care they need."
+                className="max-w-none"
+              />
+              <Reveal delay={80}>
+                <div className="relative mt-8 aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] bg-blush-200">
+                  <Image
+                    src="/images/photos/provider-collaboration.jpg"
+                    alt="Birth and feeding professionals collaborating on a baby's care"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                  />
+                </div>
+              </Reveal>
+            </div>
             <ol className="space-y-5">
               {steps.map((step, i) => (
                 <Reveal as="li" key={step.title} delay={i * 90}>
@@ -137,9 +151,8 @@ export default function PatientReferralsPage() {
             </ol>
           </div>
 
-          {/* TODO: add referral form PDF at /public/downloads/patient-referral-form.pdf */}
           <Reveal className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Button href="/downloads/patient-referral-form.pdf" size="lg">
+            <Button href="/downloads/client-referral-form.pdf" size="lg">
               <Download className="h-5 w-5" aria-hidden="true" />
               Download Referral Form
             </Button>
@@ -152,21 +165,34 @@ export default function PatientReferralsPage() {
       </Section>
 
       <Section tone="cream" spacing="tight">
-        <Container size="narrow">
-          <Reveal className="text-center">
-            <p className="eyebrow mb-3">Collaboration Over Prescription</p>
-            <h2 className="text-2xl leading-snug text-ink sm:text-3xl">
-              You Stay Part of the Story
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
-              We believe the best outcomes come from teams that talk to each
-              other. After every evaluation and release, we keep referring
-              providers informed with clear notes and next steps, so the
-              family&apos;s feeding journey stays connected across everyone who
-              cares for them. Your relationship with the family is something we
-              protect, never replace.
-            </p>
-          </Reveal>
+        <Container size="wide">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <Reveal>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] bg-blush-200">
+                <Image
+                  src="/images/photos/collaborative-care.jpg"
+                  alt="A baby in gentle, collaborative care"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="eyebrow mb-3">Collaboration Over Prescription</p>
+              <h2 className="text-2xl leading-snug text-ink sm:text-3xl">
+                You Stay Part of the Story
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
+                We believe the best outcomes come from teams that talk to each
+                other. After every evaluation and release, we keep referring
+                providers informed with clear notes and next steps, so the
+                family&apos;s feeding journey stays connected across everyone who
+                cares for them. Your relationship with the family is something we
+                protect, never replace.
+              </p>
+            </Reveal>
+          </div>
         </Container>
       </Section>
     </>

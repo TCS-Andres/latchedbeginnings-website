@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { FileText, GraduationCap, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 
 const cards = [
   {
-    icon: FileText,
+    img: "/images/photos/collaborative-care.jpg",
     title: "Patient Referrals",
     description:
       "Have a family who may benefit from an oral tie evaluation? Refer your patients for gentle, conservative care that always begins with a thorough assessment. We collaborate closely with pediatricians, lactation consultants, bodyworkers, and dental colleagues, and we share clear post-visit notes so you stay part of every baby's care team.",
@@ -25,7 +26,7 @@ const cards = [
     cta: "Refer a Patient",
   },
   {
-    icon: GraduationCap,
+    img: "/images/photos/provider-coaching.jpg",
     title: "Provider Coaching",
     description:
       "Ready to deepen your expertise in oral ties and the LightScalpel CO2 laser? Dr. Kacie offers hands-on coaching grounded in evidence and led with heart, from functional assessment through release technique and post-op care. Build the confidence to support more families with skill and compassion.",
@@ -57,15 +58,20 @@ export default function ProvidersPage() {
       <Section tone="white">
         <Container size="wide">
           <div className="grid gap-7 md:grid-cols-2">
-            {cards.map((card, i) => {
-              const Icon = card.icon;
-              return (
-                <Reveal as="article" key={card.href} delay={i * 90}>
-                  <div className="flex h-full flex-col rounded-[1.75rem] border border-blush-200 bg-white p-8 transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(196,110,120,0.6)] sm:p-10">
-                    <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-blush text-coral-deep">
-                      <Icon className="h-7 w-7" aria-hidden="true" />
-                    </span>
-                    <h2 className="mt-6 font-display text-2xl text-ink">
+            {cards.map((card, i) => (
+              <Reveal as="article" key={card.href} delay={i * 90}>
+                <div className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(196,110,120,0.6)]">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-blush-200">
+                    <Image
+                      src={card.img}
+                      alt=""
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-8 sm:p-10">
+                    <h2 className="font-display text-2xl text-ink">
                       {card.title}
                     </h2>
                     <p className="mt-4 flex-1 text-base leading-relaxed text-stone">
@@ -78,9 +84,9 @@ export default function ProvidersPage() {
                       </Button>
                     </div>
                   </div>
-                </Reveal>
-              );
-            })}
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </Section>

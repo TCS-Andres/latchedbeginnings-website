@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   GraduationCap,
   Stethoscope,
@@ -113,6 +114,19 @@ export default function ProviderCoachingPage() {
             title="What Coaching Includes"
             intro="Every coaching relationship is built around the same foundation: rigorous, evidence-based technique paired with the heart-led, whole-baby approach that guides our practice."
           />
+          <Reveal delay={80}>
+            <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-[1.75rem] bg-blush-200">
+              <div className="relative aspect-[16/9] w-full">
+                <Image
+                  src="/images/photos/provider-coaching.jpg"
+                  alt="A provider deepening their skills in oral-tie care"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 56rem"
+                />
+              </div>
+            </div>
+          </Reveal>
           <div className="mt-12 grid gap-7 md:grid-cols-2">
             {includes.map((item, i) => {
               const Icon = item.icon;
@@ -169,6 +183,15 @@ export default function ProviderCoachingPage() {
             <Reveal delay={120}>
               <div className="relative overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white p-8 sm:p-10">
                 <HeartMark className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 text-coral/10" />
+                <div className="relative mb-6 aspect-[5/4] w-full overflow-hidden rounded-[1.25rem] bg-blush-200">
+                  <Image
+                    src="/images/dr-kacie-portrait.jpg"
+                    alt="Dr. Kacie Culotta, DMD"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                  />
+                </div>
                 <p className="eyebrow mb-3">Learn From</p>
                 <h3 className="font-display text-2xl text-ink">
                   Dr. Kacie Culotta, DMD
