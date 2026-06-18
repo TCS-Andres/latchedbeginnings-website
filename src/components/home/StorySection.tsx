@@ -11,10 +11,10 @@ export function StorySection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <Photo
-              src="/images/photos/story.jpg"
-              alt="A family holding their baby together"
-              slot="Family holding baby together (warm, candid)"
-              aspect="aspect-[5/4]"
+              src="/images/dr-kacie-with-child.jpg"
+              alt="Dr. Kacie Culotta with a young patient at Latched Beginnings"
+              slot="Dr. Kacie with a child she is helping"
+              aspect="aspect-[3/4]"
               shape="rounded"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />

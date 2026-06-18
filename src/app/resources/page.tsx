@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
-import { FileText, PlayCircle, BookOpen, Users, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import {
+  FileText,
+  PlayCircle,
+  BookOpen,
+  Users,
+  ArrowRight,
+  Download,
+} from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -51,6 +59,39 @@ const resources = [
   },
 ];
 
+const downloads = [
+  {
+    title: "Latched Beginnings Trifold",
+    file: "/downloads/latched-trifold.pdf",
+    img: "/images/resources/trifold.jpg",
+    desc: "A quick overview of who we are and how we help, in a printable trifold you can keep or share.",
+  },
+  {
+    title: "Is It a Tongue-Tie?",
+    file: "/downloads/is-it-a-tongue-tie.pdf",
+    img: "/images/resources/is-it-a-tongue-tie.jpg",
+    desc: "A parent-friendly checklist for navigating feeding challenges and spotting the signs of a tie.",
+  },
+  {
+    title: "Common Oral Tie Symptoms Checklist",
+    file: "/downloads/common-oral-tie-checklist.pdf",
+    img: "/images/resources/oral-tie-checklist.jpg",
+    desc: "The feeding and comfort signs we look for in babies, in a simple list you can print and bring in.",
+  },
+  {
+    title: "Client Referral Form",
+    file: "/downloads/client-referral-form.pdf",
+    img: "/images/resources/referral-form.jpg",
+    desc: "For providers referring a family our way. Print it, complete it, and send it along with your patient.",
+  },
+  {
+    title: "Austin, TX Travel & Local Guide",
+    file: "/downloads/austin-travel-guide.pdf",
+    img: "/images/resources/austin-guide.jpg",
+    desc: "Traveling in for care? Our local guide to getting around Austin, where to stay, and what to enjoy.",
+  },
+];
+
 export default function ResourcesPage() {
   return (
     <>
@@ -70,6 +111,51 @@ export default function ResourcesPage() {
         ]}
         cta={{ label: site.bookingLabel, href: site.bookingUrl }}
       />
+
+      <Section tone="blush">
+        <Container size="wide">
+          <SectionHeading
+            eyebrow="Printable Guides"
+            title="Documents You Can Download"
+            intro="Helpful guides and forms to download, print, and share. Take what is useful for you and your family."
+            align="center"
+          />
+
+          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {downloads.map((doc, i) => (
+              <Reveal as="article" key={doc.file} delay={i * 70}>
+                <a
+                  href={doc.file}
+                  download
+                  className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgba(196,110,120,0.6)]"
+                >
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-blush">
+                    <Image
+                      src={doc.img}
+                      alt={`${doc.title} preview`}
+                      fill
+                      className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.03]"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-display text-xl text-ink">
+                      {doc.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-stone">
+                      {doc.desc}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-coral-deep">
+                      <Download className="h-4 w-4" aria-hidden="true" />
+                      Download PDF
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
       <Section tone="white">
         <Container size="wide">

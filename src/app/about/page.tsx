@@ -106,7 +106,7 @@ export default function AboutPage() {
 
       <PageHero
         eyebrow="Our Story"
-        title="Moms helping moms, from the very first latch"
+        title="Moms Helping Moms, From the Very First Latch"
         intro="Latched Beginnings was born from lived experience and built on compassionate, evidence-based care. We are here to support your baby and you, with patience, honesty, and heart."
         crumbs={[
           { name: "Home", href: "/" },
@@ -168,6 +168,46 @@ export default function AboutPage() {
                 </p>
               </div>
             </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Photo gallery */}
+      <Section tone="cream" spacing="tight">
+        <Container size="wide">
+          <Reveal className="mb-10 text-center">
+            <p className="eyebrow mb-3">Get to Know Dr. Kacie</p>
+            <h2 className="text-3xl leading-[1.12] sm:text-4xl">
+              A Little More About Her
+            </h2>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-3">
+            {[
+              {
+                src: "/images/dr-kacie-portrait.jpg",
+                alt: "Dr. Kacie Culotta at Latched Beginnings in Austin, TX",
+              },
+              {
+                src: "/images/dr-kacie-with-child.jpg",
+                alt: "Dr. Kacie Culotta caring for a young patient",
+              },
+              {
+                src: "/images/dr-kacie-studio.jpg",
+                alt: "Dr. Kacie Culotta, DMD, founder of Latched Beginnings",
+              },
+            ].map((p, i) => (
+              <Reveal key={p.src} delay={i * 90}>
+                <div className="relative aspect-[3/4] overflow-hidden rounded-[1.75rem] bg-blush-200">
+                  <Image
+                    src={p.src}
+                    alt={p.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </Section>

@@ -1,26 +1,28 @@
 import { cn } from "@/lib/cn";
 
+const ICON = "url(/images/brand/lb-icon-white.svg)";
+
 /**
- * Decorative line-art heart with a baby's head, echoing the Latched Beginnings
- * logo mark. Purely ornamental, so it is hidden from assistive tech.
+ * The real Latched Beginnings heart mark, rendered from the brand icon SVG as a
+ * CSS mask. Using a mask (rather than an <img>) keeps it tintable with the
+ * current text color and any opacity, so existing usages like
+ * `text-white/15` or `text-coral/10` still work. Purely decorative.
  */
 export function HeartMark({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 64 60"
-      fill="none"
+    <span
       aria-hidden="true"
-      className={cn("text-coral", className)}
-    >
-      <path
-        d="M32 57C32 57 5 41 5 24.5C5 16.5 11 11.5 18 11.5C24.5 11.5 30 16 32 23C34 16 39.5 11.5 46 11.5C53 11.5 59 16.5 59 24.5C59 41 32 57 32 57Z"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="31" cy="9" r="7" stroke="currentColor" strokeWidth="3" />
-      <circle cx="45" cy="35" r="11.5" stroke="currentColor" strokeWidth="3" />
-    </svg>
+      className={cn("inline-block bg-current text-coral", className)}
+      style={{
+        WebkitMaskImage: ICON,
+        maskImage: ICON,
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskPosition: "center",
+        maskPosition: "center",
+        WebkitMaskSize: "contain",
+        maskSize: "contain",
+      }}
+    />
   );
 }

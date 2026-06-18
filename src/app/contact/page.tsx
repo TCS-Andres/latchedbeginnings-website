@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Photo } from "@/components/ui/Photo";
 import { PageHero } from "@/components/layout/PageHero";
 import { HeartMark } from "@/components/brand/HeartMark";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
@@ -162,6 +163,39 @@ export default function ContactPage() {
                   />
                 </div>
               </div>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="white">
+        <Container size="wide">
+          <SectionHeading
+            align="center"
+            eyebrow="Our Space"
+            title="Step Inside Latched Beginnings"
+            intro="A calm, welcoming space designed to put you and your baby at ease from the moment you walk in."
+          />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            <Reveal>
+              <Photo
+                src="/images/photos/interior-1.jpg"
+                alt="The welcoming waiting area at Latched Beginnings"
+                slot="Office interior"
+                aspect="aspect-[3/4]"
+                shape="rounded"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </Reveal>
+            <Reveal delay={100}>
+              <Photo
+                src="/images/photos/interior-2.jpg"
+                alt="The comfortable lounge area at Latched Beginnings"
+                slot="Office interior"
+                aspect="aspect-[3/4]"
+                shape="rounded"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </Reveal>
           </div>
         </Container>
