@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Check, PlayCircle } from "lucide-react";
+import { Check } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { Photo } from "@/components/ui/Photo";
+import { YouTubeEmbed } from "@/components/ui/YouTubeEmbed";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/layout/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
@@ -68,26 +68,11 @@ export default function PacifierWebinarPage() {
       <Section tone="white">
         <Container size="wide">
           <Reveal>
-            <div
-              id="watch"
-              className="relative aspect-video overflow-hidden rounded-[1.75rem] bg-ink"
-            >
-              {/* TODO: replace with the real webinar embed (YouTube/Vimeo/host) */}
-              <Photo
-                src="/images/photos/pacifier-webinar-cover.jpg"
-                alt="Dr. Kacie Culotta presenting the pacifier webinar"
-                slot="Webinar video embed"
-                fillParent
-                priority
-                sizes="(max-width: 1024px) 100vw, 960px"
+            <div id="watch" className="mx-auto max-w-3xl">
+              <YouTubeEmbed
+                id="AWXWPnzy0eY"
+                title="Pacifiers Don't Have To Be A Headache, with Dr. Kacie Culotta"
               />
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink/30">
-                <PlayCircle
-                  className="h-20 w-20 text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.45)]"
-                  strokeWidth={1.25}
-                  aria-hidden="true"
-                />
-              </div>
             </div>
           </Reveal>
           <Reveal delay={120}>

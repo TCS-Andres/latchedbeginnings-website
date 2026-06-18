@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PlayCircle, Download } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -67,15 +68,23 @@ export function ResourceCtas() {
                   </Button>
                 </div>
               </div>
-              <Photo
-                src="/images/photos/checklist.jpg"
-                alt="The oral tie symptoms checklist on a tablet"
-                slot="Checklist shown on a tablet (product mockup)"
-                aspect="aspect-[16/10]"
-                shape="soft"
-                className="lg:order-1"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              {/* Checklist shown on a tablet mockup */}
+              <div className="lg:order-1">
+                <div className="mx-auto w-full max-w-[300px]">
+                  <div className="relative rounded-[2.2rem] bg-ink p-3 shadow-[0_40px_70px_-35px_rgba(45,45,45,0.6)]">
+                    <div className="overflow-hidden rounded-[1.5rem] bg-white">
+                      <Image
+                        src="/images/resources/oral-tie-checklist.jpg"
+                        alt="The Latched Beginnings Oral Tie Symptoms Checklist shown on a tablet"
+                        width={696}
+                        height={900}
+                        className="h-auto w-full"
+                        sizes="(max-width: 768px) 70vw, 300px"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>
