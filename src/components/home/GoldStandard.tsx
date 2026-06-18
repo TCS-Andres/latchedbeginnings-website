@@ -27,7 +27,7 @@ export function GoldStandard() {
   return (
     <Section tone="white">
       <Container size="wide">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
           <Reveal className="order-2 lg:order-1">
             <Photo
               src="/images/photos/laser.jpg"
@@ -41,7 +41,7 @@ export function GoldStandard() {
 
           <div className="order-1 lg:order-2">
             <p className="eyebrow mb-3">LightScalpel CO2 Laser Technology</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-3xl leading-[1.12] sm:text-4xl lg:text-[2.75rem]">
               The Gold Standard in Tongue-Tie Treatment for Your Little One
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone">

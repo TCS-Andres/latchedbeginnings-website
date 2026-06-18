@@ -118,7 +118,7 @@ export default function AboutPage() {
       {/* Founder section */}
       <Section tone="white">
         <Container size="wide">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
             <Reveal className="mx-auto w-full max-w-md">
               <Image
                 src="/images/dr-kacie-culotta.png"

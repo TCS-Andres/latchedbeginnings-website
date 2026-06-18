@@ -12,7 +12,7 @@ export function ResourceCtas() {
         <div className="space-y-7">
           {/* Pacifier webinar */}
           <Reveal>
-            <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white p-6 sm:p-8 lg:grid-cols-2 lg:gap-12">
+            <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white p-6 sm:p-8 md:grid-cols-2 lg:gap-12">
               <Photo
                 src="/images/photos/pacifier-webinar.jpg"
                 alt="A baby with a pacifier"
@@ -44,7 +44,7 @@ export function ResourceCtas() {
 
           {/* Checklist download */}
           <Reveal>
-            <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white p-6 sm:p-8 lg:grid-cols-2 lg:gap-12">
+            <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white p-6 sm:p-8 md:grid-cols-2 lg:gap-12">
               <div className="lg:order-2">
                 <p className="eyebrow mb-3">Free Download</p>
                 <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl">

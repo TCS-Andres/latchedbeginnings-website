@@ -26,10 +26,10 @@ export function ValueProps() {
   return (
     <Section tone="white">
       <Container size="wide">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
           <div>
             <p className="eyebrow mb-3">Why Moms Choose Us</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-3xl leading-[1.12] sm:text-4xl lg:text-[2.75rem]">
               Empowering Care, Lasting Health
             </h2>
             <ul className="mt-10 space-y-8">

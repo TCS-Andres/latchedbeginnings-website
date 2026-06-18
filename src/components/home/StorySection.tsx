@@ -8,7 +8,7 @@ export function StorySection() {
   return (
     <Section tone="blush">
       <Container size="wide">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
           <Reveal>
             <Photo
               src="/images/dr-kacie-with-child.jpg"
@@ -22,7 +22,7 @@ export function StorySection() {
 
           <div>
             <p className="eyebrow mb-3">Our Difference</p>
-            <h2 className="text-3xl leading-[1.12] sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-3xl leading-[1.12] sm:text-4xl lg:text-[2.75rem]">
               Care That Comes From the Heart
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">

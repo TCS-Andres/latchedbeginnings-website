@@ -22,7 +22,7 @@ export function PingPong({
   return (
     <Section tone={tone}>
       <Container size="wide">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-16">
           <Reveal className={cn(reverse && "lg:order-2")}>
             <Photo
               src={section.image}

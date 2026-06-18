@@ -10,7 +10,7 @@ export function ReferralBand() {
     <Section tone="white">
       <Container size="wide">
         <Reveal>
-          <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-blush-200 p-6 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
+          <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-blush-200 p-6 sm:p-10 md:grid-cols-[1.3fr_1fr] lg:gap-12">
             <div>
               <p className="eyebrow mb-3">For Birth &amp; Feeding Professionals</p>
               <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl">

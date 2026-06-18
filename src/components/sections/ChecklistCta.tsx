@@ -14,7 +14,7 @@ export function ChecklistCta({ tone = "blush" }: { tone?: "white" | "blush" }) {
     <Section tone={tone}>
       <Container size="wide">
         <Reveal>
-          <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white p-6 shadow-[0_18px_44px_-32px_rgba(45,45,45,0.4)] sm:p-10 lg:grid-cols-2 lg:gap-12">
+          <div className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white p-6 shadow-[0_18px_44px_-32px_rgba(45,45,45,0.4)] sm:p-10 md:grid-cols-2 lg:gap-12">
             <div>
               <p className="eyebrow mb-3">Free Download</p>
               <h2 className="text-2xl leading-tight sm:text-3xl md:text-4xl">

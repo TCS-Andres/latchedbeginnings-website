@@ -94,7 +94,7 @@ export default function OralTieSymptomsChecklistPage() {
 
       <Section tone="white">
         <Container size="wide">
-          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-start gap-12 md:grid-cols-2 lg:gap-16">
             <Reveal>
               <div>
                 <SectionHeading

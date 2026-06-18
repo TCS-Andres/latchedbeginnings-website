@@ -40,7 +40,7 @@ export default function ContactPage() {
 
       <Section tone="white">
         <Container size="wide">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-14">
+          <div className="grid gap-10 md:grid-cols-2 lg:items-stretch lg:gap-14">
             {/* LEFT: contact details */}
             <Reveal>
               <div className="flex h-full flex-col">
