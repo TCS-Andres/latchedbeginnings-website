@@ -7,6 +7,9 @@ import { BlogFilter } from "@/components/blog/BlogFilter";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { getAllPosts, getTopics } from "@/lib/blog";
 
+// Re-render hourly so scheduled (future-dated) posts auto-publish on their date.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Blog: Tongue-Tie & Infant Feeding Education",
   description:

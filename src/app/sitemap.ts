@@ -3,6 +3,9 @@ import { site } from "@/lib/site";
 import { services } from "@/lib/content/services";
 import { getAllPosts } from "@/lib/blog";
 
+// Re-render hourly so scheduled posts enter the sitemap on their publish date.
+export const revalidate = 3600;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url;
 

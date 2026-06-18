@@ -17,6 +17,9 @@ import {
 } from "@/lib/blog";
 import { site } from "@/lib/site";
 
+// Re-render hourly so a scheduled post becomes reachable on its publish date.
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
 }
