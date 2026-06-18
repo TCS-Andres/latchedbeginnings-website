@@ -24,8 +24,28 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+/**
+ * Resolve the absolute origin that share-preview images and canonical URLs
+ * must point at. Until the custom domain is connected to the deployment, this
+ * follows the live Vercel host so previews render; once latchedbeginnings.com
+ * is attached as the production domain, VERCEL_PROJECT_PRODUCTION_URL becomes
+ * that domain automatically. A NEXT_PUBLIC_SITE_URL env var overrides all.
+ */
+function resolveSiteUrl(): string {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.VERCEL_ENV === "production") {
+    return process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : site.url;
+  }
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return site.url;
+}
+
+const siteUrl = resolveSiteUrl();
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(siteUrl),
   title: {
     default:
       "Latched Beginnings | Tongue-Tie & Lactation Care in Austin, TX",
@@ -47,15 +67,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: site.locale,
-    url: site.url,
+    url: siteUrl,
     siteName: site.name,
     title: "Latched Beginnings | Tongue-Tie & Lactation Care in Austin, TX",
     description: site.description,
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Latched Beginnings: gentle tongue-tie and lactation care in Austin, TX",
+        type: "image/jpeg",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Latched Beginnings | Tongue-Tie & Lactation Care in Austin, TX",
     description: site.description,
+    images: ["/og-image.jpg"],
   },
   robots: { index: true, follow: true },
 };
