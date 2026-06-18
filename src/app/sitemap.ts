@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { services } from "@/lib/content/services";
 import { getAllPosts } from "@/lib/blog";
+import { webinars } from "@/lib/content/webinars";
 
 // Re-render hourly so scheduled posts enter the sitemap on their publish date.
 export const revalidate = 3600;
@@ -16,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/resources",
     "/resources/oral-tie-symptoms-checklist",
-    "/resources/pacifier-webinar",
+    "/resources/webinars",
     "/provider-coaching",
     "/patient-referrals",
     "/providers",
@@ -43,5 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
+  const webinarRoutes = webinars.map((w) => ({
+    url: `${base}/resources/webinars/${w.slug}`,
+    lastModified: w.date || undefined,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes, ...webinarRoutes];
 }

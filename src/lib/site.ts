@@ -103,11 +103,8 @@ export const mainNav: NavItem[] = [
     label: "Resources",
     href: "/resources",
     children: [
-      {
-        label: "Oral Tie Symptoms Checklist",
-        href: "/resources/oral-tie-symptoms-checklist",
-      },
-      { label: "Pacifier Webinar", href: "/resources/pacifier-webinar" },
+      { label: "Downloadable Resources", href: "/resources" },
+      { label: "Webinars", href: "/resources/webinars" },
       { label: "Blog", href: "/blog" },
     ],
   },

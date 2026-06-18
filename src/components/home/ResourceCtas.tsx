@@ -34,7 +34,7 @@ export function ResourceCtas() {
                   in a way that supports your baby&apos;s oral development.
                 </p>
                 <div className="mt-7">
-                  <Button href="/resources/pacifier-webinar" size="lg">
+                  <Button href="/resources/webinars/all-about-pacifiers" size="lg">
                     <PlayCircle className="h-5 w-5" aria-hidden="true" />
                     Watch the Webinar
                   </Button>

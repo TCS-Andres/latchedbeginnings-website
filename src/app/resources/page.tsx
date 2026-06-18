@@ -20,7 +20,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Free Resources for Parents",
   description:
-    "Free tongue-tie and feeding resources from Latched Beginnings in Austin, TX: the oral tie symptoms checklist, the pacifier webinar, our parent blog, and provider referrals.",
+    "Free tongue-tie and feeding resources from Latched Beginnings in Austin, TX: downloadable guides and checklists, free on-demand webinars, our parent blog, and provider referrals.",
   alternates: { canonical: "/resources" },
 };
 
@@ -35,11 +35,11 @@ const resources = [
   },
   {
     icon: PlayCircle,
-    title: "Pacifier Webinar",
+    title: "Webinars",
     description:
-      "Dr. Kacie walks through pacifier choices, timing, and what they can tell you about your baby’s oral function. Watch on your schedule, pause to take notes, and revisit whenever a new question comes up.",
-    href: "/resources/pacifier-webinar",
-    cta: "Watch the webinar",
+      "Free, on-demand webinars with Dr. Kacie on tongue-tie, oral ties, pacifiers, and infant feeding. Watch on your schedule, pause to take notes, and revisit whenever a new question comes up.",
+    href: "/resources/webinars",
+    cta: "Browse webinars",
   },
   {
     icon: BookOpen,
@@ -104,7 +104,7 @@ export default function ResourcesPage() {
       <PageHero
         eyebrow="For Parents"
         title="Resources to Help You Feel Confident"
-        intro="Clear, compassionate guidance you can return to anytime. Explore our checklist, watch the pacifier webinar, read the blog, and find the support that meets you where you are."
+        intro="Clear, compassionate guidance you can return to anytime. Download our guides, watch the free webinars, read the blog, and find the support that meets you where you are."
         crumbs={[
           { name: "Home", href: "/" },
           { name: "Resources", href: "/resources" },

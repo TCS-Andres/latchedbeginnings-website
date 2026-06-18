@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -8,71 +9,70 @@ import { YouTubeEmbed } from "@/components/ui/YouTubeEmbed";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/layout/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { webinars, getWebinar } from "@/lib/content/webinars";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Pacifier Webinar with Dr. Kacie Culotta",
-  description:
-    "A free on-demand webinar with Dr. Kacie Culotta on pacifiers: when they help, when they cause challenges, and how to support healthy oral development in Austin, TX.",
-  alternates: { canonical: "/resources/pacifier-webinar" },
-};
+export function generateStaticParams() {
+  return webinars.map((w) => ({ slug: w.slug }));
+}
 
-const learnings = [
-  {
-    title: "When pacifiers genuinely help",
-    body: "The soothing and self-regulation benefits a pacifier can offer, and the situations where reaching for one is a thoughtful, supportive choice.",
-  },
-  {
-    title: "When they start to cause challenges",
-    body: "Gentle signs that a pacifier may be getting in the way of feeding, sleep, or comfort, so you can respond early and with confidence.",
-  },
-  {
-    title: "How to choose the right pacifier",
-    body: "What to look for in shape, size, and material, and how to match a pacifier to your baby's stage rather than the marketing on the package.",
-  },
-  {
-    title: "How to wean gently, on your timeline",
-    body: "Calm, low-stress ways to ease away from the pacifier when the time feels right, with no rigid deadlines and no pressure.",
-  },
-  {
-    title: "The link to oral development",
-    body: "How sucking habits relate to the way the mouth, palate, and jaw grow, and what the current evidence does and does not say.",
-  },
-];
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const w = getWebinar(slug);
+  if (!w) return {};
+  return {
+    title: w.title,
+    description: w.excerpt,
+    alternates: { canonical: `/resources/webinars/${w.slug}` },
+    openGraph: {
+      type: "video.other",
+      title: `${w.title} | ${site.name}`,
+      description: w.excerpt,
+      url: `${site.url}/resources/webinars/${w.slug}`,
+    },
+  };
+}
 
-export default function PacifierWebinarPage() {
+export default async function WebinarDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const w = getWebinar(slug);
+  if (!w) notFound();
+
   return (
     <>
       <BreadcrumbJsonLd
         items={[
           { name: "Home", url: "/" },
           { name: "Resources", url: "/resources" },
-          { name: "Pacifier Webinar", url: "/resources/pacifier-webinar" },
+          { name: "Webinars", url: "/resources/webinars" },
+          { name: w.title, url: `/resources/webinars/${w.slug}` },
         ]}
       />
       <PageHero
         eyebrow="Webinar Replay"
-        title="Pacifiers Don't Have To Be A Headache"
-        intro="In this free on-demand webinar, Dr. Kacie Culotta breaks down everything parents are rarely told about pacifiers, from the moments they truly help to the habits worth watching, all in plain, reassuring language."
+        title={w.title}
+        intro={w.intro}
         crumbs={[
           { name: "Home", href: "/" },
           { name: "Resources", href: "/resources" },
-          { name: "Pacifier Webinar", href: "/resources/pacifier-webinar" },
+          { name: "Webinars", href: "/resources/webinars" },
+          { name: w.title, href: `/resources/webinars/${w.slug}` },
         ]}
-        cta={{
-          label: "Watch the Webinar",
-          href: "/resources/pacifier-webinar#watch",
-        }}
       />
 
       <Section tone="white">
         <Container size="wide">
           <Reveal>
-            <div id="watch" className="mx-auto max-w-3xl">
-              <YouTubeEmbed
-                id="AWXWPnzy0eY"
-                title="Pacifiers Don't Have To Be A Headache, with Dr. Kacie Culotta"
-              />
+            <div className="mx-auto max-w-3xl">
+              <YouTubeEmbed id={w.youtubeId} title={w.title} />
             </div>
           </Reveal>
           <Reveal delay={120}>
@@ -93,7 +93,7 @@ export default function PacifierWebinarPage() {
             align="center"
           />
           <ul className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
-            {learnings.map((item, i) => (
+            {w.learnings.map((item, i) => (
               <Reveal as="li" key={item.title} delay={i * 80}>
                 <div className="flex h-full gap-4 rounded-[1.75rem] border border-blush-200 bg-white p-6">
                   <span className="mt-0.5 flex h-9 w-9 flex-none items-center justify-center rounded-full bg-blush-200 text-coral-deep">
@@ -112,7 +112,10 @@ export default function PacifierWebinarPage() {
             ))}
           </ul>
           <Reveal delay={120}>
-            <div className="mt-12 text-center">
+            <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button href="/resources/webinars" variant="outline" size="lg">
+                See all webinars
+              </Button>
               <Button href={site.bookingUrl} variant="primary" size="lg">
                 Have questions? Schedule a consultation
               </Button>
