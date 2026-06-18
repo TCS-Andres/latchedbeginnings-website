@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
 import { PageHero } from "@/components/layout/PageHero";
 import { BlogCard } from "@/components/blog/BlogCard";
+import { BlogFilter } from "@/components/blog/BlogFilter";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { getAllPosts, getTopics } from "@/lib/blog";
 
@@ -38,24 +38,14 @@ export default function BlogIndexPage() {
 
       <Section tone="white">
         <Container size="wide">
-          <ul className="flex flex-wrap justify-center gap-2.5">
-            {topics.map((t) => (
-              <li
-                key={t}
-                className="rounded-full border border-blush-200 bg-blush px-4 py-1.5 text-sm font-medium text-coral-deep"
-              >
-                {t}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post, i) => (
-              <Reveal key={post.slug} delay={(i % 3) * 80}>
-                <BlogCard post={post} />
-              </Reveal>
-            ))}
-          </div>
+          <BlogFilter
+            topics={topics}
+            items={posts.map((post) => ({
+              topic: post.topic,
+              slug: post.slug,
+              card: <BlogCard post={post} />,
+            }))}
+          />
         </Container>
       </Section>
     </>
