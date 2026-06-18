@@ -29,7 +29,7 @@ const cards = [
     img: "/images/photos/provider-coaching.jpg",
     title: "Provider Coaching",
     description:
-      "Ready to deepen your expertise in oral ties and the LightScalpel CO2 laser? Dr. Kacie offers hands-on coaching grounded in evidence and led with heart, from functional assessment through release technique and post-op care. Build the confidence to support more families with skill and compassion.",
+      "Ready to deepen your expertise in oral ties and the LightScalpel CO2 laser? Dr. Culotta offers hands-on coaching grounded in evidence and led with heart, from functional assessment through release technique and post-op care. Build the confidence to support more families with skill and compassion.",
     href: "/provider-coaching",
     cta: "Explore Coaching",
   },

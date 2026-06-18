@@ -72,11 +72,11 @@ const values = [
 
 const team = [
   {
-    name: "Dr. Kacie M. Culotta",
+    name: "Dr. Culotta M. Culotta",
     role: "Founder, Dentist & Lactation Counselor",
     src: "/images/dr-kacie-culotta.png",
     slot: "Dr. Kacie Culotta headshot",
-    bio: "A mom of two and the heart behind Latched Beginnings. As the only dentist in Austin certified in both laser tongue-tie releases and lactation counseling, Dr. Kacie blends clinical skill with the empathy of someone who has walked this road herself.",
+    bio: "A mom of two and the heart behind Latched Beginnings. As the only dentist in Austin certified in both laser tongue-tie releases and lactation counseling, Dr. Culotta blends clinical skill with the empathy of someone who has walked this road herself.",
   },
   {
     name: "Sheila Falloon",
@@ -176,7 +176,7 @@ export default function AboutPage() {
       <Section tone="cream" spacing="tight">
         <Container size="wide">
           <Reveal className="mb-10 text-center">
-            <p className="eyebrow mb-3">Get to Know Dr. Kacie</p>
+            <p className="eyebrow mb-3">Get to Know Dr. Culotta</p>
             <h2 className="text-3xl leading-[1.12] sm:text-4xl">
               A Little More About Her
             </h2>

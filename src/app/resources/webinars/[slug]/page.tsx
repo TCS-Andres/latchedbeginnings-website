@@ -89,7 +89,7 @@ export default async function WebinarDetailPage({
           <SectionHeading
             eyebrow="Inside the Replay"
             title="What You'll Learn"
-            intro="Dr. Kacie keeps it warm, honest, and free of jargon, so you leave feeling informed and trusting your own instincts."
+            intro="Dr. Culotta keeps it warm, honest, and free of jargon, so you leave feeling informed and trusting your own instincts."
             align="center"
           />
           <ul className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">

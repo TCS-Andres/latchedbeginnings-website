@@ -13,7 +13,7 @@ export function StorySection() {
             <Photo
               src="/images/dr-kacie-with-child.jpg"
               alt="Dr. Kacie Culotta with a young patient at Latched Beginnings"
-              slot="Dr. Kacie with a child she is helping"
+              slot="Dr. Culotta with a child she is helping"
               aspect="aspect-[3/4]"
               shape="rounded"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -40,7 +40,7 @@ export function StorySection() {
             </p>
             <div className="mt-8">
               <Button href="/about" variant="outline">
-                Meet Dr. Kacie
+                Meet Dr. Culotta
               </Button>
             </div>
           </div>

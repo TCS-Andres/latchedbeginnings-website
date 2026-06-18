@@ -197,7 +197,7 @@ export default function ProviderCoachingPage() {
                   Dr. Kacie Culotta, DMD
                 </h3>
                 <p className="mt-4 text-base leading-relaxed text-stone">
-                  Dr. Kacie is the only dentist in Austin with both a laser
+                  Dr. Culotta is the only dentist in Austin with both a laser
                   certification for tongue-tie releases and a lactation
                   counselor certification, with more than 10 years of clinical
                   experience. As a Breathe Institute Ambassador and an AADSM

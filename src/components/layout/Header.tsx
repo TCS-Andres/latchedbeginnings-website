@@ -37,6 +37,13 @@ export function Header() {
     };
   }, [mobileOpen]);
 
+  // Close the mobile menu explicitly (e.g. on link tap), so it never gets
+  // stuck open when a link points to the current page (no route change fires).
+  const closeMenu = () => {
+    setMobileOpen(false);
+    setOpenGroup(null);
+  };
+
   return (
     <header
       className={cn(
@@ -127,7 +134,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen ? (
-        <div className="fixed inset-0 top-24 z-40 overflow-y-auto bg-white xl:hidden">
+        <div className="fixed inset-0 top-24 z-40 overflow-y-auto overscroll-contain bg-white xl:hidden">
           <Container className="py-6">
             <nav aria-label="Mobile" className="flex flex-col gap-1">
               {mainNav.map((item) =>
@@ -157,6 +164,7 @@ export function Header() {
                           <li key={child.href}>
                             <Link
                               href={child.href}
+                              onClick={closeMenu}
                               className="block py-2.5 text-base text-stone"
                             >
                               {child.label}
@@ -170,6 +178,7 @@ export function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
+                    onClick={closeMenu}
                     className="border-b border-blush-200 py-4 text-lg font-medium text-charcoal"
                   >
                     {item.label}

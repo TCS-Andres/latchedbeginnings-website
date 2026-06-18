@@ -37,7 +37,7 @@ const resources = [
     icon: PlayCircle,
     title: "Webinars",
     description:
-      "Free, on-demand webinars with Dr. Kacie on tongue-tie, oral ties, pacifiers, and infant feeding. Watch on your schedule, pause to take notes, and revisit whenever a new question comes up.",
+      "Free, on-demand webinars with Dr. Culotta on tongue-tie, oral ties, pacifiers, and infant feeding. Watch on your schedule, pause to take notes, and revisit whenever a new question comes up.",
     href: "/resources/webinars",
     cta: "Browse webinars",
   },
