@@ -56,8 +56,8 @@ export const site = {
     "Georgetown",
   ],
 
-  // Primary conversion action. TODO: replace with the real ClientSecure booking URL.
-  bookingUrl: "/contact",
+  // Primary conversion action: the on-site appointment request form (no external scheduler).
+  bookingUrl: "/contact#appointment",
   bookingLabel: "Schedule Appointment",
 
   socials: {

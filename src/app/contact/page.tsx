@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock, CalendarCheck, Heart } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Heart } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Photo } from "@/components/ui/Photo";
 import { PageHero } from "@/components/layout/PageHero";
 import { HeartMark } from "@/components/brand/HeartMark";
+import { AppointmentForm } from "@/components/forms/AppointmentForm";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/site";
 
@@ -37,6 +37,36 @@ export default function ContactPage() {
           { name: "Contact", href: "/contact" },
         ]}
       />
+
+      {/* Appointment request form (primary conversion) */}
+      <Section tone="white" id="appointment">
+        <Container size="wide">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-14">
+            <Reveal>
+              <p className="eyebrow mb-3">Request an Appointment</p>
+              <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem]">
+                Tell Us a Little, and We&apos;ll Take It From Here
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
+                Share your details below and our team will reach out within one
+                business day to find a time that works for you and your baby.
+                Every visit is one-on-one and never rushed.
+              </p>
+              <p className="mt-6 flex items-start gap-2 text-sm leading-relaxed text-stone">
+                <Heart
+                  className="mt-0.5 h-4 w-4 shrink-0 text-coral"
+                  aria-hidden="true"
+                />
+                Prefer to talk it through first? Call or text {site.phone} and
+                we&apos;ll walk you through what to expect.
+              </p>
+            </Reveal>
+            <Reveal delay={120}>
+              <AppointmentForm />
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
 
       <Section tone="white">
         <Container size="wide">
@@ -134,19 +164,6 @@ export default function ContactPage() {
                     </div>
                   </li>
                 </ul>
-
-                <div className="mt-8">
-                  <Button href={site.bookingUrl} size="lg">
-                    <CalendarCheck className="h-5 w-5" aria-hidden="true" />
-                    {site.bookingLabel}
-                  </Button>
-                </div>
-
-                <p className="mt-5 flex items-center gap-2 text-sm leading-relaxed text-stone">
-                  <Heart className="h-4 w-4 shrink-0 text-coral" aria-hidden="true" />
-                  Prefer to talk it through first? Call or email and a mom on our team will
-                  walk you through what to expect.
-                </p>
               </div>
             </Reveal>
 

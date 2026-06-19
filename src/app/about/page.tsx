@@ -11,9 +11,7 @@ import {
 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { Photo } from "@/components/ui/Photo";
 import { PageHero } from "@/components/layout/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/site";
@@ -21,7 +19,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About Dr. Kacie Culotta",
   description:
-    "Meet Dr. Kacie Culotta, the only Austin TX dentist who is also a certified lactation counselor, plus the all-mom Latched Beginnings team and our whole-baby philosophy.",
+    "Meet Dr. Kacie Culotta, the only Austin TX dentist who is also a certified lactation counselor, and the whole-baby philosophy behind Latched Beginnings' gentle tongue-tie and lactation care.",
   alternates: { canonical: "/about" },
 };
 
@@ -67,30 +65,6 @@ const values = [
     title: "Excellence in Care",
     description:
       "From our LightScalpel CO2 laser to thoughtful post-op support, we hold ourselves to a high standard at every visit.",
-  },
-];
-
-const team = [
-  {
-    name: "Dr. Culotta M. Culotta",
-    role: "Founder, Dentist & Lactation Counselor",
-    src: "/images/dr-kacie-culotta.png",
-    slot: "Dr. Kacie Culotta headshot",
-    bio: "A mom of two and the heart behind Latched Beginnings. As the only dentist in Austin certified in both laser tongue-tie releases and lactation counseling, Dr. Culotta blends clinical skill with the empathy of someone who has walked this road herself.",
-  },
-  {
-    name: "Sheila Falloon",
-    role: "Care Team & Family Support",
-    src: "/images/team/sheila-falloon.jpg",
-    slot: "Sheila Falloon headshot",
-    bio: "A mom on our all-mom team, Sheila helps families feel calm and cared for from the very first hello. She makes sure every parent leaves a visit feeling heard, supported, and a little more confident.",
-  },
-  {
-    name: "Savannah Taylor",
-    role: "Care Team & Family Support",
-    src: "/images/team/savannah-taylor.jpg",
-    slot: "Savannah Taylor headshot",
-    bio: "Also a mom on our team, Savannah brings warmth and steady reassurance to each appointment. She loves helping families navigate their next steps with patience and genuine encouragement.",
   },
 ];
 
@@ -281,62 +255,6 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* All-mom team */}
-      <Section tone="blush">
-        <Container size="wide">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow mb-3">Our All-Mom Team</p>
-            <h2 className="text-[2.15rem] leading-[1.12] sm:text-[2.5rem] md:text-5xl">
-              Meet the Team
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
-              Every member of our team is a mom. We bring both professional care
-              and personal understanding to your baby&apos;s feeding journey.
-            </p>
-          </Reveal>
-
-          <div className="mt-12 grid gap-7 md:grid-cols-3">
-            {team.map((member, i) => (
-              <Reveal as="article" key={member.name} delay={i * 90}>
-                <div className="flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white">
-                  <Photo
-                    src={member.src}
-                    alt={member.name}
-                    slot={member.slot}
-                    aspect="aspect-[4/5]"
-                    shape="soft"
-                    className="rounded-none"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="flex flex-1 flex-col p-7">
-                    <h3 className="font-display text-xl text-ink">
-                      {member.name}
-                    </h3>
-                    <p className="mt-1 text-sm font-medium uppercase tracking-[0.14em] text-coral-deep">
-                      {member.role}
-                    </p>
-                    <p className="mt-4 flex-1 text-sm leading-relaxed text-stone">
-                      {member.bio}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mt-12 text-center" delay={120}>
-            <p className="text-base leading-relaxed text-stone">
-              Have questions, or ready to take the next step? We would love to
-              meet you and your little one.
-            </p>
-            <div className="mt-6 flex justify-center">
-              <Button href={site.bookingUrl} size="lg">
-                {site.bookingLabel}
-              </Button>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
     </>
   );
 }
