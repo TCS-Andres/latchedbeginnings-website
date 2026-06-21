@@ -110,7 +110,11 @@ export function Header() {
               <Phone className="h-4 w-4 text-coral" aria-hidden="true" />
               {site.phone}
             </a>
-            <Button href={site.bookingUrl} size="lg">
+            <Button
+              href={site.bookingUrl}
+              size="md"
+              className="whitespace-nowrap"
+            >
               {site.bookingLabel}
             </Button>
           </div>
