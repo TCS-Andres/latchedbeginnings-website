@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Download } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-import { Photo } from "@/components/ui/Photo";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 
@@ -39,14 +39,21 @@ export function ChecklistCta({ tone = "blush" }: { tone?: "white" | "blush" }) {
                 </Button>
               </div>
             </div>
-            <Photo
-              src="/images/photos/checklist.jpg"
-              alt="The oral tie symptoms checklist on a tablet"
-              slot="Checklist on a tablet (product mockup)"
-              aspect="aspect-[16/11]"
-              shape="soft"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            {/* Checklist shown on a tablet mockup */}
+            <div className="mx-auto w-full max-w-[280px]">
+              <div className="relative rounded-[2rem] bg-ink p-3 shadow-[0_30px_60px_-35px_rgba(45,45,45,0.6)]">
+                <div className="overflow-hidden rounded-[1.4rem] bg-white">
+                  <Image
+                    src="/images/resources/oral-tie-checklist.jpg"
+                    alt="The oral tie symptoms checklist shown on a tablet"
+                    width={696}
+                    height={900}
+                    className="h-auto w-full"
+                    sizes="(max-width: 1024px) 60vw, 280px"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </Reveal>
       </Container>

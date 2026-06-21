@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Check,
   Download,
@@ -10,7 +11,6 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { Photo } from "@/components/ui/Photo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/layout/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
@@ -162,14 +162,21 @@ export default function OralTieSymptomsChecklistPage() {
             </Reveal>
 
             <Reveal delay={120}>
-              <Photo
-                src="/images/photos/checklist.jpg"
-                alt="The Latched Beginnings oral tie symptoms checklist shown on a tablet"
-                slot="Checklist on a tablet (product mockup)"
-                aspect="aspect-[4/5]"
-                shape="arch"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              {/* Checklist shown on a tablet mockup */}
+              <div className="mx-auto w-full max-w-[340px] lg:sticky lg:top-28">
+                <div className="relative rounded-[2.2rem] bg-ink p-3 shadow-[0_40px_70px_-35px_rgba(45,45,45,0.6)]">
+                  <div className="overflow-hidden rounded-[1.5rem] bg-white">
+                    <Image
+                      src="/images/resources/oral-tie-checklist.jpg"
+                      alt="The Latched Beginnings oral tie symptoms checklist shown on a tablet"
+                      width={696}
+                      height={900}
+                      className="h-auto w-full"
+                      sizes="(max-width: 1024px) 70vw, 340px"
+                    />
+                  </div>
+                </div>
+              </div>
             </Reveal>
           </div>
         </Container>
