@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/resources/oral-tie-symptoms-checklist" },
 };
 
-const checklistUrl = "/downloads/oral-tie-symptoms-checklist.pdf";
+const checklistUrl = "/downloads/common-oral-tie-checklist.pdf";
 
 const infantSigns = [
   "Clicking or smacking sounds while nursing",

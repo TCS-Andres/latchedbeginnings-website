@@ -31,7 +31,7 @@ export function ChecklistCta({ tone = "blush" }: { tone?: "white" | "blush" }) {
               <div className="mt-7">
                 {/* TODO: add the real checklist PDF at /public/downloads/ */}
                 <Button
-                  href="/downloads/oral-tie-symptoms-checklist.pdf"
+                  href="/downloads/common-oral-tie-checklist.pdf"
                   size="lg"
                 >
                   <Download className="h-5 w-5" aria-hidden="true" />

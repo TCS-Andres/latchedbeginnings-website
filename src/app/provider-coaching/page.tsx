@@ -116,10 +116,10 @@ export default function ProviderCoachingPage() {
           />
           <Reveal delay={80}>
             <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-[1.75rem] bg-blush-200">
-              <div className="relative aspect-[16/9] w-full">
+              <div className="relative aspect-[3/2] w-full">
                 <Image
-                  src="/images/photos/provider-coaching.jpg"
-                  alt="A provider deepening their skills in oral-tie care"
+                  src="/images/photos/provider-cohort.jpg"
+                  alt="Dr. Kacie Culotta with a cohort of providers she has coached"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 56rem"
@@ -183,12 +183,12 @@ export default function ProviderCoachingPage() {
             <Reveal delay={120}>
               <div className="relative overflow-hidden rounded-[1.75rem] border border-blush-200 bg-white p-8 sm:p-10">
                 <HeartMark className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 text-coral/10" />
-                <div className="relative mb-6 aspect-[5/4] w-full overflow-hidden rounded-[1.25rem] bg-blush-200">
+                <div className="relative mb-6 aspect-[4/5] w-full overflow-hidden rounded-[1.25rem] bg-blush-200">
                   <Image
-                    src="/images/dr-kacie-portrait.jpg"
-                    alt="Dr. Kacie Culotta, DMD"
+                    src="/images/photos/kacie-certificate.jpg"
+                    alt="Dr. Kacie Culotta presenting a Latched Beginnings certificate to a provider she mentored"
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 45vw"
                   />
                 </div>

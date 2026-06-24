@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const cards = [
   {
-    img: "/images/photos/collaborative-care.jpg",
+    img: "/images/photos/kacie-colleagues.jpg",
     title: "Patient Referrals",
     description:
       "Have a family who may benefit from an oral tie evaluation? Refer your patients for gentle, conservative care that always begins with a thorough assessment. We collaborate closely with pediatricians, lactation consultants, bodyworkers, and dental colleagues, and we share clear post-visit notes so you stay part of every baby's care team.",
@@ -26,7 +26,7 @@ const cards = [
     cta: "Refer a Patient",
   },
   {
-    img: "/images/photos/provider-coaching.jpg",
+    img: "/images/photos/provider-cohort.jpg",
     title: "Provider Coaching",
     description:
       "Ready to deepen your expertise in oral ties and the LightScalpel CO2 laser? Dr. Culotta offers hands-on coaching grounded in evidence and led with heart, from functional assessment through release technique and post-op care. Build the confidence to support more families with skill and compassion.",

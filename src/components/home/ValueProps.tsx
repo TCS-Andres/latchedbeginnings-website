@@ -55,16 +55,16 @@ export function ValueProps() {
 
           <Reveal className="grid grid-cols-2 gap-5">
             <Photo
-              src="/images/photos/value-1.jpg"
-              alt="A mother smiling with her baby"
-              slot="Mom holding baby, smiling"
+              src="/images/photos/kacie-with-toddler.jpg"
+              alt="Dr. Kacie Culotta holding a smiling toddler at Latched Beginnings"
+              slot="Dr. Culotta holding a happy toddler"
               aspect="aspect-[3/4]"
               sizes="(max-width: 1024px) 45vw, 25vw"
             />
             <Photo
-              src="/images/photos/value-2.jpg"
-              alt="A parent cradling a newborn"
-              slot="Parent cradling newborn"
+              src="/images/photos/newborn-care.jpg"
+              alt="A Latched Beginnings team member gently cradling a swaddled newborn"
+              slot="Team member cradling a newborn"
               aspect="aspect-[3/4]"
               sizes="(max-width: 1024px) 45vw, 25vw"
             />
