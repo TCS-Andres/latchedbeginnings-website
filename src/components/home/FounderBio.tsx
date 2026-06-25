@@ -48,10 +48,10 @@ export function FounderBio() {
           <Reveal className="relative">
             <div className="relative mx-auto max-w-md overflow-hidden rounded-[1.75rem] rounded-tr-[8rem] bg-blush-200">
               <Image
-                src="/images/dr-kacie-culotta.png"
+                src="/images/dr-kacie-founder.jpg"
                 alt="Dr. Kacie Culotta, DMD, founder of Latched Beginnings"
-                width={1706}
-                height={2560}
+                width={1120}
+                height={1400}
                 className="h-auto w-full object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
