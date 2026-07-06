@@ -10,28 +10,65 @@ type Status = "idle" | "submitting" | "success" | "error";
 const inputClass =
   "w-full rounded-2xl border border-blush-200 bg-white px-4 py-3 text-charcoal placeholder:text-stone/55 transition-colors focus:border-coral focus:outline-none focus:ring-2 focus:ring-coral/25";
 
+// Web3Forms delivers the submission to the inbox tied to this access key.
+// It must be submitted from the browser (client-side); the key is meant to be
+// public. Override via NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY if desired.
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  "d0ece356-5f12-4f64-ace0-21b508ca12a5";
+
 export function AppointmentForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    // Honeypot: if filled, silently succeed without sending anything.
+    if ((fd.get("company") ?? "").toString().trim()) {
+      form.reset();
+      setStatus("success");
+      return;
+    }
+
+    const name = (fd.get("name") ?? "").toString().trim();
+    const phone = (fd.get("phone") ?? "").toString().trim();
+    const email = (fd.get("email") ?? "").toString().trim();
+    if (!name || !phone || !email) {
+      setStatus("error");
+      setError("Please add your name, phone, and email.");
+      return;
+    }
+
     setStatus("submitting");
     setError("");
 
-    const form = e.currentTarget;
-    const payload = Object.fromEntries(new FormData(form).entries());
-
     try {
-      const res = await fetch("/api/appointment", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New appointment request: ${name}`,
+          from_name: "Latched Beginnings Website",
+          name,
+          email,
+          phone,
+          baby_age: (fd.get("babyAge") ?? "").toString().trim() || "Not provided",
+          preferred_times:
+            (fd.get("preferredTime") ?? "").toString().trim() || "Not provided",
+          message: (fd.get("message") ?? "").toString().trim() || "Not provided",
+        }),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok || !json.ok) {
+      if (!res.ok || !json.success) {
         throw new Error(
-          json.error || "Something went wrong. Please try again or give us a call.",
+          "Something went wrong. Please try again or give us a call.",
         );
       }
       form.reset();

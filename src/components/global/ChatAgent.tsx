@@ -144,18 +144,28 @@ export function ChatAgent() {
     if (!formName.trim() || !formPhone.trim() || formStatus === "sending") return;
     setFormStatus("sending");
     try {
-      const res = await fetch("/api/escalate", {
+      // Web3Forms must be called client-side; the access key is meant to be public.
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json",
+          accept: "application/json",
+        },
         body: JSON.stringify({
-          name: formName,
-          phone: formPhone,
-          bestTime: formTime,
+          access_key:
+            process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+            "d0ece356-5f12-4f64-ace0-21b508ca12a5",
+          subject: `New chat callback: ${formName.trim()}`,
+          from_name: "Latched Beginnings Chat",
+          name: formName.trim(),
+          phone: formPhone.trim(),
+          best_time: formTime.trim() || "Not provided",
+          source: "Website chat callback (Mabel)",
           locale,
         }),
       });
-      const data = (await res.json().catch(() => ({}))) as { ok?: boolean };
-      setFormStatus(res.ok && data.ok ? "success" : "error");
+      const data = (await res.json().catch(() => ({}))) as { success?: boolean };
+      setFormStatus(res.ok && data.success ? "success" : "error");
     } catch {
       setFormStatus("error");
     }
