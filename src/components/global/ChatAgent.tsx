@@ -154,7 +154,7 @@ export function ChatAgent() {
         body: JSON.stringify({
           access_key:
             process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
-            "d0ece356-5f12-4f64-ace0-21b508ca12a5",
+            "3443455b-44cc-4273-a5ec-103b2b0993b8",
           subject: `New chat callback: ${formName.trim()}`,
           from_name: "Latched Beginnings Chat",
           name: formName.trim(),
