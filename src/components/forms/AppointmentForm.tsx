@@ -10,6 +10,8 @@ type Status = "idle" | "submitting" | "success" | "error";
 const inputClass =
   "w-full rounded-2xl border border-blush-200 bg-white px-4 py-3 text-charcoal placeholder:text-stone/55 transition-colors focus:border-coral focus:outline-none focus:ring-2 focus:ring-coral/25";
 
+const selectClass = `${inputClass} cursor-pointer appearance-none pr-11`;
+
 // Web3Forms delivers the submission to the inbox tied to this access key.
 // It must be submitted from the browser (client-side); the key is meant to be
 // public. Override via NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY if desired.
@@ -62,9 +64,18 @@ export function AppointmentForm() {
           baby_age: (fd.get("babyAge") ?? "").toString().trim() || "Not provided",
           preferred_times:
             (fd.get("preferredTime") ?? "").toString().trim() || "Not provided",
+          reason_for_visit:
+            (fd.get("reason") ?? "").toString().trim() || "Not provided",
+          preferred_contact:
+            (fd.get("contactMethod") ?? "").toString().trim() || "No preference",
           heard_about_us:
             (fd.get("heardAbout") ?? "").toString().trim() || "Not provided",
-          message: (fd.get("message") ?? "").toString().trim() || "Not provided",
+          referring_provider:
+            (fd.get("referringProvider") ?? "").toString().trim() ||
+            "Not provided",
+          newsletter_opt_in: fd.get("newsletter") ? "Yes" : "No",
+          additional_notes:
+            (fd.get("message") ?? "").toString().trim() || "Not provided",
         }),
       });
       const json = await res.json().catch(() => ({}));
@@ -212,37 +223,121 @@ export function AppointmentForm() {
           </div>
         </div>
 
-        <div>
-          <label
-            htmlFor="heardAbout"
-            className="mb-1.5 block text-sm font-medium text-charcoal"
-          >
-            How did you hear about us?{" "}
-            <span className="font-normal text-stone">(optional)</span>
-          </label>
-          <div className="relative">
-            <select
-              id="heardAbout"
-              name="heardAbout"
-              defaultValue=""
-              className={`${inputClass} cursor-pointer appearance-none pr-11`}
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label
+              htmlFor="reason"
+              className="mb-1.5 block text-sm font-medium text-charcoal"
             >
-              <option value="">Select one</option>
-              <option value="Referred by a friend or family">
-                Referred by a friend or family
-              </option>
-              <option value="Referred by a doctor or provider">
-                Referred by a doctor or provider
-              </option>
-              <option value="Instagram">Instagram</option>
-              <option value="Facebook">Facebook</option>
-              <option value="Google search">Google search</option>
-              <option value="Local magazine">Local magazine</option>
-              <option value="Other">Other</option>
-            </select>
-            <ChevronDown
-              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-stone"
-              aria-hidden="true"
+              Reason for visit{" "}
+              <span className="font-normal text-stone">(optional)</span>
+            </label>
+            <div className="relative">
+              <select
+                id="reason"
+                name="reason"
+                defaultValue=""
+                className={selectClass}
+              >
+                <option value="">Select one</option>
+                <option value="Tongue-tie or lip-tie evaluation">
+                  Tongue-tie or lip-tie evaluation
+                </option>
+                <option value="Feeding or latch trouble">
+                  Feeding or latch trouble
+                </option>
+                <option value="Lactation support">Lactation support</option>
+                <option value="Second opinion">Second opinion</option>
+                <option value="Post-op or follow-up care">
+                  Post-op or follow-up care
+                </option>
+                <option value="Provider inquiry (coaching or referrals)">
+                  Provider inquiry (coaching or referrals)
+                </option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+              <ChevronDown
+                className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-stone"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="contactMethod"
+              className="mb-1.5 block text-sm font-medium text-charcoal"
+            >
+              Preferred contact method{" "}
+              <span className="font-normal text-stone">(optional)</span>
+            </label>
+            <div className="relative">
+              <select
+                id="contactMethod"
+                name="contactMethod"
+                defaultValue=""
+                className={selectClass}
+              >
+                <option value="">Select one</option>
+                <option value="Call">Call</option>
+                <option value="Text">Text</option>
+                <option value="Email">Email</option>
+              </select>
+              <ChevronDown
+                className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-stone"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label
+              htmlFor="heardAbout"
+              className="mb-1.5 block text-sm font-medium text-charcoal"
+            >
+              How did you hear about us?{" "}
+              <span className="font-normal text-stone">(optional)</span>
+            </label>
+            <div className="relative">
+              <select
+                id="heardAbout"
+                name="heardAbout"
+                defaultValue=""
+                className={selectClass}
+              >
+                <option value="">Select one</option>
+                <option value="Referred by a friend or family">
+                  Referred by a friend or family
+                </option>
+                <option value="Referred by a doctor or provider">
+                  Referred by a doctor or provider
+                </option>
+                <option value="Instagram">Instagram</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Google search">Google search</option>
+                <option value="Local magazine">Local magazine</option>
+                <option value="Other">Other</option>
+              </select>
+              <ChevronDown
+                className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-stone"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="referringProvider"
+              className="mb-1.5 block text-sm font-medium text-charcoal"
+            >
+              Referring provider{" "}
+              <span className="font-normal text-stone">(optional)</span>
+            </label>
+            <input
+              id="referringProvider"
+              name="referringProvider"
+              placeholder="e.g. Dr. Smith, ABC Pediatrics"
+              className={inputClass}
             />
           </div>
         </div>
@@ -252,14 +347,14 @@ export function AppointmentForm() {
             htmlFor="message"
             className="mb-1.5 block text-sm font-medium text-charcoal"
           >
-            How can we help?{" "}
+            Anything else we should know?{" "}
             <span className="font-normal text-stone">(optional)</span>
           </label>
           <textarea
             id="message"
             name="message"
             rows={4}
-            placeholder="Tell us a little about what's bringing you in."
+            placeholder="Anything that would help us prepare for your visit."
             className={`${inputClass} resize-y`}
           />
           <p className="mt-2 text-xs leading-relaxed text-stone">
@@ -267,6 +362,19 @@ export function AppointmentForm() {
             everything privately at your visit.
           </p>
         </div>
+
+        <label className="flex items-start gap-3 text-sm leading-relaxed text-stone">
+          <input
+            type="checkbox"
+            name="newsletter"
+            value="Yes"
+            className="mt-0.5 h-5 w-5 shrink-0 rounded-md border-blush-200 accent-coral focus:ring-2 focus:ring-coral/25"
+          />
+          <span>
+            Yes, send me occasional feeding tips and updates from Latched
+            Beginnings.
+          </span>
+        </label>
 
         {status === "error" ? (
           <p
