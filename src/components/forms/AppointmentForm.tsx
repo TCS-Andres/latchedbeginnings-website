@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CalendarCheck, Check, Loader2 } from "lucide-react";
+import { CalendarCheck, Check, ChevronDown, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/lib/site";
 
@@ -62,6 +62,8 @@ export function AppointmentForm() {
           baby_age: (fd.get("babyAge") ?? "").toString().trim() || "Not provided",
           preferred_times:
             (fd.get("preferredTime") ?? "").toString().trim() || "Not provided",
+          heard_about_us:
+            (fd.get("heardAbout") ?? "").toString().trim() || "Not provided",
           message: (fd.get("message") ?? "").toString().trim() || "Not provided",
         }),
       });
@@ -206,6 +208,41 @@ export function AppointmentForm() {
               name="preferredTime"
               placeholder="e.g. weekday mornings"
               className={inputClass}
+            />
+          </div>
+        </div>
+
+        <div>
+          <label
+            htmlFor="heardAbout"
+            className="mb-1.5 block text-sm font-medium text-charcoal"
+          >
+            How did you hear about us?{" "}
+            <span className="font-normal text-stone">(optional)</span>
+          </label>
+          <div className="relative">
+            <select
+              id="heardAbout"
+              name="heardAbout"
+              defaultValue=""
+              className={`${inputClass} cursor-pointer appearance-none pr-11`}
+            >
+              <option value="">Select one</option>
+              <option value="Referred by a friend or family">
+                Referred by a friend or family
+              </option>
+              <option value="Referred by a doctor or provider">
+                Referred by a doctor or provider
+              </option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Google search">Google search</option>
+              <option value="Local magazine">Local magazine</option>
+              <option value="Other">Other</option>
+            </select>
+            <ChevronDown
+              className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-stone"
+              aria-hidden="true"
             />
           </div>
         </div>
