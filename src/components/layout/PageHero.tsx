@@ -45,7 +45,7 @@ export function PageHero({
               )}
             >
               {crumbs.map((c, i) => (
-                <span key={c.href} className="inline-flex items-center gap-1.5">
+                <span key={`${i}-${c.href}`} className="inline-flex items-center gap-1.5">
                   {i > 0 ? (
                     <ChevronRight className="h-3.5 w-3.5 text-coral/60" aria-hidden="true" />
                   ) : null}
