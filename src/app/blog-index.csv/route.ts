@@ -5,8 +5,12 @@ import type { BlogPost } from "@/lib/blog";
  * Machine-readable blog index, served as CSV so a Google Sheet can pull it live
  * with =IMPORTDATA(). Unlike the site's other blog surfaces, this lists every
  * post, including future-dated ones that have not published yet. A scheduled
- * post shows its date, title, and description with an empty Link cell; the link
- * fills in on its publish date.
+ * post shows its date, category, title, and description with an empty Link cell;
+ * the link fills in on its publish date.
+ *
+ * Column order and the ascending sort are load-bearing: the tracking sheet keeps a
+ * hand-typed Notes column immediately to the right of the imported block, so adding
+ * a column here means moving that Notes column over by one in the sheet first.
  *
  * Re-renders hourly so links appear on schedule without a redeploy.
  */
@@ -34,10 +38,11 @@ export function GET() {
     .sort((a, b) => a.date.localeCompare(b.date));
 
   const rows = [
-    ["Date", "Title", "Description", "Link"].map(cell).join(","),
+    ["Date", "Category", "Title", "Description", "Link"].map(cell).join(","),
     ...posts.map((post) =>
       [
         post.date,
+        cell(post.topic),
         cell(post.title),
         cell(post.excerpt),
         cell(post.date <= now ? `${BASE}/blog/${post.slug}` : ""),
