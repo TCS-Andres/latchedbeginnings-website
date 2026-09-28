@@ -1,29 +1,36 @@
 import postsData from "@/content/blog.json";
+import plannedData from "@/content/blog-planned.json";
 import type { BlogPost } from "@/lib/blog";
 
 /**
- * Machine-readable blog index, served as CSV so a Google Sheet can pull it live
- * with =IMPORTDATA(). Unlike the site's other blog surfaces, this lists every
- * post, including future-dated ones that have not published yet. A scheduled
- * post shows its date, category, title, and description with an empty Link cell;
- * the link fills in on its publish date.
+ * Machine-readable blog index, served as CSV so the marketing team's Google
+ * Sheet can pull it live with =IMPORTDATA().
  *
- * Column order and the ascending sort are load-bearing: the tracking sheet keeps a
- * hand-typed Notes column immediately to the right of the imported block, so adding
- * a column here means moving that Notes column over by one in the sheet first.
+ * It merges two sources so the sheet shows the whole editorial calendar:
  *
- * Optional `?from=YYYY-MM-DD` limits the feed to posts on or after that date,
- * which is how the tracking sheet shows just the current batch instead of the
- * whole archive. Without it, every post is returned.
+ *   - blog.json:         posts that are actually written. Published once their
+ *                        date arrives, Scheduled until then.
+ *   - blog-planned.json: topics committed for a future date but not written
+ *                        yet. These are Planned, and their titles are working
+ *                        titles that can still change in the final copy.
  *
- * Optional `?order=desc` returns newest first. The tracking sheet uses it so a
- * new post lands at the top. Default is ascending.
+ * A planned entry is dropped the moment blog.json has a real post on the same
+ * date, so the autopilot replaces a Planned row with a Scheduled one just by
+ * publishing. Planned topics never reach the site itself: only this route reads
+ * blog-planned.json.
+ *
+ * Optional `?from=YYYY-MM-DD` limits the feed to that date onward, and
+ * `?order=desc` returns newest first. The sheet uses both. Absent or malformed
+ * values fall back to everything, ascending.
  *
  * Re-renders hourly so links appear on schedule without a redeploy.
  */
 export const revalidate = 3600;
 
 const BASE = "https://www.latchedbeginnings.com";
+
+type PlannedPost = Pick<BlogPost, "date" | "topic" | "title" | "excerpt">;
+type Row = PlannedPost & { status: "Published" | "Scheduled" | "Planned"; slug?: string };
 
 /** Today's date (YYYY-MM-DD) in the practice's timezone, matching lib/blog.ts. */
 function today(): string {
@@ -45,29 +52,43 @@ export function GET(request: Request) {
   const params = new URL(request.url).searchParams;
   const from = params.get("from");
   const cutoff = from && ISO_DATE.test(from) ? from : null;
-
   const desc = params.get("order") === "desc";
 
-  const posts = (postsData as BlogPost[])
-    .filter((post) => !cutoff || post.date >= cutoff)
+  const written = postsData as BlogPost[];
+  const writtenDates = new Set(written.map((post) => post.date));
+
+  const rows: Row[] = [
+    ...written.map((post) => ({
+      ...post,
+      status: (post.date <= now ? "Published" : "Scheduled") as Row["status"],
+    })),
+    // A planned topic whose date now has a real post has been written; drop it.
+    ...(plannedData as PlannedPost[])
+      .filter((planned) => !writtenDates.has(planned.date))
+      .map((planned) => ({ ...planned, status: "Planned" as const })),
+  ]
+    .filter((row) => !cutoff || row.date >= cutoff)
     .sort((a, b) =>
       desc ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date),
     );
 
-  const rows = [
-    ["Date", "Category", "Title", "Description", "Link"].map(cell).join(","),
-    ...posts.map((post) =>
+  const lines = [
+    ["Date", "Status", "Category", "Title", "Description", "Link"]
+      .map(cell)
+      .join(","),
+    ...rows.map((row) =>
       [
-        post.date,
-        cell(post.topic),
-        cell(post.title),
-        cell(post.excerpt),
-        cell(post.date <= now ? `${BASE}/blog/${post.slug}` : ""),
+        row.date,
+        cell(row.status),
+        cell(row.topic),
+        cell(row.title),
+        cell(row.excerpt),
+        cell(row.status === "Published" ? `${BASE}/blog/${row.slug}` : ""),
       ].join(","),
     ),
   ];
 
-  return new Response(`${rows.join("\n")}\n`, {
+  return new Response(`${lines.join("\n")}\n`, {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
       "Content-Disposition": 'inline; filename="latched-blog-index.csv"',
