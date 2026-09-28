@@ -16,6 +16,9 @@ import type { BlogPost } from "@/lib/blog";
  * which is how the tracking sheet shows just the current batch instead of the
  * whole archive. Without it, every post is returned.
  *
+ * Optional `?order=desc` returns newest first. The tracking sheet uses it so a
+ * new post lands at the top. Default is ascending.
+ *
  * Re-renders hourly so links appear on schedule without a redeploy.
  */
 export const revalidate = 3600;
@@ -39,12 +42,17 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 export function GET(request: Request) {
   const now = today();
-  const from = new URL(request.url).searchParams.get("from");
+  const params = new URL(request.url).searchParams;
+  const from = params.get("from");
   const cutoff = from && ISO_DATE.test(from) ? from : null;
+
+  const desc = params.get("order") === "desc";
 
   const posts = (postsData as BlogPost[])
     .filter((post) => !cutoff || post.date >= cutoff)
-    .sort((a, b) => a.date.localeCompare(b.date));
+    .sort((a, b) =>
+      desc ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date),
+    );
 
   const rows = [
     ["Date", "Category", "Title", "Description", "Link"].map(cell).join(","),
