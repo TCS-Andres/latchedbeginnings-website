@@ -12,6 +12,10 @@ import type { BlogPost } from "@/lib/blog";
  * hand-typed Notes column immediately to the right of the imported block, so adding
  * a column here means moving that Notes column over by one in the sheet first.
  *
+ * Optional `?from=YYYY-MM-DD` limits the feed to posts on or after that date,
+ * which is how the tracking sheet shows just the current batch instead of the
+ * whole archive. Without it, every post is returned.
+ *
  * Re-renders hourly so links appear on schedule without a redeploy.
  */
 export const revalidate = 3600;
@@ -31,10 +35,15 @@ function cell(value: string): string {
   return `"${clean.replace(/"/g, '""')}"`;
 }
 
-export function GET() {
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+export function GET(request: Request) {
   const now = today();
+  const from = new URL(request.url).searchParams.get("from");
+  const cutoff = from && ISO_DATE.test(from) ? from : null;
+
   const posts = (postsData as BlogPost[])
-    .slice()
+    .filter((post) => !cutoff || post.date >= cutoff)
     .sort((a, b) => a.date.localeCompare(b.date));
 
   const rows = [
