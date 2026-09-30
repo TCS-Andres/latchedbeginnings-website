@@ -26,7 +26,10 @@ import type { BlogPost } from "@/lib/blog";
  * Keep them LAST: the sheet's own columns start right after the spill.
  *
  * Optional `?from=YYYY-MM-DD` limits the feed to that date onward, and
- * `?order=desc` returns newest first. The sheet uses both. Absent or malformed
+ * `?order=desc` returns newest first. The sheet uses only `from`, in date order, so new
+ * posts append at the bottom and rows never shift: the team types an Approval status into each
+ * row, which must stay next to its post. Adding a post dated before existing ones would shift
+ * them. Absent or malformed
  * values fall back to everything, ascending.
  *
  * Re-renders hourly so links appear on schedule without a redeploy.
