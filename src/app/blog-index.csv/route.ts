@@ -1,5 +1,6 @@
 import postsData from "@/content/blog.json";
 import plannedData from "@/content/blog-planned.json";
+import reviewDocs from "@/content/blog-review.json";
 import type { BlogPost } from "@/lib/blog";
 
 /**
@@ -18,6 +19,11 @@ import type { BlogPost } from "@/lib/blog";
  * date, so the autopilot replaces a Planned row with a Scheduled one just by
  * publishing. Planned topics never reach the site itself: only this route reads
  * blog-planned.json.
+ *
+ * Two review columns sit after Link: Review Doc (the Google Doc the Latched team
+ * reads and approves before a post goes live, keyed by slug in blog-review.json)
+ * and Cover (the cover image URL, which the sheet renders with =IMAGE()).
+ * Keep them LAST: the sheet's own columns start right after the spill.
  *
  * Optional `?from=YYYY-MM-DD` limits the feed to that date onward, and
  * `?order=desc` returns newest first. The sheet uses both. Absent or malformed
@@ -73,7 +79,7 @@ export function GET(request: Request) {
     );
 
   const lines = [
-    ["Date", "Status", "Category", "Title", "Description", "Link"]
+    ["Date", "Status", "Category", "Title", "Description", "Link", "Review Doc", "Cover"]
       .map(cell)
       .join(","),
     ...rows.map((row) =>
@@ -84,6 +90,8 @@ export function GET(request: Request) {
         cell(row.title),
         cell(row.excerpt),
         cell(row.status === "Published" ? `${BASE}/blog/${row.slug}` : ""),
+        cell((row.slug && (reviewDocs as Record<string, string>)[row.slug]) || ""),
+        cell(row.slug ? `${BASE}/images/blog/${row.slug}.jpg` : ""),
       ].join(","),
     ),
   ];
