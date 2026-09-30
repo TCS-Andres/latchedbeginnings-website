@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/layout/CtaBanner";
 import { Preloader } from "@/components/layout/Preloader";
 import { ChatAgent } from "@/components/global/ChatAgent";
+import { Analytics } from "@/components/analytics/Analytics";
 import { site } from "@/lib/site";
 
 const gelasio = Gelasio({
@@ -109,6 +110,7 @@ export default function RootLayout({
         <CtaBanner />
         <Footer />
         <ChatAgent />
+        <Analytics />
         {/* UserWay accessibility widget (same account as the prior site). */}
         <Script
           src="https://cdn.userway.org/widget.js"
