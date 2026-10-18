@@ -8,6 +8,10 @@ import { Reveal } from "@/components/ui/Reveal";
 import { PageHero } from "@/components/layout/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/site";
+import { isWorkshopPast, workshop } from "@/lib/content/workshop";
+
+// Re-render hourly so the workshop banner drops off after the event.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "For Providers",
@@ -57,6 +61,29 @@ export default function ProvidersPage() {
 
       <Section tone="white">
         <Container size="wide">
+          {!isWorkshopPast() ? (
+            <Reveal>
+              <div className="mb-10 flex flex-col items-start justify-between gap-6 rounded-[1.75rem] border border-coral/30 bg-blush p-7 sm:flex-row sm:items-center sm:p-9">
+                <div>
+                  <p className="eyebrow mb-2">
+                    Upcoming Workshop · {workshop.dateLabel}
+                  </p>
+                  <h2 className="font-display text-2xl text-ink">
+                    {workshop.title}
+                  </h2>
+                  <p className="mt-2 max-w-2xl text-base leading-relaxed text-stone">
+                    A hands-on, small-group afternoon for doulas, IBCLCs, and
+                    midwives. {workshop.timeLabel}, ${workshop.price}, limited
+                    to {workshop.capacity} seats.
+                  </p>
+                </div>
+                <Button href="/workshop" className="shrink-0">
+                  {workshop.status === "full" ? "Join the Waitlist" : "Reserve a Seat"}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </div>
+            </Reveal>
+          ) : null}
           <div className="grid gap-7 md:grid-cols-2">
             {cards.map((card, i) => (
               <Reveal as="article" key={card.href} delay={i * 90}>

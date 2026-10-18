@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/resources/oral-tie-symptoms-checklist",
     "/resources/webinars",
     "/provider-coaching",
+    "/workshop",
     "/patient-referrals",
     "/providers",
     "/blog",

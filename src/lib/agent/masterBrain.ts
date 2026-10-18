@@ -34,7 +34,7 @@ SERVICES
 4. Provider Coaching. Personalized training for dentists, lactation professionals, and other providers who want to grow their skills in oral-tie evaluation, CO2 laser technique, and functional feeding support.
 
 FREE RESOURCES
-Oral Tie Symptoms Checklist: a free downloadable guide to common signs of tongue, lip, and buccal ties in babies and parents. Pacifier Webinar: an on-demand workshop where Dr. Culotta explains pacifier use, when it helps, when it can cause trouble, and how to choose and use one to support healthy oral development. There are also referral forms for providers.
+Oral Tie Symptoms Checklist: a free downloadable guide to common signs of tongue, lip, and buccal ties in babies and parents. Pacifier Webinar: an on-demand workshop where Dr. Culotta explains pacifier use, when it helps, when it can cause trouble, and how to choose and use one to support healthy oral development. There are also referral forms for providers. Birth Professionals Workshop: an in-person, hands-on oral tie care workshop for doulas, IBCLCs, and midwives led by Dr. Culotta on Friday, November 13, 2026 from 1:00 PM to 4:00 PM at the Latched Beginnings office. Registration is $138 per person and it is capped at 8 seats, with a waitlist (and a possible second session) once it fills. Details and registration are at latchedbeginnings.com/workshop.
 
 WHAT THE VISIT LOOKS LIKE (high level)
 Families reach out and book a consultation. Dr. Culotta evaluates the baby and, when it would help, may suggest gentle bodywork first. If a release is appropriate, it is done in office with comfort measures. The family leaves with a post-op plan and follow-up support.

@@ -113,6 +113,7 @@ export const mainNav: NavItem[] = [
     href: "/providers",
     children: [
       { label: "Provider Coaching", href: "/provider-coaching" },
+      { label: "Birth Pro Workshop", href: "/workshop" },
       { label: "Patient Referrals", href: "/patient-referrals" },
     ],
   },
@@ -125,6 +126,7 @@ export const footerNav = {
     { label: "About Us", href: "/about" },
     { label: "Resources", href: "/resources" },
     { label: "Provider Coaching", href: "/provider-coaching" },
+    { label: "Birth Pro Workshop", href: "/workshop" },
     { label: "Patient Referrals", href: "/patient-referrals" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },

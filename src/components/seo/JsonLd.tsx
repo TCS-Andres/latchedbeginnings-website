@@ -140,3 +140,61 @@ export function FaqJsonLd({
   };
   return <JsonLd data={data} />;
 }
+
+/** In-person event with a ticket offer (used by the workshop landing page). */
+export function EventJsonLd({
+  name,
+  description,
+  path,
+  startDate,
+  endDate,
+  image,
+  price,
+  soldOut,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  startDate: string;
+  endDate: string;
+  image: string;
+  price: number;
+  soldOut: boolean;
+}) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "EducationEvent",
+    name,
+    description,
+    url: `${site.url}${path}`,
+    startDate,
+    endDate,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    image: [`${site.url}${image}`],
+    location: {
+      "@type": "Place",
+      name: site.name,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.address.street,
+        addressLocality: site.address.city,
+        addressRegion: site.address.region,
+        postalCode: site.address.postalCode,
+        addressCountry: site.address.country,
+      },
+    },
+    organizer: { "@type": "Organization", name: site.name, url: site.url },
+    performer: { "@type": "Person", name: site.founder },
+    offers: {
+      "@type": "Offer",
+      price,
+      priceCurrency: "USD",
+      availability: soldOut
+        ? "https://schema.org/SoldOut"
+        : "https://schema.org/LimitedAvailability",
+      url: `${site.url}${path}#register`,
+    },
+  };
+  return <JsonLd data={data} />;
+}
