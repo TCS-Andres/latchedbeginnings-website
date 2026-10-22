@@ -488,7 +488,7 @@ export default function WorkshopPage() {
                 Dr. Kacie Culotta, DMD, CLC
               </h2>
               <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-coral-deep">
-                Dentist · Lactation Counselor · Myofunctional Specialist · Mom of Two
+                Dentist · Lactation Counselor · Myofunctional Focus · Mom of Two
               </p>
               <p className="mt-6 text-base leading-relaxed text-stone sm:text-lg">
                 Dr. Culotta is the only dentist in Austin with both a laser

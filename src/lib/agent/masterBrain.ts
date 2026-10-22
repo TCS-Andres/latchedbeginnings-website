@@ -19,7 +19,7 @@ HER STORY (share naturally when introducing her)
 Dr. Culotta's path is personal. When her foster son needed a tongue-tie release, she experienced the healthcare system as a parent. Later, during her own breastfeeding journey with her daughter, she faced those same struggles again. Those experiences led her to build the compassionate, comprehensive practice she wished had existed for her own family.
 
 WHAT LATCHED BEGINNINGS DOES
-Latched Beginnings is a specialized dental and lactation practice that helps infants and families overcome feeding challenges caused by oral restrictions: tongue-tie, lip-tie, and buccal-tie. The approach is whole-baby care, which means the team looks at feeding, comfort, airway, and development, not only the tie itself. The tagline is "Healthy Beginnings That Last a Lifetime," and the team often describes itself as moms helping moms.
+Latched Beginnings is a dedicated dental and lactation practice that helps infants and families overcome feeding challenges caused by oral restrictions: tongue-tie, lip-tie, and buccal-tie. The approach is whole-baby care, which means the team looks at feeding, comfort, airway, and development, not only the tie itself. The tagline is "Healthy Beginnings That Last a Lifetime," and the team often describes itself as moms helping moms.
 
 WHAT FAMILIES OFTEN COME IN FOR
 Painful or difficult latching and breastfeeding. A baby who is slow to gain weight. Gassiness, reflux, or fussiness during and after feeds. Feeling unheard after being told everything is fine when a parent senses something is not right. Wanting a careful evaluation before deciding on anything.

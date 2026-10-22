@@ -86,7 +86,7 @@ export const services: Service[] = [
         },
         {
           title: "Expertise You Can Trust",
-          body: "Dr. Kacie Culotta is both a laser-certified dentist and a lactation counselor with specialized training in oral ties, a combination unique in Austin.",
+          body: "Dr. Kacie Culotta is both a laser-certified dentist and a lactation counselor with focused training in oral ties, a combination unique in Austin.",
         },
         {
           title: "State-of-the-Art Technology",
@@ -309,7 +309,7 @@ export const services: Service[] = [
         },
         {
           title: "Faster Recovery, Better Outcomes",
-          body: "Our specialized care supports comfortable healing, reduces discomfort, and helps results last.",
+          body: "Our dedicated care supports comfortable healing, reduces discomfort, and helps results last.",
         },
         {
           title: "Ongoing Support for Long-Term Success",

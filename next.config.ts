@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         destination: "/resources/webinars/all-about-pacifiers",
         permanent: true,
       },
+      {
+        // Renamed: Dr. Culotta can't be described as a specialist.
+        source: "/blog/choose-tongue-tie-specialist-austin",
+        destination: "/blog/choose-tongue-tie-provider-austin",
+        permanent: true,
+      },
     ];
   },
 };

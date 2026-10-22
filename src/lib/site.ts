@@ -9,7 +9,7 @@ export const site = {
   legalName: "Latched Beginnings",
   tagline: "Healthy Beginnings That Last a Lifetime",
   description:
-    "Latched Beginnings is a specialized dental and lactation practice in Austin, TX. Dr. Kacie Culotta, DMD offers gentle CO2 laser tongue-tie, lip-tie, and buccal-tie releases paired with lactation counseling and whole-baby feeding support.",
+    "Latched Beginnings is a dedicated dental and lactation practice in Austin, TX. Dr. Kacie Culotta, DMD offers gentle CO2 laser tongue-tie, lip-tie, and buccal-tie releases paired with lactation counseling and whole-baby feeding support.",
   url: "https://latchedbeginnings.com",
   locale: "en_US",
 

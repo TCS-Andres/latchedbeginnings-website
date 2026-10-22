@@ -195,7 +195,7 @@ export default function AboutPage() {
               Training You Can Trust
             </h2>
             <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
-              More than ten years of experience, paired with specialized
+              More than ten years of experience, paired with focused
               certifications in laser dentistry and lactation support, so your
               family is in steady, qualified hands.
             </p>
