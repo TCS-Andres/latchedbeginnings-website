@@ -33,7 +33,11 @@ import {
   FaqJsonLd,
 } from "@/components/seo/JsonLd";
 import { site } from "@/lib/site";
-import { isWorkshopPast, workshop } from "@/lib/content/workshop";
+import {
+  isCheckoutOpen,
+  isWorkshopPast,
+  workshop,
+} from "@/lib/content/workshop";
 
 // Re-render hourly so the page flips to its "next session" state on its own
 // once the workshop date passes.
@@ -194,7 +198,7 @@ export default function WorkshopPage() {
   const mode = formMode();
   const past = mode === "next";
   const full = mode === "waitlist";
-  const useCheckout = mode === "reserve" && Boolean(workshop.registrationUrl);
+  const useCheckout = isCheckoutOpen();
 
   const ctaLabel = past
     ? "Get Notified About the Next Workshop"
@@ -269,10 +273,14 @@ export default function WorkshopPage() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Button href="#register" size="lg">
-                  {ctaLabel}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Button>
+                {useCheckout ? (
+                  <WorkshopCheckoutButton />
+                ) : (
+                  <Button href="#register" size="lg">
+                    {ctaLabel}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Button>
+                )}
                 <Button href="#learn" size="lg" variant="outline">
                   What You&apos;ll Learn
                 </Button>
@@ -599,7 +607,7 @@ export default function WorkshopPage() {
                   <p className="font-display text-5xl text-ink">${workshop.price}</p>
                   <p className="mt-2 text-sm text-stone">per person</p>
                   <div className="mt-8">
-                    <WorkshopCheckoutButton href={workshop.registrationUrl} />
+                    <WorkshopCheckoutButton label={`Register & Pay $${workshop.price}`} className="w-full" />
                   </div>
                   <p className="mt-5 text-xs leading-relaxed text-stone">
                     Secure checkout by Stripe. Questions? Call{" "}
@@ -648,10 +656,14 @@ export default function WorkshopPage() {
               the workshop is full.
             </p>
             <div className="mt-8 flex justify-center">
-              <Button href="#register" size="lg">
-                {ctaLabel}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Button>
+              {useCheckout ? (
+                <WorkshopCheckoutButton label={`Register Now · $${workshop.price}`} />
+              ) : (
+                <Button href="#register" size="lg">
+                  {ctaLabel}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              )}
             </div>
           </Reveal>
         </Container>

@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { WorkshopCheckoutButton } from "@/components/forms/WorkshopForm";
+import { isCheckoutOpen } from "@/lib/content/workshop";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/Button";
@@ -15,6 +17,9 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const pathname = usePathname();
+  // On the workshop landing page, registration replaces appointment booking
+  // as the header's call to action.
+  const workshopCta = pathname === "/workshop" && isCheckoutOpen();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -110,13 +115,21 @@ export function Header() {
               <Phone className="h-4 w-4 text-coral" aria-hidden="true" />
               {site.phone}
             </a>
-            <Button
-              href={site.bookingUrl}
-              size="md"
-              className="whitespace-nowrap"
-            >
-              {site.bookingLabel}
-            </Button>
+            {workshopCta ? (
+              <WorkshopCheckoutButton
+                label="Register Now"
+                size="md"
+                className="whitespace-nowrap"
+              />
+            ) : (
+              <Button
+                href={site.bookingUrl}
+                size="md"
+                className="whitespace-nowrap"
+              >
+                {site.bookingLabel}
+              </Button>
+            )}
           </div>
 
           {/* Mobile toggle */}
@@ -191,9 +204,16 @@ export function Header() {
               )}
             </nav>
             <div className="mt-8 flex flex-col gap-4">
-              <Button href={site.bookingUrl} size="lg" className="w-full">
-                {site.bookingLabel}
-              </Button>
+              {workshopCta ? (
+                <WorkshopCheckoutButton
+                  label="Register for the Workshop"
+                  className="w-full"
+                />
+              ) : (
+                <Button href={site.bookingUrl} size="lg" className="w-full">
+                  {site.bookingLabel}
+                </Button>
+              )}
               <a
                 href={site.phoneHref}
                 className="flex items-center justify-center gap-2 text-base font-medium text-charcoal"

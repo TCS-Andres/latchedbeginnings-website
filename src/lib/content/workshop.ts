@@ -26,9 +26,11 @@ export const workshop = {
 
   status: "open" as WorkshopStatus,
 
-  // Stripe Payment Link for checkout. Leave empty to collect reservations with
-  // the on-page form instead (the team then emails a payment link).
-  registrationUrl: "",
+  // Stripe Payment Link for checkout ("Oral Ties Birth Professionals Course",
+  // $138). Leave empty to collect reservations with the on-page form instead.
+  // When the 8 seats sell out, set status to "full" so the page shows the
+  // waitlist instead of checkout.
+  registrationUrl: "https://buy.stripe.com/9B69ATfpI06peu33N7fEk06",
 
   // Campaign tag used for the UTM links shared on social, email, and flyers.
   utmCampaign: "birth-pro-workshop-nov-2026",
@@ -46,4 +48,13 @@ function todayInAustin(): string {
 
 export function isWorkshopPast(): boolean {
   return todayInAustin() > workshop.date;
+}
+
+/** True when visitors should be sent straight to Stripe checkout. */
+export function isCheckoutOpen(): boolean {
+  return (
+    workshop.status === "open" &&
+    Boolean(workshop.registrationUrl) &&
+    !isWorkshopPast()
+  );
 }

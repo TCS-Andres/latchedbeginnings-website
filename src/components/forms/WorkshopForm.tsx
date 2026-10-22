@@ -360,15 +360,23 @@ export function WorkshopForm({ mode }: { mode: WorkshopFormMode }) {
  * Checkout button for when a Stripe Payment Link is set. Passes the visitor's
  * UTM tags through so Stripe records the source on the payment as well.
  */
-export function WorkshopCheckoutButton({ href }: { href: string }) {
+export function WorkshopCheckoutButton({
+  label = `Register Now · $${workshop.price}`,
+  size = "lg",
+  className,
+}: {
+  label?: string;
+  size?: "md" | "lg";
+  className?: string;
+}) {
   const utm = useUtm();
-  const url = new URL(href);
+  const url = new URL(workshop.registrationUrl);
   for (const [key, value] of Object.entries(utm)) {
     if (value) url.searchParams.set(key, value);
   }
   return (
-    <Button href={url.toString()} size="lg" className="w-full">
-      Register &amp; Pay ${workshop.price}
+    <Button href={url.toString()} size={size} className={className}>
+      {label}
       <ArrowRight className="h-4 w-4" aria-hidden="true" />
     </Button>
   );

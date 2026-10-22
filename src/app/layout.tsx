@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/layout/CtaBanner";
+import { HideOnRoutes } from "@/components/layout/HideOnRoutes";
 import { Preloader } from "@/components/layout/Preloader";
 import { ChatAgent } from "@/components/global/ChatAgent";
 import { Analytics } from "@/components/analytics/Analytics";
@@ -107,7 +108,10 @@ export default function RootLayout({
         <Preloader />
         <Header />
         <main className="flex-1">{children}</main>
-        <CtaBanner />
+        {/* The workshop page closes with its own registration CTA. */}
+        <HideOnRoutes routes={["/workshop"]}>
+          <CtaBanner />
+        </HideOnRoutes>
         <Footer />
         <ChatAgent />
         <Analytics />
