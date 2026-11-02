@@ -14,9 +14,9 @@ export const workshop = {
 
   // ISO date (America/Chicago). After this date the page shows the
   // "join the list for the next session" state automatically.
-  date: "2026-11-13",
-  dateLabel: "Friday, November 13, 2026",
-  dateShort: "Nov 13",
+  date: "2026-11-20",
+  dateLabel: "Friday, November 20, 2026",
+  dateShort: "Nov 20",
   startTime: "13:00",
   endTime: "16:00",
   timeLabel: "1:00 PM to 4:00 PM CT",
