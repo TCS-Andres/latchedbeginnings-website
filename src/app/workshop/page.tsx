@@ -12,6 +12,7 @@ import {
   Hand,
   MapPin,
   Baby,
+  Stethoscope,
   Ticket,
   Users,
 } from "lucide-react";
@@ -72,6 +73,16 @@ const audience = [
     icon: Users,
     title: "Midwives",
     body: "Spot early signs of tongue, lip, and buccal ties in the first days and weeks, and know when a family needs a referral for evaluation.",
+  },
+  {
+    icon: Hand,
+    title: "Structural support & bodyworkers",
+    body: "Understand how oral ties connect to tension and body function, and coordinate your bodywork with the release team before and after a procedure.",
+  },
+  {
+    icon: Stethoscope,
+    title: "Postpartum & pediatric healthcare professionals",
+    body: "Recognize feeding red flags during early visits, know when to refer for an oral tie evaluation, and help families understand what comes next.",
   },
 ];
 
@@ -143,7 +154,7 @@ const faqItems = [
   {
     question: "Who is this workshop designed for?",
     answer:
-      "This workshop is built exclusively for birth professionals, including doulas, IBCLCs and other lactation professionals, and midwives. Postpartum and L&D nurses and other birth workers who support families through early feeding are welcome too.",
+      "This workshop is built exclusively for birth professionals, including doulas, IBCLCs and other lactation professionals, midwives, structural support and bodyworkers, and postpartum and pediatric healthcare professionals. L&D nurses and other birth workers who support families through early feeding are welcome too.",
   },
   {
     question: "Do I need prior experience with oral ties?",
@@ -341,11 +352,16 @@ export default function WorkshopPage() {
             title="Built Exclusively for Birth Professionals"
             intro="This small-group training is tailored to your role in supporting families through postpartum feeding and recovery."
           />
-          <div className="mt-12 grid gap-7 md:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-7">
             {audience.map((item, i) => {
               const Icon = item.icon;
               return (
-                <Reveal as="article" key={item.title} delay={i * 90}>
+                <Reveal
+                  as="article"
+                  key={item.title}
+                  delay={i * 90}
+                  className="w-full md:w-[calc((100%-1.75rem)/2)] lg:w-[calc((100%-3.5rem)/3)]"
+                >
                   <div className="flex h-full flex-col rounded-[1.75rem] border border-blush-200 bg-white p-8">
                     <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blush text-coral-deep">
                       <Icon className="h-6 w-6" aria-hidden="true" />
