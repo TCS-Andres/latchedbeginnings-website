@@ -1,6 +1,6 @@
-"""Build the Latched Beginnings "Newborn Feeding Guide: The First 6 Weeks" PDF.
+"""Build the Latched Beginnings "Newborn Feeding Guide: The First 6 Weeks" PDF (v2, photo edition).
 
-Draft for Dr. Culotta's clinical review. Run: python3 scripts/build_newborn_feeding_guide.py (needs weasyprint). Brand: Gelasio headings, Montserrat body,
+Draft for Dr. Culotta's clinical review. Run: python3 scripts/build_newborn_feeding_guide.py (needs weasyprint). Photos in scripts/guide-images are Kie.ai (Nano Banana Pro) generations; Dr. Culotta's photo is her real portrait. Brand: Gelasio headings, Montserrat body,
 coral #E0949B / deep coral #C46E78 / blush #FDEFF1 / charcoal #2D2D2D / gold #C9A86A.
 """
 import sys
@@ -10,6 +10,7 @@ from weasyprint import HTML
 HERE = Path(__file__).parent
 SITE = HERE.parent
 IMG = SITE / "public/images"
+PHOTOS = HERE / "guide-images"
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else SITE / "public/downloads/newborn-feeding-guide.pdf"
 
 CSS = f"""
@@ -43,14 +44,26 @@ td {{ padding: 5pt; border-bottom: 0.5pt solid #F3DADD; vertical-align: top; }}
 .log td, .log th {{ height: 17pt; text-align: center; border: 0.5pt solid #F0CCD1; }}
 .log th {{ background: #FDEFF1; color: #C46E78; }}
 .note {{ font-size: 7.6pt; color: #6F6A67; margin-top: 8pt; }}
-.cover {{ page: cover; height: 11in; background: #FDEFF1; position: relative; text-align: center; }}
-.cover .band {{ height: 0.22in; background: #E0949B; }}
-.cover .logo {{ width: 2.3in; margin-top: 1.0in; }}
-.cover h1 {{ font-size: 40pt; line-height: 1.08; margin-top: 0.45in; }}
-.cover .sub {{ font-family: Gelasio; font-style: italic; color: #C46E78; font-size: 17pt; margin-top: 8pt; }}
-.cover .rule {{ width: 0.9in; height: 1.2pt; background: #C9A86A; margin: 0.32in auto 0.28in; }}
-.cover .desc {{ font-size: 10.5pt; color: #4A4643; width: 4.6in; margin: 0 auto; }}
-.cover .by {{ position: absolute; bottom: 0.7in; width: 100%; font-size: 9pt; color: #4A4643; line-height: 1.7; }}
+.cover {{ page: cover; height: 11in; position: relative; overflow: hidden;
+  background: #FDEFF1 url('file://{PHOTOS}/cover.jpg') center top / cover no-repeat; }}
+.cover .panel {{ position: absolute; left: 0.6in; right: 0.6in; bottom: 0.6in; background: rgba(255,250,248,0.94);
+  border-radius: 18pt; padding: 26pt 30pt 22pt; text-align: center; }}
+.cover .badge {{ position: absolute; top: 0.45in; left: 0.55in; background: rgba(255,255,255,0.92); border-radius: 14pt; padding: 9pt 14pt; }}
+.cover .badge img {{ width: 1.45in; display: block; }}
+.cover .kicker {{ font-size: 7.5pt; font-weight: 700; letter-spacing: 2pt; text-transform: uppercase; color: #C46E78; }}
+.band {{ width: 100%; height: 1.75in; border-radius: 14pt; object-fit: cover; display: block; margin: 2pt 0 12pt; }}
+.band.short {{ height: 1.35in; }}
+a {{ color: #C46E78; text-decoration: none; }}
+.toc {{ margin: 10pt 0 6pt; border-top: 1pt solid #F3DADD; }}
+.toc a {{ display: flex; justify-content: space-between; color: #2D2D2D; padding: 5pt 2pt; border-bottom: 1pt solid #F3DADD; font-size: 9.2pt; }}
+.toc a span:last-child {{ color: #C46E78; font-weight: 700; }}
+.toc a::after {{ content: none; }}
+.back-photo {{ width: 100%; height: 3.4in; object-fit: cover; border-radius: 16pt; display: block; }}
+.cover h1 {{ font-size: 34pt; line-height: 1.05; margin-top: 6pt; }}
+.cover .sub {{ font-family: Gelasio; font-style: italic; color: #C46E78; font-size: 15pt; margin-top: 4pt; }}
+.cover .rule {{ width: 0.8in; height: 1.2pt; background: #C9A86A; margin: 12pt auto 10pt; }}
+.cover .desc {{ font-size: 9.6pt; color: #4A4643; width: 4.8in; margin: 0 auto; }}
+.cover .by {{ margin-top: 12pt; font-size: 8.5pt; color: #4A4643; line-height: 1.6; }}
 .cover .by b {{ font-family: Gelasio; font-size: 12pt; color: #1F1F1F; }}
 .letter {{ display: flex; gap: 20pt; align-items: flex-start; }}
 .letter img {{ width: 2.1in; border-radius: 12pt; }}
@@ -64,13 +77,16 @@ LOG_ROWS = "".join(
 )
 
 HTML_BODY = f"""
-<div class="cover"><div class="band"></div>
-<img class="logo" src="file://{IMG}/brand/logo.png">
-<h1>Newborn<br>Feeding Guide</h1>
+<div class="cover">
+<div class="badge"><img src="file://{IMG}/brand/logo.png"></div>
+<div class="panel">
+<div class="kicker">Free guide for new parents</div>
+<h1>Newborn Feeding Guide</h1>
 <div class="sub">The First 6 Weeks</div>
 <div class="rule"></div>
 <div class="desc">Feeding rhythms, latch basics, what is normal, and when to reach out for support, in calm and practical language.</div>
-<div class="by"><b>Dr. Kacie Culotta, DMD</b><br>Dentist and lactation counselor<br>Latched Beginnings, Austin, Texas</div>
+<div class="by"><b style="font-family:Gelasio;font-size:11pt;color:#1F1F1F">Dr. Kacie Culotta, DMD</b><br>Dentist and lactation counselor, Latched Beginnings, Austin, Texas</div>
+</div>
 </div>
 
 <div class="page">
@@ -85,11 +101,22 @@ HTML_BODY = f"""
 </div>
 <img src="file://{IMG}/dr-kacie-portrait.jpg">
 </div>
-<div class="box"><strong>How to use this guide.</strong> Read it once now, then keep it handy. The feeding and diaper log on page 10 is designed to print and stick on the fridge for the first two weeks.</div>
+<h3>Inside this guide</h3>
+<div class="toc">
+<a href="#weeks"><span>What to expect, week by week</span><span>3</span></a>
+<a href="#rhythm"><span>How often and how much</span><span>4</span></a>
+<a href="#enough"><span>Is my baby getting enough?</span><span>5</span></a>
+<a href="#latch"><span>Latch basics</span><span>6</span></a>
+<a href="#normal"><span>What's normal, and what's worth a check</span><span>7</span></a>
+<a href="#ties"><span>Could it be a tongue tie?</span><span>8</span></a>
+<a href="#support"><span>When to reach out</span><span>9</span></a>
+<a href="#log"><span>Printable feeding and diaper log</span><span>10</span></a>
+</div>
 <p class="note">This guide is for general education and does not replace care from your baby's pediatrician or your own provider. If you are ever worried about your baby, call your pediatrician.</p>
 </div>
 
-<div class="page">
+<div class="page" id="weeks">
+<img class="band" src="file://{PHOTOS}/weeks.jpg">
 <div class="eyebrow">The big picture</div><h2>What to Expect, Week by Week</h2>
 <p class="lede">Every baby is different, but most follow a similar arc. Feeds start frequent and a little unpredictable, then settle into a rhythm as you both gain confidence.</p>
 <div class="week"><b class="t">Days 1 to 4: Learning together</b>Your baby's tummy is tiny, and early milk (colostrum) is small in volume and rich in nutrition. Expect frequent feeds, sleepy feeds, and lots of skin to skin time. Some weight loss in the first days is expected. Your milk volume usually increases between days 2 and 5.</div>
@@ -99,7 +126,8 @@ HTML_BODY = f"""
 <div class="box gold"><strong>The most important rule:</strong> feed your baby, not the clock. Watching your baby's cues works better than a strict schedule in these early weeks.</div>
 </div>
 
-<div class="page">
+<div class="page" id="rhythm">
+<img class="band short" src="file://{PHOTOS}/cues.jpg">
 <div class="eyebrow">Rhythm</div><h2>How Often and How Much</h2>
 <p class="lede">In the early weeks, frequent feeding is not a sign that something is wrong. It is how babies grow and how milk supply is built.</p>
 <div class="cols">
@@ -118,7 +146,7 @@ HTML_BODY = f"""
 <ul class="check"><li>You can hear or see swallowing, especially early in the feed</li><li>Your baby's hands and body relax as the feed goes on</li><li>Your baby comes off the breast on their own and seems content</li><li>Feeding is comfortable for you</li></ul>
 </div>
 
-<div class="page">
+<div class="page" id="enough">
 <div class="eyebrow">Reassurance</div><h2>Is My Baby Getting Enough?</h2>
 <p class="lede">What goes in must come out. Diapers are one of the simplest ways to know feeding is going well, especially in the first week.</p>
 <table><thead><tr><th>Baby's age</th><th>Wet diapers in 24 hours</th><th>Dirty diapers</th></tr></thead><tbody>
@@ -133,7 +161,8 @@ HTML_BODY = f"""
 <div class="box"><strong>Call your pediatrician the same day if</strong> your baby has fewer wet diapers than expected, dark or orange urine after day 3, no dirty diapers after day 4, is too sleepy to wake for feeds, or looks more yellow. For any baby under 3 months, a temperature of 100.4&deg;F or higher is a reason to call right away.</div>
 </div>
 
-<div class="page">
+<div class="page" id="latch">
+<img class="band" src="file://{PHOTOS}/latch.jpg" style="object-position:center 30%">
 <div class="eyebrow">Latch</div><h2>Latch Basics</h2>
 <p class="lede">A comfortable, deep latch helps your baby feed efficiently and protects you from soreness. Small adjustments can make a big difference.</p>
 <h3>Setting up</h3>
@@ -145,7 +174,7 @@ HTML_BODY = f"""
 <div class="box"><strong>Comfort is the goal.</strong> Some tenderness in the first days is common, but feeding should not hurt throughout the feed. If it does, gently break the latch with a clean finger at the corner of your baby's mouth and try again.</div>
 </div>
 
-<div class="page">
+<div class="page" id="normal">
 <div class="eyebrow">Clarity</div><h2>What's Normal, and What's Worth a Check</h2>
 <p class="lede">Many things that feel worrying are a normal part of the newborn weeks. A few patterns are worth talking through with a feeding professional.</p>
 <div class="cols">
@@ -155,18 +184,18 @@ HTML_BODY = f"""
 <div class="box gold"><strong>One sign on its own is rarely the whole story.</strong> A few of these together is a good reason to reach out to a lactation professional or to us. Getting help early often makes feeding easier sooner.</div>
 </div>
 
-<div class="page">
+<div class="page" id="ties">
 <div class="eyebrow">Ties</div><h2>Could It Be a Tongue Tie?</h2>
 <p class="lede">Tongue, lip, and cheek (buccal) ties are bands of tissue that can limit how freely the tongue or lips move. Sometimes they affect feeding, and often they do not.</p>
 <p>At Latched Beginnings we take a conservative, function first approach. <b>Not every tie needs a release.</b> What matters is function: how your baby's tongue and lips move during feeding, and how feeding is going for both of you. Appearance alone does not tell the full story.</p>
 <h3>Signs that a feeding evaluation may help</h3>
 <ul class="check"><li>Several of the "worth a check" signs on the previous page</li><li>Ongoing nipple pain despite latch adjustments</li><li>A baby who struggles to stay latched or tires quickly at the breast</li><li>Feeding concerns that have not improved with lactation support</li></ul>
-<div class="box"><strong>Want a closer look?</strong> Our free Oral Tie Symptoms Checklist walks through the most common signs in plain language. Find it at latchedbeginnings.com/resources/oral-tie-symptoms-checklist, or bring your questions to a consultation.</div>
+<div class="box"><strong>Want a closer look?</strong> Our free Oral Tie Symptoms Checklist walks through the most common signs in plain language. Find it at <a href="https://www.latchedbeginnings.com/resources/oral-tie-symptoms-checklist?utm_source=newborn-feeding-guide&amp;utm_medium=pdf">latchedbeginnings.com/resources/oral-tie-symptoms-checklist</a>, or bring your questions to a consultation.</div>
 <h3>What an evaluation with Dr. Culotta includes</h3>
 <ul class="check"><li>A conversation about your feeding history and goals</li><li>A gentle assessment of your baby's oral function</li><li>A clear explanation of what we see, and every option, including when no release is needed</li></ul>
 </div>
 
-<div class="page">
+<div class="page" id="support">
 <div class="eyebrow">Support</div><h2>When to Reach Out</h2>
 <p class="lede">Asking for help early is a sign of a well cared for baby, not a sign that something is wrong.</p>
 <table><thead><tr><th>Who to call</th><th>When</th></tr></thead><tbody>
@@ -178,19 +207,20 @@ HTML_BODY = f"""
 <div class="box"><strong>You are not alone in this.</strong> Feeding struggles are common, solvable, and never a reflection of how much you love your baby.</div>
 </div>
 
-<div class="page">
+<div class="page" id="log">
 <div class="eyebrow">Printable</div><h2>Feeding and Diaper Log</h2>
 <p class="lede">For the first two weeks. Tally each feed and diaper, and bring this log to your pediatrician visits.</p>
 <table class="log"><thead><tr><th>Day</th><th>Feeds</th><th>Wet diapers</th><th>Dirty diapers</th><th>Weight check</th><th>Notes</th></tr></thead><tbody>{LOG_ROWS}</tbody></table>
 </div>
 
 <div class="page back">
-<img src="file://{IMG}/brand/logo.png" style="width:2in;margin-top:0.9in">
-<h2 style="margin-top:0.4in">We're Here When You Need Us</h2>
-<p style="width:4.8in;margin:8pt auto 0">If feeding feels harder than it should, Dr. Culotta and our team offer gentle, evidence minded feeding evaluations for babies and families in Austin and beyond.</p>
+<img class="back-photo" src="file://{PHOTOS}/support.jpg" style="object-position:center 28%">
+<img src="file://{IMG}/brand/logo.png" style="width:1.7in;margin-top:0.3in">
+<h2 style="margin-top:0.15in">We're Here When You Need Us</h2>
+<p style="width:4.8in;margin:6pt auto 0">If feeding feels harder than it should, Dr. Culotta and our team offer gentle, evidence minded feeding evaluations for babies and families in Austin and beyond.</p>
 <a class="cta" href="https://www.latchedbeginnings.com/contact?utm_source=newborn-feeding-guide&amp;utm_medium=pdf&amp;utm_campaign=lead-magnet#appointment">Schedule a Consultation</a>
-<p style="margin-top:10pt;line-height:1.9"><b>(512) 814-7480</b><br>1701 Simond Ave, Suite 107A, Austin, Texas<br>latchedbeginnings.com</p>
-<p class="note" style="width:4.8in;margin:0.6in auto 0">This guide is for general education and does not replace individualized care from your pediatrician or provider. In an emergency, call 911.</p>
+<p style="margin-top:6pt;line-height:1.9"><a href="tel:+15128147480"><b>(512) 814-7480</b></a><br>1701 Simond Ave, Suite 107A, Austin, Texas<br><a href="https://www.latchedbeginnings.com/?utm_source=newborn-feeding-guide&amp;utm_medium=pdf">latchedbeginnings.com</a></p>
+<p class="note" style="width:4.8in;margin:0.25in auto 0">This guide is for general education and does not replace individualized care from your pediatrician or provider. In an emergency, call 911.</p>
 </div>
 """
 
