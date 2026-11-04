@@ -17,8 +17,9 @@ import { isTrackingAllowed } from "@/lib/analytics-config";
     is never injected there, and the route-change effect returns early so a
     client-side navigation into an excluded route sends nothing either.
 
-  The only value ever sent is the path of an allowed page. No form input, no
-  symptom detail, nothing a parent typed.
+  The only values ever sent are the path of an allowed page and, on lead magnet
+  pages, a generate_lead event naming the resource (see LeadMagnetForm). No
+  form input, no symptom detail, nothing a parent typed.
 */
 
 declare global {

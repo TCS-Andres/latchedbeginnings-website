@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import {
   Check,
-  Download,
   ClipboardCheck,
   Heart,
   CalendarCheck,
@@ -14,6 +13,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/layout/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { LeadMagnetForm } from "@/components/forms/LeadMagnetForm";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -89,7 +89,7 @@ export default function OralTieSymptomsChecklistPage() {
             href: "/resources/oral-tie-symptoms-checklist",
           },
         ]}
-        cta={{ label: "Download the Checklist", href: checklistUrl }}
+        cta={{ label: "Get the Free Checklist", href: "#get-the-checklist" }}
       />
 
       <Section tone="white">
@@ -212,18 +212,31 @@ export default function OralTieSymptomsChecklistPage() {
             })}
           </div>
 
-          {/* TODO: add real checklist PDF at /public/downloads/ and confirm whether email capture is wanted */}
-          <Reveal delay={180}>
-            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button href={checklistUrl} size="lg">
-                <Download className="h-4 w-4" aria-hidden="true" />
-                Download the Checklist
-              </Button>
-              <Button href={site.bookingUrl} size="lg" variant="outline">
-                {site.bookingLabel}
-              </Button>
-            </div>
-          </Reveal>
+        </Container>
+      </Section>
+
+      <Section tone="white" id="get-the-checklist">
+        <Container size="narrow">
+          <SectionHeading
+            align="center"
+            eyebrow="Free download"
+            title="Get Your Free Checklist"
+            intro="Tell us where to send it, and you can download it right away. Prefer to talk it through? We are always happy to help."
+          />
+          <div className="mx-auto mt-10 max-w-xl">
+            {/* No trackLead here: this route is excluded from analytics. */}
+            <LeadMagnetForm
+              source="oral-tie-checklist"
+              resourceName="Oral Tie Symptoms Checklist"
+              downloadUrl={checklistUrl}
+              buttonLabel="Send Me the Checklist"
+            />
+          </div>
+          <div className="mt-8 flex justify-center">
+            <Button href={site.bookingUrl} size="lg" variant="outline">
+              {site.bookingLabel}
+            </Button>
+          </div>
         </Container>
       </Section>
     </>

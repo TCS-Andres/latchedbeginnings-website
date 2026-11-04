@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowRight, Check, ChevronDown, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/lib/site";
 import { workshop } from "@/lib/content/workshop";
+import { useUtm } from "@/lib/useUtm";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -21,45 +22,7 @@ const WEB3FORMS_ACCESS_KEY =
   process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
   "3443455b-44cc-4273-a5ec-103b2b0993b8";
 
-const UTM_KEYS = [
-  "utm_source",
-  "utm_medium",
-  "utm_campaign",
-  "utm_content",
-  "utm_term",
-] as const;
 const UTM_STORAGE_KEY = "lb-workshop-utm";
-
-type Utm = Partial<Record<(typeof UTM_KEYS)[number], string>>;
-
-/**
- * Read UTM tags from the landing URL so every reservation records where the
- * attendee came from, even without analytics. Kept for the tab session so the
- * tags survive an in-page scroll or reload.
- */
-function useUtm(): Utm {
-  const [utm, setUtm] = useState<Utm>({});
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const fromUrl: Utm = {};
-    for (const key of UTM_KEYS) {
-      const value = params.get(key);
-      if (value) fromUrl[key] = value.slice(0, 100);
-    }
-    if (Object.keys(fromUrl).length) {
-      try {
-        sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(fromUrl));
-      } catch {}
-      setUtm(fromUrl);
-      return;
-    }
-    try {
-      const saved = sessionStorage.getItem(UTM_STORAGE_KEY);
-      if (saved) setUtm(JSON.parse(saved));
-    } catch {}
-  }, []);
-  return utm;
-}
 
 const copy: Record<
   WorkshopFormMode,
@@ -88,7 +51,7 @@ const copy: Record<
 export function WorkshopForm({ mode }: { mode: WorkshopFormMode }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
-  const utm = useUtm();
+  const utm = useUtm(UTM_STORAGE_KEY);
   const text = copy[mode];
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -369,7 +332,7 @@ export function WorkshopCheckoutButton({
   size?: "md" | "lg";
   className?: string;
 }) {
-  const utm = useUtm();
+  const utm = useUtm(UTM_STORAGE_KEY);
   const url = new URL(workshop.registrationUrl);
   for (const [key, value] of Object.entries(utm)) {
     if (value) url.searchParams.set(key, value);

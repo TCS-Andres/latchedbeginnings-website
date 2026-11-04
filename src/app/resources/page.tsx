@@ -7,6 +7,7 @@ import {
   Users,
   ArrowRight,
   Download,
+  Heart,
 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -16,6 +17,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/layout/PageHero";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/site";
+import { newbornFeedingGuide } from "@/lib/content/newbornFeedingGuide";
 
 export const metadata: Metadata = {
   title: "Free Resources for Parents",
@@ -25,6 +27,19 @@ export const metadata: Metadata = {
 };
 
 const resources = [
+  // Listed once the guide is approved and launched (see newbornFeedingGuide.ts).
+  ...(newbornFeedingGuide.launched
+    ? [
+        {
+          icon: Heart,
+          title: newbornFeedingGuide.shortTitle,
+          description:
+            "Feeding rhythms, latch basics, and what is normal in the first six weeks, from Dr. Culotta. Includes a printable feeding and diaper log for the first two weeks.",
+          href: newbornFeedingGuide.path,
+          cta: "Get the free guide",
+        },
+      ]
+    : []),
   {
     icon: FileText,
     title: "Oral Tie Symptoms Checklist",
