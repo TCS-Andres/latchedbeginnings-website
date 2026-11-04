@@ -14,7 +14,7 @@ export const newbornFeedingGuide = {
   title: "Newborn Feeding Guide: The First 6 Weeks",
   shortTitle: "Newborn Feeding Guide",
   pdfUrl: "/downloads/newborn-feeding-guide.pdf",
-  coverImage: "/images/resources/newborn-feeding-guide.jpg",
+  coverImage: "/images/resources/newborn-feeding-guide-cover.jpg",
   description:
     "A free guide from Dr. Kacie Culotta for new parents in Austin, TX: feeding rhythms, latch basics, what is normal in the first six weeks, and when to reach out for support.",
   inside: [
