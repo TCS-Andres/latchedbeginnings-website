@@ -130,7 +130,7 @@ export default function NewbornFeedingGuidePage() {
                 <SectionHeading
                   eyebrow="From Dr. Culotta"
                   title="A Dentist and Lactation Counselor in Your Corner"
-                  intro="Dr. Kacie Culotta, DMD, founded Latched Beginnings to give Austin families feeding care that looks at the whole baby. As a dentist and certified lactation counselor, she helps parents understand what is normal, what is worth a closer look, and every option in between."
+                  intro="Dr. Kacie Culotta, DMD, founded Latched Beginnings to give Austin families gentle, function first feeding care. As a dentist and certified lactation counselor, she helps parents understand what is normal, what is worth a closer look, and every option in between."
                 />
                 <figure className="mt-8 rounded-[1.75rem] border border-blush-200 bg-cream p-6">
                   <div className="flex gap-1 text-gold" aria-label="5 out of 5 stars">

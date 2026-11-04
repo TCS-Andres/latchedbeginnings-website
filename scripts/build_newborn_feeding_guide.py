@@ -158,7 +158,7 @@ HTML_BODY = f"""
 <div class="page">
 <div class="eyebrow">Ties</div><h2>Could It Be a Tongue Tie?</h2>
 <p class="lede">Tongue, lip, and cheek (buccal) ties are bands of tissue that can limit how freely the tongue or lips move. Sometimes they affect feeding, and often they do not.</p>
-<p>At Latched Beginnings we take a conservative, whole baby approach. <b>Not every tie needs a release.</b> What matters is function: how your baby's tongue and lips move during feeding, and how feeding is going for both of you. Appearance alone does not tell the full story.</p>
+<p>At Latched Beginnings we take a conservative, function first approach. <b>Not every tie needs a release.</b> What matters is function: how your baby's tongue and lips move during feeding, and how feeding is going for both of you. Appearance alone does not tell the full story.</p>
 <h3>Signs that a feeding evaluation may help</h3>
 <ul class="check"><li>Several of the "worth a check" signs on the previous page</li><li>Ongoing nipple pain despite latch adjustments</li><li>A baby who struggles to stay latched or tires quickly at the breast</li><li>Feeding concerns that have not improved with lactation support</li></ul>
 <div class="box"><strong>Want a closer look?</strong> Our free Oral Tie Symptoms Checklist walks through the most common signs in plain language. Find it at latchedbeginnings.com/resources/oral-tie-symptoms-checklist, or bring your questions to a consultation.</div>

@@ -43,7 +43,7 @@ const parentSigns = [
 const nextSteps = [
   "Note which signs feel familiar so you can describe them clearly",
   "Trust your instincts: you know your baby’s feeding better than anyone",
-  "Bring the checklist to a consultation for a gentle, whole-baby evaluation",
+  "Bring the checklist to a consultation for a gentle, thorough feeding evaluation",
 ];
 
 const howToUse = [
