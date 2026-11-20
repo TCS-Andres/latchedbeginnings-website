@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CalendarCheck, Check, ChevronDown, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/lib/site";
+import { trackEvent } from "@/lib/track";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -85,6 +86,7 @@ export function AppointmentForm() {
         );
       }
       form.reset();
+      trackEvent("appointment_request");
       setStatus("success");
     } catch (err) {
       setStatus("error");
